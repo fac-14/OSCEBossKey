@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "start": "parcel build index.html && nodemon server.js",
+    "start": "parcel build index.html && nodemon src/index.js",
     "build": "parcel build index.html"
   },
   "repository": {
