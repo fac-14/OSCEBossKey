@@ -8,6 +8,9 @@ Weeks 13-16 > Tech for Better project
 
 ## Instructions to run the program
 
+**Install Node.js and NPM**
+Follow the instructions in [this article](https://blog.teamtreehouse.com/install-node-js-npm-mac) to complete the installation.
+
 **Open Terminal and navigate to the folder in which you want to save the repo**
 
 **Download a local version of the repo**
@@ -26,3 +29,5 @@ Weeks 13-16 > Tech for Better project
 URL: `localhost:3333`
 
 ![mindblown](https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy-downsized-large.gif)
+
+Don't worry if you have any problems with this, we can fix any problems on Friday.
