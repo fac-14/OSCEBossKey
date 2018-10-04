@@ -1,4 +1,17 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["jest"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "commonjs": false,
+    "jest/globals": true
+  },
+  "rules": {
+    "import/no-commonjs": 0,
+    "no-console": 0,
+    "import/no-nodejs-modules": 0,
+    "no-sync": 0
+  }
 }
