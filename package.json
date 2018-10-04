@@ -4,7 +4,9 @@
   "description": "MVP helping medical students prepare for their OSCE",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "report-coverage": "codecov",
     "start": "parcel build index.html && nodemon src/index.js",
     "build": "parcel build index.html"
   },
