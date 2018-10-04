@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
+    "report-coverage": "codecov",
     "start": "parcel build index.html && nodemon src/index.js",
     "build": "parcel build index.html"
   },
