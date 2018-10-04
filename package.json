@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "MVP helping medical students prepare for their OSCE",
   "main": "index.js",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "scripts": {
     "test": "parcel build index.html && jest",
     "test-watch": "parcel build index.html && jest --watch",
@@ -28,6 +32,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "codecov": "^3.1.0",
     "eslint": "^5.6.1",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-recommended": "^4.0.0",
