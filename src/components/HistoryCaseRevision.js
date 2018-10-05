@@ -1,15 +1,18 @@
 /* eslint-disable class-methods-use-this */
 
-import { React, Fragment } from "react";
+import React from "react";
 import markComplete from "../utils/markComplete";
+import Header from "./Header";
+import Body from "./Body";
 
 // <HistoryCaseRevision> :: manages state across all child components
 export default class HistoryCaseRevision extends React.Component {
   state = {
-    stationName: "null",
-    caseTitle: "null",
+    stationName: "Chest Pain",
+    caseTitle:
+      "57 year old male started feeling chest pain after drinking milk",
     caseDetails: "null",
-    tickDisplayed: false,
+    tickDisplayed: true,
     caseDetailsDisplayed: true,
     markSchemeCompleted: 0,
     markSchemeElements: [
@@ -48,7 +51,7 @@ export default class HistoryCaseRevision extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <React.Fragment>
         <Header
           stationName={this.state.stationName}
           caseTitle={this.state.caseTitle}
@@ -60,7 +63,7 @@ export default class HistoryCaseRevision extends React.Component {
           markSchemeElements={this.state.markSchemeElements}
           markSchemeCompleted={this.state.markSchemeCompleted}
         />
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

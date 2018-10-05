@@ -1,17 +1,8 @@
 import React from "react";
 import HistoryCaseRevision from "./HistoryCaseRevision";
 
-class App extends React.Component {
-  state = {
-    test: true
-  };
+export default class App extends React.Component {
   render() {
-    return (
-      <HistoryCaseRevision testing={this.state.test}>
-        Hello World
-      </HistoryCaseRevision>
-    );
+    return <HistoryCaseRevision />;
   }
 }
-
-export default App;
