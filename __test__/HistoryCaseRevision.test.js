@@ -1,4 +1,4 @@
-import markComplete from "../src/utils/markComplete";
+import functions from "../src/utils/HistoryCaseRevision.functions";
 
 describe("Ensure markComplete() successfully updates by ID", () => {
   const state = {
@@ -15,7 +15,7 @@ describe("Ensure markComplete() successfully updates by ID", () => {
   };
 
   test("test valid id", () => {
-    const newState = markComplete(0, state);
+    const newState = functions.markComplete(0, state);
     // check if the element is marked as completed
     expect(newState.markSchemeElements[0].completed).toBeTruthy();
     // check if number of completed elements increased
@@ -25,6 +25,6 @@ describe("Ensure markComplete() successfully updates by ID", () => {
   });
 
   test("invalid id returns error", () => {
-    expect(markComplete(2000, state)).toThrow;
+    expect(() => functions.markComplete(2000, state)).toThrow();
   });
 });

@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
 import React from "react";
-import markComplete from "../utils/markComplete";
+import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
 
@@ -39,14 +39,12 @@ export default class HistoryCaseRevision extends React.Component {
 
   //swipe between the case details and the mark scheme
   swipe() {
-    return this.setState(state => ({
-      caseDetailsDisplayed: !state.caseDetailsDisplayed
-    }));
+    this.setState(prevState => functions.swipe(prevState));
   }
 
   //mark indivual mark scheme element as completed
   markComplete(id) {
-    this.setState(state => markComplete(id, state));
+    this.setState(prevState => functions.markComplete(id, prevState));
   }
 
   render() {
