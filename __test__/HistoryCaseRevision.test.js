@@ -25,8 +25,23 @@ describe("Ensure markComplete() successfully updates by ID", () => {
       { text: "string2", completed: true }
     ]
   };
-  const newState = markComplete(0, state);
+
   test("test valid id", () => {
+    const newState = markComplete(0, state);
+    // check if the element is marked as completed
     expect(newState.markSchemeElements[0].completed).toBeTruthy();
+    // check if number of completed elements increased
+    expect(newState.markSchemeCompleted).toBe(1);
+    // check if other states remain unchanged
+    expect(state.tickDisplayed).toBeTruthy();
+  });
+
+  test("invalid id returns null", () => {
+    const invalidState = markComplete(2000, state);
+    function markCompleteInvalid() {
+      return invalidState;
+    }
+    // check if it throws an error when called with invalid id
+    expect(markCompleteInvalid).toThrow;
   });
 });
