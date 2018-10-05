@@ -46,10 +46,13 @@ export default class HistoryCaseRevision extends React.Component {
   // mark indivual mark scheme element as completed
   markComplete(id) {
     /*
-    * update this.state.markSchemeElements[id] to completed: true
-    * markSchemeCompleted += 1; 
+    * update this.state.markSchemeElements[id] to completed: true and increment markSchemeCompleted
     */
-    return true;
+    if (!this.state.markSchemeElements[id]) return null; // ensure id is valid
+    this.setState((state, props) => {
+      state.markSchemeElements[id].completed = true;
+      state.markSchemeCompleted = +1;
+    });
   }
   render() {
     return (
