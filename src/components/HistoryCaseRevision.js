@@ -9,7 +9,7 @@ export default class HistoryCaseRevision extends React.Component {
     stationName: "null",
     caseTitle: "null",
     caseDetails: "null",
-    tickDisplayed: true,
+    tickDisplayed: false,
     caseDetailsDisplayed: true,
     markSchemeCompleted: 0,
     markSchemeElements: [
@@ -23,7 +23,6 @@ export default class HistoryCaseRevision extends React.Component {
     /*
     * 1. render/reset component layout to station name page/cases page
     */
-    return true;
   }
 
   //log marks and progress user to feedback screen
@@ -36,12 +35,10 @@ export default class HistoryCaseRevision extends React.Component {
   }
 
   //swipe between the case details and the mark scheme
-  //todo: detail what states are affected
   swipe() {
-    /*
-    *  set this.case.caseDetailsDisplayed = !this.case.caseDetailsDisplayed
-    */
-    return true;
+    return this.setState(state => ({
+      caseDetailsDisplayed: !state.caseDetailsDisplayed
+    }));
   }
 
   //mark indivual mark scheme element as completed
