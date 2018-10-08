@@ -1,25 +1,15 @@
 {
   "history": [
     {
-      "stationName": "add new",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
-    },
-    {
       "stationName": "chest pain",
       "cases": [
         {
           "caseTitle": "57-year-old male started feeling chest pain after drinking milk",
-          "caseDetails": "John, 57 years old reports that he had chest pain last night, which woke him from his sleep. The pain started at around 0200. He thinks it lasted about 20–25 minutes. He reports that he felt sweaty during the pain. He did not want to bother anyone so he rested and the pain eased. He reports that it was very painful and therefore wanted to see you to get it checked. He is currently not in any pain, although he feels quite tired. He has been a smoker for 40 years and "
+          "caseDetails": "John, 57-year-old reports that he had chest pain last night, which woke him from his sleep. The pain started at around 0200. He thinks it lasted about 20–25 minutes. He reports that he felt sweaty during the pain. He did not want to bother anyone so he rested and the pain eased. He reports that it was very painful and therefore wanted to see you to get it checked. He is currently not in any pain, although he feels quite tired. He has been a smoker for 40 years and "
         },
         {
           "caseTitle": "6-year-old boy feels chest pain in the mornings",
-          "caseDetails": "A 6 year old boy with a history of hay fever develops fever, headache and malaise for 4 days followed by a nonproductive cough and scratchy throat. Despite chicken soup and orange juice, the cough and fever persist. Physical examination is unremarkable except for scattered rales over the left lower lung, and small bullae in his left tympanic membrane. Chest x-ray reveals a patchy left lower lobe infiltrate. At your request, he makes a heroic effort but is unable to produce sputum."
+          "caseDetails": "6-year-old old boy with a history of hay fever develops fever, headache and malaise for 4 days followed by a nonproductive cough and scratchy throat. Despite chicken soup and orange juice, the cough and fever persist. Physical examination is unremarkable except for scattered rales over the left lower lung, and small bullae in his left tympanic membrane. Chest x-ray reveals a patchy left lower lobe infiltrate. At your request, he makes a heroic effort but is unable to produce sputum."
         },
         {
           "caseTitle": "28-year-old woman started feeling chest pain after running",
@@ -38,273 +28,102 @@
     },
     {
       "stationName": "ear pain",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "vomiting",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "shortness of breath",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "visual loss",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "abdominal pain",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "cough",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "null", "completed": false }]
+      "cases": [],
+      "markScheme": []
     }
   ],
   "examinations": [
     {
-      "stationName": "add new",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
-    },
-    {
       "stationName": "cardiovascular",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Cardiovascular case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Cardiovascular case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Cardiovascular case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "abdominal",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "cranial nerves",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "thyroid",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "upper limb neurological",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "lower limb neurological",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "shoulder",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "hip",
-      "cases": [
-        {
-          "caseTitle": "case 1",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 2",
-          "caseDetails": "Case details to be added"
-        },
-        {
-          "caseTitle": "case 3",
-          "caseDetails": "Case details to be added"
-        }
-      ]
+      "cases": [],
+      "markScheme": []
     }
   ],
   "extras": [
     {
-      "stationName": "add new",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
-    },
-    {
       "stationName": "ethics and law",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "medical consent",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "suturing",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "prescription",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
+      "cases": [],
+      "markScheme": []
     },
     {
       "stationName": "test interpratation",
-      "cases": [
-        {
-          "caseTitle": "add new",
-          "caseDetails": "null"
-        }
-      ],
-      "markScheme": [{ "text": "add new", "completed": false }]
+      "cases": [],
+      "markScheme": []
     }
   ]
 }
