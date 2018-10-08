@@ -4,6 +4,7 @@ import React from "react";
 import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
+import { stat } from "fs";
 
 // <HistoryCaseRevision> :: manages state across all child components
 export default class HistoryCaseRevision extends React.Component {
@@ -22,20 +23,21 @@ export default class HistoryCaseRevision extends React.Component {
   };
 
   //close the case and return to main screen without logging marks
-  closeCase() {
+  closeCase = () => {
     /*
     * 1. render/reset component layout to station name page/cases page
     */
-  }
+    console.log("CLICKED: closeCase()");
+  };
 
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
-  submitCase() {
+  submitCase = () => {
     /*
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
-    return true;
-  }
+    console.log("CLICKED: submitCase()");
+  };
 
   //swipe between the case details and the mark scheme
   swipe() {
@@ -53,7 +55,9 @@ export default class HistoryCaseRevision extends React.Component {
         <Header
           stationName={this.state.stationName}
           caseTitle={this.state.caseTitle}
+          submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
+          closeCase={this.closeCase}
         />
         <Body
           caseDetails={this.state.caseDetails}
