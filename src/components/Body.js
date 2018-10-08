@@ -8,18 +8,17 @@ export default class Body extends React.Component {
     const markSchemeArray = this.props.markSchemeElements.map((element, i) => (
       <li key={i}> {element.text} </li>
     ));
-
-    console.log("array:", markSchemeArray);
-    console.log("text in each object:", markSchemeArray.text);
     return (
       <div>
-        <button onClick={this.props.swipe}>swipe</button>
+        <button data-testid="swipeButton" onClick={this.props.swipe}>
+          swipe
+        </button>
         <div>
           {/*if caseDetailsDisplayed: true - render() case details*/}
           {this.props.caseDetailsDisplayed ? (
             <p>{this.props.caseDetails}</p>
           ) : (
-            <ul>{markSchemeArray}</ul>
+            <ul data-testid="markSchemeUL">{markSchemeArray}</ul>
           )}
           {/*else render() markSchemeElements [{}, {}, {}]*/}
         </div>
