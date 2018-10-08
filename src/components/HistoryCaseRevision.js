@@ -12,13 +12,15 @@ export default class HistoryCaseRevision extends React.Component {
     stationName: "Chest Pain",
     caseTitle:
       "57 year old male started feeling chest pain after drinking milk",
-    caseDetails: "null",
+    caseDetails:
+      "Jennifer is a 28-year-old female who reports experiencing chest pain 10 days ago while she was out walking",
     tickDisplayed: true,
     caseDetailsDisplayed: true,
     markSchemeCompleted: 0,
     markSchemeElements: [
-      { text: "string", completed: false },
-      { text: "string2", completed: true }
+      { text: "Introduces themselves", completed: false },
+      { text: "Washes hands", completed: true },
+      { text: "Confirms patient details", completed: true }
     ]
   };
 
@@ -40,9 +42,9 @@ export default class HistoryCaseRevision extends React.Component {
   };
 
   //swipe between the case details and the mark scheme
-  swipe() {
+  swipe = () => {
     this.setState(prevState => functions.swipe(prevState));
-  }
+  };
 
   //mark indivual mark scheme element as completed
   markComplete(id) {
@@ -60,6 +62,7 @@ export default class HistoryCaseRevision extends React.Component {
           closeCase={this.closeCase}
         />
         <Body
+          swipe={this.swipe}
           caseDetails={this.state.caseDetails}
           caseDetailsDisplayed={this.state.caseDetailsDisplayed}
           markSchemeElements={this.state.markSchemeElements}
