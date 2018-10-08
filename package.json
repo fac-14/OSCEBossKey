@@ -12,7 +12,8 @@
     "test-watch": "parcel build index.html && jest --watch",
     "report-coverage": "codecov",
     "start": "parcel build index.html && nodemon src/index.js",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "build-watch": "parcel watch build index.html"
   },
   "repository": {
     "type": "git",
