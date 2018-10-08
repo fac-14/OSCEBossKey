@@ -13,7 +13,7 @@ export default class Body extends React.Component {
     console.log("text in each object:", markSchemeArray.text);
     return (
       <div>
-        <button onClick={this.props.swipe}>Balls</button>
+        <button onClick={this.props.swipe}>swipe</button>
         <div>
           {/*if caseDetailsDisplayed: true - render() case details*/}
           {this.props.caseDetailsDisplayed ? (
