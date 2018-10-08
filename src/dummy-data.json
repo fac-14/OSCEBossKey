@@ -96,5 +96,215 @@
       ],
       "markScheme": [{ "text": "null", "completed": false }]
     }
+  ],
+  "examinations": [
+    {
+      "stationName": "add new",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "cardiovascular",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Cardiovascular case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Cardiovascular case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Cardiovascular case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "abdominal",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "cranial nerves",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "thyroid",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "upper limb neurological",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "lower limb neurological",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "shoulder",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    },
+    {
+      "stationName": "hip",
+      "cases": [
+        {
+          "caseTitle": "case 1",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 2",
+          "caseDetails": "Case details to be added"
+        },
+        {
+          "caseTitle": "case 3",
+          "caseDetails": "Case details to be added"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "stationName": "add new",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "ethics and law",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "medical consent",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "suturing",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "prescription",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    },
+    {
+      "stationName": "test interpratation",
+      "cases": [
+        {
+          "caseTitle": "add new",
+          "caseDetails": "null"
+        }
+      ],
+      "markScheme": [{ "text": "add new", "completed": false }]
+    }
   ]
 }
