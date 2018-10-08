@@ -10,9 +10,11 @@ export default class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <BackButton />
-        <StationName stationName={this.props.stationName} />
-        <TickButton tickDisplayed={this.props.tickDisplayed} />
+        <div>
+          <BackButton closeCase={this.props.closeCase} />
+          <StationName stationName={this.props.stationName} />
+          <TickButton tickDisplayed={this.props.tickDisplayed} />
+        </div>
         <CaseTitle caseTitle={this.props.caseTitle} />
       </React.Fragment>
     );

@@ -4,6 +4,6 @@ import React from "react";
 
 export default class BackButton extends React.Component {
   render() {
-    return <button>Back</button>;
+    return <button onClick={() => this.props.closeCase()}>Back</button>;
   }
 }
