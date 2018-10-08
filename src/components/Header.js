@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
 import React from "react";
+import PropTypes from "prop-types";
 import BackButton from "./BackButton";
 import StationName from "./StationName";
 import TickButton from "./TickButton";
@@ -20,3 +21,10 @@ export default class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  closeCase: PropTypes.func,
+  stationName: PropTypes.string,
+  tickDisplayed: PropTypes.bool,
+  caseTitle: PropTypes.string
+};
