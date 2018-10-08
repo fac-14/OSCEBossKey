@@ -14,7 +14,10 @@ export default class Header extends React.Component {
         <div>
           <BackButton closeCase={this.props.closeCase} />
           <StationName stationName={this.props.stationName} />
-          <TickButton tickDisplayed={this.props.tickDisplayed} />
+          <TickButton
+            submitCase={this.props.submitCase}
+            tickDisplayed={this.props.tickDisplayed}
+          />
         </div>
         <CaseTitle caseTitle={this.props.caseTitle} />
       </React.Fragment>
@@ -24,6 +27,7 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
   closeCase: PropTypes.func,
+  submitCase: PropTypes.func,
   stationName: PropTypes.string,
   tickDisplayed: PropTypes.bool,
   caseTitle: PropTypes.string

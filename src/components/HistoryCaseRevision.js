@@ -27,17 +27,17 @@ export default class HistoryCaseRevision extends React.Component {
     /*
     * 1. render/reset component layout to station name page/cases page
     */
-    this.setState({ stationName: "clickers" });
+    console.log("CLICKED: closeCase()");
   };
 
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
-  submitCase() {
+  submitCase = () => {
     /*
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
-    return true;
-  }
+    console.log("CLICKED: submitCase()");
+  };
 
   //swipe between the case details and the mark scheme
   swipe() {
@@ -55,6 +55,7 @@ export default class HistoryCaseRevision extends React.Component {
         <Header
           stationName={this.state.stationName}
           caseTitle={this.state.caseTitle}
+          submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
           closeCase={this.closeCase}
         />
