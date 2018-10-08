@@ -43,7 +43,7 @@ export default class HistoryCaseRevision extends React.Component {
 
   //swipe between the case details and the mark scheme
   swipe = () => {
-    this.setState(state => functions.swipe(this.state));
+    this.setState(prevState => functions.swipe(prevState));
   };
 
   //mark indivual mark scheme element as completed

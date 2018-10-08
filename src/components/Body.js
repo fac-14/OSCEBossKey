@@ -10,17 +10,16 @@ export default class Body extends React.Component {
     ));
     return (
       <div>
+        {/* replace button with swipe event (relates #65) */}
         <button data-testid="swipeButton" onClick={this.props.swipe}>
           swipe
         </button>
         <div>
-          {/*if caseDetailsDisplayed: true - render() case details*/}
           {this.props.caseDetailsDisplayed ? (
             <p>{this.props.caseDetails}</p>
           ) : (
-            <ul data-testid="markSchemeUL">{markSchemeArray}</ul>
+            <ul data-testid="markSchemeList">{markSchemeArray}</ul>
           )}
-          {/*else render() markSchemeElements [{}, {}, {}]*/}
         </div>
       </div>
     );

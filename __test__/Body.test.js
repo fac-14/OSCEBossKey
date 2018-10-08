@@ -12,7 +12,7 @@ describe("Testing Body component", () => {
     const { getByTestId } = render(<HistoryCaseRevision />);
     const swipeButton = getByTestId("swipeButton");
     fireEvent.click(swipeButton);
-    const markSchemeUL = getByTestId("markSchemeUL");
-    expect(markSchemeUL.children.length).toBe(3);
+    const markSchemeList = getByTestId("markSchemeList");
+    expect(markSchemeList.children.length).toBe(3);
   });
 });
