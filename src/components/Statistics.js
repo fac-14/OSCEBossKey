@@ -6,7 +6,7 @@ export default class Statistics extends React.Component {
   render() {
     return (
       <div>
-        <h2>History list of Stations</h2>
+        <h2>Stats page</h2>
         <Navbar />
       </div>
     );

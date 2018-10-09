@@ -6,7 +6,7 @@ export default class Examinations extends React.Component {
   render() {
     return (
       <div>
-        <h2>History list of Stations</h2>
+        <h2>Examinations list of Stations</h2>
         <Navbar />
       </div>
     );

@@ -21,10 +21,10 @@ const App = () => (
   <Router>
     <div>
       <Route exact path="/" component={Home} />
-      <Route path="/history" component={History} />
-      <Route path="/examinations" component={Examinations} />
-      <Route path="/extras" component={Extras} />
-      <Route path="/stats" component={Statistics} />
+      <Route strict exact path="/history" component={History} />
+      <Route strict exact path="/examinations" component={Examinations} />
+      <Route strict exact path="/extras" component={Extras} />
+      <Route strict exact path="/stats" component={Statistics} />
       <Route
         strict
         exact

@@ -6,7 +6,7 @@ export default class Extra extends React.Component {
   render() {
     return (
       <div>
-        <h2>History list of Stations</h2>
+        <h2>Extras list of Stations</h2>
         <Navbar />
       </div>
     );
