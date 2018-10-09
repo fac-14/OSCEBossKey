@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default class BackButton extends React.Component {
   render() {
     return (
-      <Link to="/history">
+      <Link to="/history/chest-pain">
         <button id="button--back">Back</button>
       </Link>
     );
