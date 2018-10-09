@@ -6,6 +6,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import all page classes here
+import Home from "./Home";
 import HistoryStationCases from "./HistoryStationCases";
 import HistoryCaseRevision from "./HistoryCaseRevision";
 import NewHistoryCase from "./NewHistoryCase";
@@ -15,7 +16,7 @@ import NewHistoryCase from "./NewHistoryCase";
 const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={HistoryCaseRevision} />
+      <Route exact path="/" component={Home} />
       <Route
         strict
         exact
@@ -27,6 +28,12 @@ const App = () => (
         exact
         path="/history/:station/add-case"
         component={NewHistoryCase}
+      />
+      <Route
+        strict
+        exact
+        path="/history/:station/case/:case"
+        component={HistoryCaseRevision}
       />
     </div>
   </Router>
