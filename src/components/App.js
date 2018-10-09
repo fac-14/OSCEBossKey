@@ -16,6 +16,9 @@ const App = () => (
     <div>
       <Route exact path="/" component={HistoryCaseRevision} />
       <Route path="/history" component={HelloWorld} />
+      <Route path="/examinations" component={Examinations} />
+      <Route path="/extras" component={Extras} />
+      <Route path="/stats" component={Statistics} />
     </div>
   </Router>
 );
