@@ -1,5 +1,6 @@
 import React from "react";
-import App from "../src/components/App";
+import { MemoryRouter } from "react-router-dom";
+import HistoryCaseRevision from "../src/components/HistoryCaseRevision";
 import { render, fireEvent } from "react-testing-library";
 
 test("Jest is working", () => {
@@ -8,7 +9,11 @@ test("Jest is working", () => {
 
 describe("Testing Body component", () => {
   test("when swipe button is clicked mark scheme renders 3 elements", () => {
-    const { getByTestId } = render(<App />);
+    const { getByTestId } = render(
+      <MemoryRouter initialEntries={["/history/chest-pain/case/test-case"]}>
+        <HistoryCaseRevision />
+      </MemoryRouter>
+    );
     const swipeButton = getByTestId("markBall");
     fireEvent.click(swipeButton);
     const markSchemeList = getByTestId("markSchemeList");
