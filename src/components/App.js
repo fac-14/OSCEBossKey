@@ -6,7 +6,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import all page classes here
-import HelloWorld from "./HelloWorld";
+import HistoryStations from "./HistoryStations";
 import HistoryCaseRevision from "./HistoryCaseRevision";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
@@ -15,7 +15,7 @@ const App = () => (
   <Router>
     <div>
       <Route exact path="/" component={HistoryCaseRevision} />
-      <Route path="/history" component={HelloWorld} />
+      <Route path="/history" component={HistoryStations} />
     </div>
   </Router>
 );
