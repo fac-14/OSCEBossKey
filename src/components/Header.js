@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+import "../assets/header.scss";
 
 import React from "react";
 import PropTypes from "prop-types";
@@ -11,7 +12,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
+        <div id="header--top-row">
           <BackButton closeCase={this.props.closeCase} />
           <StationName stationName={this.props.stationName} />
           <TickButton

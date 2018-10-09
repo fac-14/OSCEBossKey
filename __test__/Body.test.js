@@ -1,6 +1,5 @@
 import React from "react";
-import Body from "../src/components/Body";
-import HistoryCaseRevision from "../src/components/HistoryCaseRevision";
+import App from "../src/components/App";
 import { render, fireEvent } from "react-testing-library";
 
 test("Jest is working", () => {
@@ -9,7 +8,7 @@ test("Jest is working", () => {
 
 describe("Testing Body component", () => {
   test("when swipe button is clicked mark scheme renders 3 elements", () => {
-    const { getByTestId } = render(<HistoryCaseRevision />);
+    const { getByTestId } = render(<App />);
     const swipeButton = getByTestId("swipeButton");
     fireEvent.click(swipeButton);
     const markSchemeList = getByTestId("markSchemeList");
