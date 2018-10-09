@@ -9,7 +9,7 @@ test("Jest is working", () => {
 describe("Testing Body component", () => {
   test("when swipe button is clicked mark scheme renders 3 elements", () => {
     const { getByTestId } = render(<App />);
-    const swipeButton = getByTestId("swipeButton");
+    const swipeButton = getByTestId("markBall");
     fireEvent.click(swipeButton);
     const markSchemeList = getByTestId("markSchemeList");
     expect(markSchemeList.children.length).toBe(3);
