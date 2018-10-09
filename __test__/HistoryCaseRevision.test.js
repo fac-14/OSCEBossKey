@@ -9,12 +9,16 @@ const state = {
   markSchemeCompleted: 0,
   markSchemeElements: [
     { text: "string", completed: false },
-    { text: "string2", completed: true }
+    { text: "string2", completed: false }
   ]
 };
 
 describe("Ensure markComplete() successfully updates by ID", () => {
   test("valid id should update state", () => {
+    console.log(
+      "first test, state object before function",
+      state.markSchemeElements[0].completed
+    );
     const newState = functions.markComplete(0, state);
     // check if the element is marked as completed
     expect(newState.markSchemeElements[0].completed).toBeTruthy();
@@ -26,6 +30,23 @@ describe("Ensure markComplete() successfully updates by ID", () => {
 
   test("invalid id should throw error", () => {
     expect(() => functions.markComplete(2000, state)).toThrow();
+  });
+});
+
+describe("Ensure markComplete() successfully toggles 'complete' status", () => {
+  test("markSchemeElement object is true after markComplete()", () => {
+    // set completed to false
+    state.markSchemeElements[0].completed = false;
+    // call the function
+    const newState = functions.markComplete(0, state);
+    // check if complete: true after click
+    expect(newState.markSchemeElements[0].completed).toBe(true);
+  });
+  test("markSchemeElement object goes back to false after calling markComplete() again", () => {
+    // call the function
+    const newState = functions.markComplete(0, state);
+    // check if complete: false after second click
+    expect(newState.markSchemeElements[0].completed).toBe(false);
   });
 });
 
