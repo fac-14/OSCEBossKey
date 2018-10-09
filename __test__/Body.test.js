@@ -14,7 +14,7 @@ describe("Testing Body component", () => {
         <HistoryCaseRevision />
       </MemoryRouter>
     );
-    const swipeButton = getByTestId("swipeButton");
+    const swipeButton = getByTestId("markBall");
     fireEvent.click(swipeButton);
     const markSchemeList = getByTestId("markSchemeList");
     expect(markSchemeList.children.length).toBe(3);
