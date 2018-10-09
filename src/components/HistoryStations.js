@@ -2,8 +2,19 @@
 
 import React from "react";
 
+import StationName from "./StationName";
+
 export default class HistoryStations extends React.Component {
+  state = {
+    stationName: "Chest Pain",
+    stationCases: []
+  };
+
   render() {
-    return <h1>Hello World</h1>;
+    return (
+      <React.Fragment>
+        <StationName stationName={this.state.stationName} />
+      </React.Fragment>
+    );
   }
 }
