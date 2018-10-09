@@ -15,10 +15,6 @@ const state = {
 
 describe("Ensure markComplete() successfully updates by ID", () => {
   test("valid id should update state", () => {
-    console.log(
-      "first test, state object before function",
-      state.markSchemeElements[0].completed
-    );
     const newState = functions.markComplete(0, state);
     // check if the element is marked as completed
     expect(newState.markSchemeElements[0].completed).toBeTruthy();

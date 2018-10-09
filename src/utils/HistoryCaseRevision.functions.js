@@ -4,17 +4,12 @@ const functions = {
       throw new Error("element out of range");
     }
     const markSchemeElements = [...prevState.markSchemeElements];
-    if (!markSchemeElements[id].completed) {
-      markSchemeElements[id].completed = true;
-      return {
-        markSchemeElements,
-        markSchemeCompleted: prevState.markSchemeCompleted + 1
-      };
-    }
-    markSchemeElements[id].completed = false;
+    markSchemeElements[id].completed = !markSchemeElements[id].completed;
     return {
       markSchemeElements,
-      markSchemeCompleted: prevState.markSchemeCompleted - 1
+      markSchemeCompleted: prevState.markSchemeElements[id].completed
+        ? prevState.markSchemeCompleted + 1
+        : prevState.markSchemeCompleted - 1
     };
   },
   swipe: prevState => ({

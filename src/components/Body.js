@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 
 export default class Body extends React.Component {
   render() {
+    {
+      /* <p></p> is temporary and will be replaced with a className based on the markComplete value */
+    }
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
         <li key={index} onClick={() => this.props.markComplete(index)}>
