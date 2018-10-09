@@ -12,3 +12,15 @@ describe("test root path", () => {
       });
   });
 });
+
+describe("test /history path", () => {
+  test("/history route responds 200 to GET request", done => {
+    expect.assertions(1);
+    request(app)
+      .get("/history")
+      .then(res => {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+  });
+});
