@@ -9,14 +9,25 @@ const functions = {
       throw new Error("element out of range");
     }
     const markSchemeElements = [...prevState.markSchemeElements];
-    markSchemeElements[id].completed = true;
+    if (!markSchemeElements[id].completed) {
+      markSchemeElements[id].completed = true;
+      console.log(
+        "this is completed after click",
+        markSchemeElements[id].completed
+      );
+      return {
+        markSchemeElements,
+        markSchemeCompleted: prevState.markSchemeCompleted + 1
+      };
+    }
+    markSchemeElements[id].completed = false;
     console.log(
       "this is completed after click",
       markSchemeElements[id].completed
     );
     return {
       markSchemeElements,
-      markSchemeCompleted: prevState.markSchemeCompleted + 1
+      markSchemeCompleted: prevState.markSchemeCompleted - 1
     };
   },
   swipe: prevState => ({
