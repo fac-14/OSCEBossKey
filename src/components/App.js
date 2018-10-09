@@ -6,8 +6,9 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import all page classes here
-import HistoryStations from "./HistoryStations";
+import HistoryStationCases from "./HistoryStationCases";
 import HistoryCaseRevision from "./HistoryCaseRevision";
+import NewHistoryCase from "./NewHistoryCase";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
 // we should probably add a 404 component to display when the user hits a route for which there is no component
@@ -15,7 +16,18 @@ const App = () => (
   <Router>
     <div>
       <Route exact path="/" component={HistoryCaseRevision} />
-      <Route path="/history" component={HistoryStations} />
+      <Route
+        strict
+        exact
+        path="/history/:station"
+        component={HistoryStationCases}
+      />
+      <Route
+        strict
+        exact
+        path="/history/:station/add-case"
+        component={NewHistoryCase}
+      />
     </div>
   </Router>
 );
