@@ -19,8 +19,8 @@ export default class HistoryCaseRevision extends React.Component {
     markSchemeCompleted: 0,
     markSchemeElements: [
       { text: "Introduces themselves", completed: false },
-      { text: "Washes hands", completed: true },
-      { text: "Confirms patient details", completed: true }
+      { text: "Washes hands", completed: false },
+      { text: "Confirms patient details", completed: false }
     ]
   };
 
@@ -39,9 +39,9 @@ export default class HistoryCaseRevision extends React.Component {
   };
 
   //mark indivual mark scheme element as completed
-  markComplete(id) {
+  markComplete = id => {
     this.setState(prevState => functions.markComplete(id, prevState));
-  }
+  };
 
   render() {
     return (
@@ -53,6 +53,7 @@ export default class HistoryCaseRevision extends React.Component {
           tickDisplayed={this.state.tickDisplayed}
         />
         <Body
+          markComplete={this.markComplete}
           swipe={this.swipe}
           caseDetails={this.state.caseDetails}
           caseDetailsDisplayed={this.state.caseDetailsDisplayed}

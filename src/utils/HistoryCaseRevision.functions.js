@@ -1,12 +1,15 @@
 const functions = {
   markComplete: (id, prevState) => {
-    if (!prevState.markSchemeElements[id])
+    if (!prevState.markSchemeElements[id]) {
       throw new Error("element out of range");
+    }
     const markSchemeElements = [...prevState.markSchemeElements];
-    markSchemeElements[id].completed = true;
+    markSchemeElements[id].completed = !markSchemeElements[id].completed;
     return {
       markSchemeElements,
-      markSchemeCompleted: prevState.markSchemeCompleted + 1
+      markSchemeCompleted: prevState.markSchemeElements[id].completed
+        ? prevState.markSchemeCompleted + 1
+        : prevState.markSchemeCompleted - 1
     };
   },
   swipe: prevState => ({
