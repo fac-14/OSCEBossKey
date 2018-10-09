@@ -2,6 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import Hammer from "react-hammerjs";
 
 export default class Body extends React.Component {
   render() {
@@ -17,17 +18,16 @@ export default class Body extends React.Component {
     );
     return (
       <div>
-        {/* replace button with swipe event (relates #65) */}
-        <button data-testid="swipeButton" onClick={this.props.swipe}>
-          swipe
-        </button>
-        <div>
-          {this.props.caseDetailsDisplayed ? (
-            <p>{this.props.caseDetails}</p>
-          ) : (
-            <ul data-testid="markSchemeList">{markSchemeArray}</ul>
-          )}
-        </div>
+        <div>Swipe Icons</div>
+        <Hammer onSwipe={this.props.swipe}>
+          <div>
+            {this.props.caseDetailsDisplayed ? (
+              <p>{this.props.caseDetails}</p>
+            ) : (
+              <ul data-testid="markSchemeList">{markSchemeArray}</ul>
+            )}
+          </div>
+        </Hammer>
       </div>
     );
   }
