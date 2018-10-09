@@ -1,8 +1,14 @@
 /* eslint-disable class-methods-use-this */
 import React from "react";
+import Navbar from "./Navbar";
 
 export default class Statistics extends React.Component {
   render() {
-    return <h2>User statistics</h2>;
+    return (
+      <div>
+        <h2>History list of Stations</h2>
+        <Navbar />
+      </div>
+    );
   }
 }
