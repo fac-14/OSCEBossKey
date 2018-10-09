@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function InactiveSwipe(props) {
   return (
@@ -35,5 +36,13 @@ function ActiveSwipe(props) {
     </button>
   );
 }
+
+InactiveSwipe.propTypes = {
+  swipe: PropTypes.func
+};
+
+ActiveSwipe.propTypes = {
+  swipe: PropTypes.func
+};
 
 export { ActiveSwipe, InactiveSwipe };
