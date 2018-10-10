@@ -10,7 +10,7 @@ const Navbar = () => (
   <div>
     <ul id="navbar">
       <li>
-        <Link to="/">
+        <Link to="/history">
           <img src={history} />
           <h3>History</h3>
         </Link>
