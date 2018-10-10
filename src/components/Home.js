@@ -5,8 +5,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Home Page</h1>
-        <Link to="history/chest-pain">Chest Pain</Link>
+        <h1>Potential login page</h1>
+        <Link to="/history">Log in here</Link>
       </React.Fragment>
     );
   }
