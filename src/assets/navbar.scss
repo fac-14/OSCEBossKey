@@ -1,0 +1,42 @@
+@import "./reset.scss";
+@import "./fonts.scss";
+
+#navbar {
+  display: flex;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  background: #e6e6d4;
+}
+
+#navbar img {
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+}
+
+#navbar h3 {
+  font-family: $text-font;
+  font-size: 8px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#navbar li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#navbar li:hover {
+  background: lightyellow;
+}
+
+#navbar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 4px;
+}
