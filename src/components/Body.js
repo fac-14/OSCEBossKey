@@ -8,9 +8,6 @@ import "../assets/body.scss";
 
 export default class Body extends React.Component {
   render() {
-    {
-      /* <p></p> is temporary and will be replaced with a className based on the markComplete value */
-    }
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
         <li
@@ -40,9 +37,9 @@ export default class Body extends React.Component {
         <Hammer onSwipe={this.props.swipe}>
           <div>
             {this.props.caseDetailsDisplayed ? (
-              <p>{this.props.caseDetails}</p>
+              <p data-testid="case-details">{this.props.caseDetails}</p>
             ) : (
-              <ul data-testid="markSchemeList">{markSchemeArray}</ul>
+              <ul data-testid="mark-scheme-list">{markSchemeArray}</ul>
             )}
           </div>
         </Hammer>
