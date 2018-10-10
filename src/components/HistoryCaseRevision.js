@@ -1,28 +1,36 @@
 /* eslint-disable class-methods-use-this */
 
 import React from "react";
+import PropTypes from "prop-types";
 import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
-import { stat } from "fs";
+import dummyData from "../utils/dummy-data.json";
 
 // <HistoryCaseRevision> :: manages state across all child components
 export default class HistoryCaseRevision extends React.Component {
   state = {
-    stationName: "Chest Pain",
-    caseTitle:
-      "57 year old male started feeling chest pain after drinking milk",
-    caseDetails:
-      "Jennifer is a 28-year-old female who reports experiencing chest pain 10 days ago while she was out walking",
-    tickDisplayed: true,
+    stationName: null,
+    caseTitle: null,
+    caseDetails: null,
+    tickDisplayed: false,
     caseDetailsDisplayed: true,
     markSchemeCompleted: 0,
-    markSchemeElements: [
-      { text: "Introduces themselves", completed: false },
-      { text: "Washes hands", completed: false },
-      { text: "Confirms patient details", completed: false }
-    ]
+    markSchemeElements: []
   };
+
+  componentDidMount() {
+    const { station, caseid } = this.props.match.params;
+    const markScheme = dummyData.history[station][caseid]["mark-scheme"].map(
+      element => ({ text: element, completed: false })
+    );
+    this.setState({
+      stationName: station,
+      caseTitle: dummyData.history[station][caseid].title,
+      caseDetails: dummyData.history[station][caseid].details,
+      markSchemeElements: markScheme
+    });
+  }
 
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
@@ -64,3 +72,7 @@ export default class HistoryCaseRevision extends React.Component {
     );
   }
 }
+
+HistoryCaseRevision.propTypes = {
+  match: PropTypes.object
+};

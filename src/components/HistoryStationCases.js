@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import dummyData from "../dummy-data.json";
+import dummyData from "../utils/dummy-data.json";
 
 import StationName from "./StationName";
 import AddNewCase from "./AddNewCase";
@@ -11,17 +11,14 @@ import Navbar from "./Navbar";
 
 class HistoryStationCases extends React.Component {
   state = {
-    station: this.props.match.params.station.replace("-", " "),
-    cases: dummyData.history[0].cases
+    station: this.props.match.params.station,
+    cases: dummyData.history[this.props.match.params.station]
   };
 
   render() {
     const caseElements = this.state.cases.map((element, index) => (
-      <Link
-        key={index}
-        to={`/history/${this.state.station}/case/${element.caseTitle}`}
-      >
-        <div key={index}>{element.caseTitle}</div>
+      <Link key={index} to={`/history/${this.state.station}/case/${index}`}>
+        <div key={index}>{element.title}</div>
       </Link>
     ));
     return (
