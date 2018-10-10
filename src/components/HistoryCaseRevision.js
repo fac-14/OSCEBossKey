@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
 import React from "react";
+import PropTypes from "prop-types";
 import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
@@ -71,3 +72,7 @@ export default class HistoryCaseRevision extends React.Component {
     );
   }
 }
+
+HistoryCaseRevision.propTypes = {
+  match: PropTypes.object
+};
