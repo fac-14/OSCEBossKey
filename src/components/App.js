@@ -40,7 +40,7 @@ const App = () => (
       <Route
         strict
         exact
-        path="/history/:station/case/:case"
+        path="/history/:station/case/:caseid"
         component={HistoryCaseRevision}
       />
     </div>

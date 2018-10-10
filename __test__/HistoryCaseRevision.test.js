@@ -1,54 +1,29 @@
-import functions from "../src/utils/HistoryCaseRevision.functions";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import HistoryCaseRevision from "../src/components/HistoryCaseRevision";
+import { render, fireEvent } from "react-testing-library";
 
-const state = {
-  stationName: "null",
-  caseTitle: "null",
-  caseDetails: "null",
-  tickDisplayed: true,
-  caseDetailsDisplayed: true,
-  markSchemeCompleted: 0,
-  markSchemeElements: [
-    { text: "string", completed: false },
-    { text: "string2", completed: false }
-  ]
-};
+const { getByTestId } = render(
+  <Router>
+    <HistoryCaseRevision
+      match={{ params: { station: "chest-pain", caseid: "0" } }}
+    />
+  </Router>
+);
 
-describe("Ensure markComplete() successfully updates by ID", () => {
-  test("valid id should update state", () => {
-    const newState = functions.markComplete(0, state);
-    // check if the element is marked as completed
-    expect(newState.markSchemeElements[0].completed).toBeTruthy();
-    // check if number of completed elements increased
-    expect(newState.markSchemeCompleted).toBe(1);
-    // check if other states remain unchanged
-    expect(state.tickDisplayed).toBeTruthy();
+describe("Testing Body component", () => {
+  test("when Body component rendered, case details should be displayed", () => {
+    const caseDetails = getByTestId("case-details");
+    expect(caseDetails).toBeTruthy();
+    expect(() => getByTestId("mark-scheme-list")).toThrow();
   });
-
-  test("invalid id should throw error", () => {
-    expect(() => functions.markComplete(2000, state)).toThrow();
+  test("when swipe button is clicked, mark scheme should render", () => {
+    const swipeButton = getByTestId("mark-ball");
+    fireEvent.click(swipeButton);
+    expect(() => getByTestId("case-detail")).toThrow();
+    expect(getByTestId("mark-scheme-list")).toBeTruthy();
+    const markSchemeList = getByTestId("mark-scheme-list");
+    expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
-});
-
-describe("Ensure markComplete() successfully toggles 'complete' status", () => {
-  test("markSchemeElement object is true after markComplete()", () => {
-    // set completed to false
-    state.markSchemeElements[0].completed = false;
-    // call the function
-    const newState = functions.markComplete(0, state);
-    // check if complete: true after click
-    expect(newState.markSchemeElements[0].completed).toBe(true);
-  });
-  test("markSchemeElement object goes back to false after calling markComplete() again", () => {
-    // call the function
-    const newState = functions.markComplete(0, state);
-    // check if complete: false after second click
-    expect(newState.markSchemeElements[0].completed).toBe(false);
-  });
-});
-
-describe("Test swipe() updates caseDetailsDisplayed", () => {
-  test("state should be updated", () => {
-    const newState = functions.swipe(state);
-    expect(newState.caseDetailsDisplayed).toBe(!state.caseDetailsDisplayed);
-  });
+  // test for strikethrough mark scheme elements
 });

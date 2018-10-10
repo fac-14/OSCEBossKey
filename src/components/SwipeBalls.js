@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function InactiveSwipe(props) {
   return (
-    <button data-testid="markBall" onClick={props.swipe}>
+    <button data-testid="mark-ball" onClick={props.swipe}>
       <svg height="50" width="50">
         <circle
           cx="25"

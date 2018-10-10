@@ -12,6 +12,7 @@ const functions = {
         : prevState.markSchemeCompleted - 1
     };
   },
+
   swipe: prevState => ({
     caseDetailsDisplayed: !prevState.caseDetailsDisplayed
   })
