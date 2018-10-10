@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import history from "../assets/icons/history.svg";
-import examination from "../assets/icons/examination.svg";
-import extras from "../assets/icons/extras.svg";
-import statistics from "../assets/icons/statistics.svg";
+import historyIcon from "../assets/icons/history.svg";
+import examinationIcon from "../assets/icons/examination.svg";
+import extrasIcon from "../assets/icons/extras.svg";
+import statisticsIcon from "../assets/icons/statistics.svg";
 import "../assets/navbar.scss";
 
 const Navbar = () => (
@@ -11,25 +11,25 @@ const Navbar = () => (
     <ul id="navbar">
       <li>
         <Link to="/history">
-          <img src={history} />
+          <img src={historyIcon} />
           <h3>History</h3>
         </Link>
       </li>
       <li>
         <Link to="/examinations">
-          <img src={examination} />
+          <img src={examinationIcon} />
           <h3>Examinations</h3>
         </Link>
       </li>
       <li>
         <Link to="/extras">
-          <img src={extras} />
+          <img src={extrasIcon} />
           <h3>Extras</h3>
         </Link>
       </li>
       <li>
         <Link to="/stats">
-          <img src={statistics} />
+          <img src={statisticsIcon} />
           <h3>Statistics</h3>
         </Link>
       </li>
