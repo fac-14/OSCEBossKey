@@ -2,6 +2,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import dummyData from "../dummy-data.json";
 
@@ -16,7 +17,9 @@ class History extends React.Component {
 
   render() {
     const stationElements = this.state.stations.map((element, index) => (
-      <div key={index}>{element.stationName}</div>
+      <Link key={index} to={`/history/${element.stationName}`}>
+        <div key={index}>{element.stationName}</div>
+      </Link>
     ));
     return (
       <React.Fragment>
