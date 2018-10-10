@@ -20,11 +20,14 @@ export default class HistoryCaseRevision extends React.Component {
 
   componentDidMount() {
     const { station, caseid } = this.props.match.params;
+    const markScheme = dummyData.history[station][caseid]["mark-scheme"].map(
+      element => ({ text: element, completed: false })
+    );
     this.setState({
       stationName: station,
       caseTitle: dummyData.history[station][caseid].title,
       caseDetails: dummyData.history[station][caseid].details,
-      markSchemeElements: dummyData.history[station][caseid]["mark-scheme"]
+      markSchemeElements: markScheme
     });
   }
 

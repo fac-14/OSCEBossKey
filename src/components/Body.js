@@ -4,6 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
 import { ActiveSwipe, InactiveSwipe } from "./SwipeBalls";
+import "../assets/body.scss";
 
 export default class Body extends React.Component {
   render() {
@@ -12,8 +13,12 @@ export default class Body extends React.Component {
     }
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
-        <li key={index} onClick={() => this.props.markComplete(index)}>
-          {element}
+        <li
+          className={element.completed ? "strike" : ""}
+          key={index}
+          onClick={() => this.props.markComplete(index)}
+        >
+          {element.text}
         </li>
       )
     );
@@ -51,5 +56,5 @@ Body.propTypes = {
   swipe: PropTypes.func,
   caseDetailsDisplayed: PropTypes.bool,
   caseDetails: PropTypes.string,
-  markSchemeElements: PropTypes.arrayOf(PropTypes.string)
+  markSchemeElements: PropTypes.arrayOf(PropTypes.object)
 };
