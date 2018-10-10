@@ -15,7 +15,6 @@ class HistoryStationCases extends React.Component {
 
   // still need to render NavBar
   render() {
-    console.log(`data: ${this.state.cases}`);
     const caseElements = this.state.cases.map((element, index) => (
       <div key={index}>{element.title}</div>
     ));

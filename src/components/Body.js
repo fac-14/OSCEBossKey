@@ -13,7 +13,7 @@ export default class Body extends React.Component {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
         <li key={index} onClick={() => this.props.markComplete(index)}>
-          {element.text} <p>{element.completed.toString()}</p>
+          {element}
         </li>
       )
     );
@@ -51,5 +51,5 @@ Body.propTypes = {
   swipe: PropTypes.func,
   caseDetailsDisplayed: PropTypes.bool,
   caseDetails: PropTypes.string,
-  markSchemeElements: PropTypes.arrayOf(PropTypes.object)
+  markSchemeElements: PropTypes.arrayOf(PropTypes.string)
 };
