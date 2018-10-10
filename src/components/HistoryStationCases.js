@@ -6,6 +6,7 @@ import dummyData from "../dummy-data.json";
 
 import StationName from "./StationName";
 import AddNewCase from "./AddNewCase";
+import Navbar from "./Navbar";
 
 class HistoryStationCases extends React.Component {
   state = {
@@ -13,7 +14,6 @@ class HistoryStationCases extends React.Component {
     cases: dummyData.history[0].cases
   };
 
-  // still need to render NavBar
   render() {
     const caseElements = this.state.cases.map((element, index) => (
       <div key={index}>{element.caseTitle}</div>
@@ -23,6 +23,7 @@ class HistoryStationCases extends React.Component {
         <StationName stationName={this.state.station} />
         <AddNewCase station={this.state.station} />
         {caseElements}
+        <Navbar />
       </React.Fragment>
     );
   }

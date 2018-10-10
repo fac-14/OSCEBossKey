@@ -6,7 +6,7 @@ export default class History extends React.Component {
   render() {
     return (
       <div>
-        <h2>History list of Stations</h2>
+        <h1>History Stations</h1>
         <Navbar />
       </div>
     );

@@ -6,7 +6,7 @@ export default class Statistics extends React.Component {
   render() {
     return (
       <div>
-        <h2>Stats page</h2>
+        <h1>Stats</h1>
         <Navbar />
       </div>
     );
