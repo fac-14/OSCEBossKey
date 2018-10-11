@@ -12,6 +12,13 @@ body {
   background-color: $grey;
 }
 
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  width: 100vw;
+}
+
 h2 {
   font-size: 21px;
   font-weight: 900;
@@ -20,14 +27,20 @@ h2 {
   text-align: center;
 }
 
+.body-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid blue;
+}
+
 .content {
-  width: 100%;
   padding: 8px;
-  height: 65vh;
+  padding-top: 32px;
   overflow-y: scroll;
-  position: fixed;
-  bottom: 8px;
   box-sizing: border-box;
+  border: 1px solid red;
 }
 
 p {
@@ -39,6 +52,7 @@ p {
 .swipe-balls {
   display: flex;
   justify-content: center;
+  margin-bottom: 16px;
 }
 
 .swipe-balls > button {

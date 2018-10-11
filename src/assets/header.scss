@@ -4,7 +4,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 4px;
-  height: 8vh;
+  border: 1px solid red;
+}
+
+img {
+  height: 24px;
 }

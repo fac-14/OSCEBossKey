@@ -5,7 +5,7 @@ import "../assets/tick-button.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import tickIcon from "../assets/icons/tick-fill.svg";
+import tickIcon from "../assets/icons/tick.svg";
 
 export default class TickButton extends React.Component {
   render() {
