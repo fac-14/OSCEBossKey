@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 export default class ExamName extends React.Component {
   render() {
-    return <h1>History</h1>;
+    return <h1 id="header--exam-name">{this.props.exam}</h1>;
   }
 }
 

@@ -25,7 +25,7 @@ class History extends React.Component {
     );
     return (
       <React.Fragment>
-        <ExamName />
+        <ExamName exam="history" />
         <p>Add new</p>
         {stationElements}
         <Navbar />
