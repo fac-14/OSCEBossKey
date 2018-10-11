@@ -21,7 +21,7 @@ export default class Body extends React.Component {
     );
     return (
       <div>
-        <div>
+        <div className="swipe-balls">
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -35,7 +35,7 @@ export default class Body extends React.Component {
           )}
         </div>
         <Hammer onSwipe={this.props.swipe}>
-          <div>
+          <div className="content-div">
             {this.props.caseDetailsDisplayed ? (
               <p data-testid="case-details">{this.props.caseDetails}</p>
             ) : (

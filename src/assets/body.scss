@@ -1,3 +1,43 @@
+@import "./reset.scss";
+@import "./fonts.scss";
+@import "./colors.scss";
+
 .strike {
   text-decoration: line-through;
+}
+body {
+  background-color: $grey;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-family: $text-font;
+  margin: 24px;
+}
+.content-div {
+  width: calc(100vw - 16px);
+  padding: 8px;
+  height: 70vh;
+  overflow-y: scroll;
+  position: fixed;
+  bottom: 0;
+}
+
+p {
+  font-size: 18px;
+  font-family: $text-font;
+}
+
+.swipe-balls {
+  display: flex;
+  justify-content: center;
+}
+
+.swipe-balls > button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
 }

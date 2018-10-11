@@ -55,12 +55,14 @@ export default class HistoryCaseRevision extends React.Component {
     return (
       <React.Fragment>
         <Header
+          className="header"
           stationName={this.state.stationName}
           caseTitle={this.state.caseTitle}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
         <Body
+          className="body"
           markComplete={this.markComplete}
           swipe={this.swipe}
           caseDetails={this.state.caseDetails}

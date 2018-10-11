@@ -4,15 +4,8 @@ import PropTypes from "prop-types";
 function InactiveSwipe(props) {
   return (
     <button data-testid="mark-ball" onClick={props.swipe}>
-      <svg height="50" width="50">
-        <circle
-          cx="25"
-          cy="25"
-          r="10"
-          stroke="black"
-          strokeWidth="2"
-          fill="none"
-        />
+      <svg height="24" width="24">
+        <circle cx="12" cy="12" r="8" fill="#e1f4fa" />
         Sorry, your browser does not support inline SVG.
       </svg>
     </button>
@@ -22,15 +15,8 @@ function InactiveSwipe(props) {
 function ActiveSwipe(props) {
   return (
     <button onClick={props.swipe}>
-      <svg height="50" width="50">
-        <circle
-          cx="25"
-          cy="25"
-          r="10"
-          stroke="black"
-          strokeWidth="2"
-          fill="black"
-        />
+      <svg height="24" width="24">
+        <circle cx="12" cy="12" r="11" fill="#1c819e" />
         Sorry, your browser does not support inline SVG.
       </svg>
     </button>
