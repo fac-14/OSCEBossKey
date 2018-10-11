@@ -7,7 +7,7 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(svg|css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
   "scripts": {
