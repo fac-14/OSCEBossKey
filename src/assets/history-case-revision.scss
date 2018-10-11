@@ -4,7 +4,10 @@
 
 .strike {
   text-decoration: line-through;
+  background-color: $blue !important;
+  color: white;
 }
+
 body {
   background-color: $grey;
 }
@@ -19,6 +22,15 @@ h2 {
 .content-div {
   width: calc(100vw - 16px);
   padding: 8px;
+  height: 70vh;
+  overflow-y: scroll;
+  position: fixed;
+  bottom: 0;
+}
+
+.content-mark {
+  width: 100%;
+  padding: 8px 0;
   height: 70vh;
   overflow-y: scroll;
   position: fixed;
@@ -40,4 +52,27 @@ p {
   margin: 0;
   border: 0;
   background-color: transparent;
+}
+
+.history--case-mark-scheme {
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.history--case-mark-scheme li {
+  height: 48px;
+  width: 100%;
+  font-size: 21px;
+  margin: 0;
+  display: flex;
+  margin-top: 8px;
+  padding: 8px;
+  justify-content: left;
+  align-items: center;
+  background-color: white;
+  font-family: Roboto;
+  box-sizing: border-box;
 }

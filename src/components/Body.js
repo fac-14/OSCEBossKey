@@ -4,7 +4,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
 import { ActiveSwipe, InactiveSwipe } from "./SwipeBalls";
-import "../assets/body.scss";
 
 export default class Body extends React.Component {
   render() {
@@ -35,11 +34,16 @@ export default class Body extends React.Component {
           )}
         </div>
         <Hammer onSwipe={this.props.swipe}>
-          <div className="content-div">
+          <div className="content-mark">
             {this.props.caseDetailsDisplayed ? (
               <p data-testid="case-details">{this.props.caseDetails}</p>
             ) : (
-              <ul data-testid="mark-scheme-list">{markSchemeArray}</ul>
+              <ul
+                className="history--case-mark-scheme"
+                data-testid="mark-scheme-list"
+              >
+                {markSchemeArray}
+              </ul>
             )}
           </div>
         </Hammer>
