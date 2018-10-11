@@ -1,5 +1,4 @@
-import "../assets/reset.scss";
-import "../assets/universal-styles.scss";
+import "../assets/index.scss";
 
 import React from "react";
 

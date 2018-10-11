@@ -4,7 +4,6 @@ import historyIcon from "../assets/icons/history.svg";
 import examinationIcon from "../assets/icons/examination.svg";
 import extrasIcon from "../assets/icons/extras.svg";
 import statisticsIcon from "../assets/icons/statistics.svg";
-import "../assets/navbar.scss";
 
 const Navbar = () => (
   <div>

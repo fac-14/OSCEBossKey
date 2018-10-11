@@ -1,7 +1,5 @@
 /* eslint-disable class-methods-use-this */
 
-import "../assets/back-button.scss";
-
 import React from "react";
 import PropTypes from "prop-types";
 

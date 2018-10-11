@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import "../assets/header.scss";
 
 import React from "react";
 import PropTypes from "prop-types";

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import "../assets/history.scss";
 
 export default class AddNewStation extends React.Component {
   render() {

@@ -1,7 +1,5 @@
-// @import "./fonts.scss";
-
 #header--exam-name {
-  font-family: "Nova Round", Helvetica, sans-serif;
+  font-family: $title-font;
   font-size: 28pt;
   text-transform: uppercase;
   text-align: center;
