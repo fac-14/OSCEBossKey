@@ -19,14 +19,17 @@ class History extends React.Component {
     const stationElements = Object.keys(this.state.stations).map(
       (element, index) => (
         <Link key={index} to={`/history/${element}`}>
-          <div className="stations" key={index}>
-            {element}
-          </div>
+          <div key={index}>{element}</div>
         </Link>
       )
     );
     return (
       <React.Fragment>
+        <ExamName exam="history" />
+        <div id="history-station-list">
+          <AddNewStation />
+          {stationElements}
+        </div>
         <Navbar />
       </React.Fragment>
     );
