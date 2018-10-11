@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import dummyData from "../utils/dummy-data.json";
 // import AddNewStation from "./AddNewStation";
-// import ExamName from "./ExamName";
+import ExamName from "./ExamName";
 // import "../assets/history.scss";
 import Navbar from "./Navbar";
 
@@ -25,7 +25,7 @@ class History extends React.Component {
     );
     return (
       <React.Fragment>
-        <h1>History</h1>
+        <ExamName exam="history" />
         <p>Add new</p>
         {stationElements}
         <Navbar />
