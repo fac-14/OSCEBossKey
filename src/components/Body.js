@@ -34,7 +34,7 @@ export default class Body extends React.Component {
           )}
         </div>
         <Hammer onSwipe={this.props.swipe}>
-          <div className="content-mark">
+          <div className="content">
             {this.props.caseDetailsDisplayed ? (
               <p data-testid="case-details">{this.props.caseDetails}</p>
             ) : (
