@@ -19,7 +19,7 @@ export default class Body extends React.Component {
       )
     );
     return (
-      <div>
+      <div className="body-content">
         <div className="swipe-balls">
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
