@@ -5,6 +5,7 @@ import "../assets/tick-button.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import tickIcon from "../assets/icons/tick-fill.svg";
 
 export default class TickButton extends React.Component {
   render() {
@@ -17,7 +18,7 @@ export default class TickButton extends React.Component {
             this.props.tickDisplayed ? `tick--displayed` : `tick--not-displayed`
           }
         >
-          Ticked
+          <img src={tickIcon} />
         </button>
       </Link>
     );
