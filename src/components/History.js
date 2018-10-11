@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import dummyData from "../utils/dummy-data.json";
-import AddNewStation from "./AddNewStation";
+// import AddNewStation from "./AddNewStation";
 import ExamName from "./ExamName";
 import "../assets/history.scss";
 import Navbar from "./Navbar";
@@ -27,7 +27,9 @@ class History extends React.Component {
       <React.Fragment>
         <ExamName exam="history" />
         <div id="history-station-list">
-          <AddNewStation />
+          <Link to="/history/new-station" id="add-station">
+            <div className="stations">Add Station</div>
+          </Link>
           {stationElements}
         </div>
         <Navbar />
