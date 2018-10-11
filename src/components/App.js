@@ -19,7 +19,7 @@ import NewHistoryCase from "./NewHistoryCase";
 // we should probably add a 404 component to display when the user hits a route for which there is no component
 const App = () => (
   <Router>
-    <div>
+    <div className="page-wrapper">
       <Route exact path="/" component={Home} />
       <Route strict exact path="/history" component={History} />
       <Route strict exact path="/examinations" component={Examinations} />
