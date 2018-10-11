@@ -6,6 +6,7 @@ import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
 import dummyData from "../utils/dummy-data.json";
+import "../assets/history-case-revision.scss";
 
 // <HistoryCaseRevision> :: manages state across all child components
 export default class HistoryCaseRevision extends React.Component {
@@ -55,12 +56,14 @@ export default class HistoryCaseRevision extends React.Component {
     return (
       <React.Fragment>
         <Header
+          className="header"
           stationName={this.state.stationName}
           caseTitle={this.state.caseTitle}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
         <Body
+          className="body"
           markComplete={this.markComplete}
           swipe={this.swipe}
           caseDetails={this.state.caseDetails}

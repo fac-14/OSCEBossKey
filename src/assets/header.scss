@@ -1,11 +1,10 @@
 @import "./reset.scss";
 
 #header--top-row {
-  background-color: hotpink;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  padding: 4px;
   height: 8vh;
 }
