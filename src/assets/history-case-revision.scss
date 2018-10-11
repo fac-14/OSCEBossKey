@@ -13,33 +13,26 @@ body {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 900;
-  letter-spacing: 1px;
   font-family: $text-font;
-  margin: 24px;
-}
-.content-div {
-  width: calc(100vw - 16px);
-  padding: 8px;
-  height: 70vh;
-  overflow-y: scroll;
-  position: fixed;
-  bottom: 0;
+  margin: 16px;
 }
 
-.content-mark {
+.content {
   width: 100%;
-  padding: 8px 0;
-  height: 70vh;
+  padding: 8px;
+  height: 65vh;
   overflow-y: scroll;
   position: fixed;
-  bottom: 0;
+  bottom: 8px;
+  box-sizing: border-box;
 }
 
 p {
-  font-size: 18px;
+  font-size: 21px;
   font-family: $text-font;
+  margin: 4px;
 }
 
 .swipe-balls {
