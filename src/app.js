@@ -30,6 +30,19 @@ app.get("/database-test", (req, res) => {
     });
 });
 
+app.get("/api/history", (req, res) => {
+  database("History_Stations")
+    .select({ view: "Grid view" })
+    .firstPage((err, records) => {
+      if (err) {
+        throw new Error(err);
+      }
+      res.set("Content-Type", "application/json");
+      console.log(records);
+      res.send(records);
+    });
+});
+
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval
 // if we need active routes (e.g. for database queries), all we'll likely need to do is add those routes above this app.get(), so they'll be hit first
 app.get("*", (req, res) => {

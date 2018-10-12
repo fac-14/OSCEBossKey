@@ -21,7 +21,7 @@ test("GET /api/history returns list of station names as a JSON object", done => 
     .expect(200)
     .expect("Content-Type", /json/)
     .then(res => {
-      expect(typeof res).toBe("object");
+      expect(Array.isArray(res)).toBeTruthy();
       done();
     })
     .catch(err => {
