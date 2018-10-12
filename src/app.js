@@ -3,88 +3,60 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const database = require("./database");
 
+const functions = require("./utils/airtableReturns");
+
 const app = express();
 app.set("port", process.env.PORT || 3333);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// all static files (css, etc.)
 app.use(express.static(path.join(__dirname, "..", "dist")));
-
-app.get("/database-test", (req, res) => {
-  database("History_Stations")
-    .select({
-      view: "Grid view"
-    })
-    .firstPage((err, records) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      res.status(200);
-      res.send("<h1>hi</h1>");
-    });
-});
 
 app.get("/api/history", (req, res) => {
   database("History_Stations")
-    .select({ view: "Grid view" })
+    .select()
     .firstPage((err, records) => {
-      if (err) {
-        res.set("Content-Type", "application/json");
-        res.send(JSON.stringify({ payload: [] }));
-        // throw new Error(err);
-      } else {
+      if (err) functions.returnEmptyArray(res, err);
+      else {
         const stations = [];
         records.forEach(record => {
           stations.push(record.get("station_name"));
         });
-        res.set("Content-Type", "application/json");
-        const stationJson = JSON.stringify({ payload: [...stations] });
-        res.send(stationJson);
+        functions.returnPopulatedArray(res, stations);
       }
     });
 });
 
 app.get("/api/history/:station", (req, res) => {
+  const caseTitles = [];
   database("History_Stations")
     .select({
-      view: "Grid view",
-      filterByFormula: `({station_name} = '${req.params.station}')`,
-      fields: ["primary_key"]
+      fields: ["primary_key"],
+      filterByFormula: `({station_name} = '${req.params.station}')`
     })
-    .firstPage((err, records) => {
-      if (err) {
-        console.error(err);
-        res.set("Content-Type", "application/json");
-        res.send(JSON.stringify({ payload: [] }));
-      } else {
-        const stationId = records[0].get("primary_key");
+    .firstPage((err, record) => {
+      if (err || record.length === 0) functions.returnEmptyArray(res, err);
+      else {
         database("History_Cases")
           .select({
-            view: "Grid view",
             fields: ["case_title", "primary_key"],
-            filterByFormula: `({station_id} = ${stationId})`
+            filterByFormula: `({station_id} = ${record[0].get("primary_key")})`
           })
-          .firstPage((err, records) => {
-            if (err) {
-              console.error(err);
-              res.set("Content-Type", "application/json");
-              res.send(JSON.stringify({ payload: [] }));
-            } else {
-              const caseTitles = [];
+          .eachPage(
+            (records, fetchNextPage) => {
               records.forEach(record => {
-                const element = {
+                caseTitles.push({
                   title: record.get("case_title"),
                   id: record.get("primary_key")
-                };
-                caseTitles.push(element);
+                });
               });
-              res.set("Content-Type", "application/json");
-              res.send(JSON.stringify({ payload: [...caseTitles] }));
+              fetchNextPage();
+            },
+            err => {
+              if (err) functions.returnEmptyArray(res, err);
+              functions.returnPopulatedArray(res, caseTitles);
             }
-          });
+          );
       }
     });
 });
