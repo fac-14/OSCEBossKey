@@ -26,9 +26,9 @@
   width: 100%;
 }
 
-#navbar li:hover {
-  background: lightyellow;
-}
+// #navbar img:hover {
+//    background: lightyellow;
+// }
 
 #navbar a {
   display: flex;
@@ -36,4 +36,20 @@
   align-items: center;
   text-decoration: none;
   padding: 4px;
+}
+
+#navbar--history-icon:hover {
+  background-color: $peter-green;
+}
+
+#navbar--examinations-icon:hover {
+  background-color: $peter-red;
+}
+
+#navbar--extras-icon:hover {
+  background-color: $peter-yellow;
+}
+
+#navbar--statistics-icon:hover {
+  background-color: $peter-blue;
 }
