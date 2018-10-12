@@ -35,15 +35,18 @@ app.get("/api/history", (req, res) => {
     .select({ view: "Grid view" })
     .firstPage((err, records) => {
       if (err) {
-        throw new Error(err);
+        res.set("Content-Type", "application/json");
+        res.send(JSON.stringify({ payload: [] }));
+        // throw new Error(err);
+      } else {
+        const stations = [];
+        records.forEach(record => {
+          stations.push(record.get("station_name"));
+        });
+        res.set("Content-Type", "application/json");
+        const stationJson = JSON.stringify({ payload: [...stations] });
+        res.send(stationJson);
       }
-      const stations = [];
-      records.forEach(record => {
-        stations.push(record.get("station_name"));
-      });
-      res.set("Content-Type", "application/json");
-      const stationJson = JSON.stringify({ payload: [...stations] });
-      res.send(stationJson);
     });
 });
 
