@@ -35,7 +35,7 @@ describe("GET requests to /api/history/:station return lists of cases related to
   test("GET /api/history/chest-pain should return list of chest pain cases as JSON object", done => {
     expect.assertions(1);
     request(app)
-      .get("/api/history/chest-pain")
+      .get("/api/history/chest-pain/")
       .expect(200)
       .expect("Content-Type", /json/)
       .then(res => {

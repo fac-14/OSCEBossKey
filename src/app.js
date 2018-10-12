@@ -47,6 +47,44 @@ app.get("/api/history", (req, res) => {
     });
 });
 
+app.get("/api/history/:station", (req, res) => {
+  database("History_Stations")
+    .select({
+      view: "Grid view",
+      filterByFormula: `({station_name} = '${req.params.station}')`,
+      fields: ["primary_key"]
+    })
+    .firstPage((err, records) => {
+      if (err) {
+        console.error(err);
+        res.set("Content-Type", "application/json");
+        res.send(JSON.stringify({ payload: [] }));
+      } else {
+        const stationId = records[0].get("primary_key");
+        database("History_Cases")
+          .select({
+            view: "Grid view",
+            fields: ["case_title"],
+            filterByFormula: `({station_id} = ${stationId})`
+          })
+          .firstPage((err, records) => {
+            if (err) {
+              console.error(err);
+              res.set("Content-Type", "application/json");
+              res.send(JSON.stringify({ payload: [] }));
+            } else {
+              const caseTitles = [];
+              records.forEach(record => {
+                caseTitles.push(record.get("case_title"));
+              });
+              res.set("Content-Type", "application/json");
+              res.send(JSON.stringify({ payload: [...caseTitles] }));
+            }
+          });
+      }
+    });
+});
+
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval
 // if we need active routes (e.g. for database queries), all we'll likely need to do is add those routes above this app.get(), so they'll be hit first
 app.get("*", (req, res) => {
