@@ -22,9 +22,6 @@ app.get("/database-test", (req, res) => {
         console.error(err);
         return;
       }
-      records.forEach(record => {
-        console.log("Retrieved", record.get("station_name"));
-      });
       res.status(200);
       res.send("<h1>hi</h1>");
     });
