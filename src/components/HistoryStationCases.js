@@ -25,8 +25,11 @@ class HistoryStationCases extends React.Component {
 
   render() {
     const caseElements = this.state.cases.map((element, index) => (
-      <Link key={index} to={`/history/${this.state.station}/case/${index}`}>
-        <div key={index}>{element}</div>
+      <Link
+        key={index}
+        to={`/history/${this.state.station}/case/${element.id}`}
+      >
+        <div key={index}>{element.title}</div>
       </Link>
     ));
     return (

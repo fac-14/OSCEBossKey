@@ -64,7 +64,7 @@ app.get("/api/history/:station", (req, res) => {
         database("History_Cases")
           .select({
             view: "Grid view",
-            fields: ["case_title"],
+            fields: ["case_title", "primary_key"],
             filterByFormula: `({station_id} = ${stationId})`
           })
           .firstPage((err, records) => {
@@ -75,7 +75,11 @@ app.get("/api/history/:station", (req, res) => {
             } else {
               const caseTitles = [];
               records.forEach(record => {
-                caseTitles.push(record.get("case_title"));
+                const element = {
+                  title: record.get("case_title"),
+                  id: record.get("primary_key")
+                };
+                caseTitles.push(element);
               });
               res.set("Content-Type", "application/json");
               res.send(JSON.stringify({ payload: [...caseTitles] }));
