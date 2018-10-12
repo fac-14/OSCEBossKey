@@ -37,9 +37,13 @@ app.get("/api/history", (req, res) => {
       if (err) {
         throw new Error(err);
       }
+      const stations = [];
+      records.forEach(record => {
+        stations.push(record.get("station_name"));
+      });
       res.set("Content-Type", "application/json");
-      console.log(records);
-      res.send(records);
+      const stationJson = JSON.stringify({ payload: [...stations] });
+      res.send(stationJson);
     });
 });
 
