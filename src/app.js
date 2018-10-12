@@ -25,6 +25,8 @@ app.get("/database-test", (req, res) => {
       records.forEach(record => {
         console.log("Retrieved", record.get("station_name"));
       });
+      res.status(200);
+      res.send("<h1>hi</h1>");
     });
 });
 
