@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import historyIcon from "../assets/icons/history.svg";
-import examinationIcon from "../assets/icons/examination.svg";
-import extrasIcon from "../assets/icons/extras.svg";
-import statisticsIcon from "../assets/icons/statistics.svg";
+import historyIcon from "../assets/icons/history-black.svg";
+import examinationIcon from "../assets/icons/examination-black.svg";
+import extrasIcon from "../assets/icons/extras-black.svg";
+import statisticsIcon from "../assets/icons/statistics-black.svg";
 
 const Navbar = () => (
   <div>
