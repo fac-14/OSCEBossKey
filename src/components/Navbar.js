@@ -10,25 +10,25 @@ const Navbar = () => (
     <ul id="navbar">
       <li>
         <Link to="/history">
-          <img src={historyIcon} />
+          <img id="navbar--history-icon" src={historyIcon} />
           <h3>History</h3>
         </Link>
       </li>
       <li>
         <Link to="/examinations">
-          <img src={examinationIcon} />
+          <img id="navbar--examinations-icon" src={examinationIcon} />
           <h3>Examinations</h3>
         </Link>
       </li>
       <li>
         <Link to="/extras">
-          <img src={extrasIcon} />
+          <img id="navbar--extras-icon" src={extrasIcon} />
           <h3>Extras</h3>
         </Link>
       </li>
       <li>
         <Link to="/stats">
-          <img src={statisticsIcon} />
+          <img id="navbar--statistics-icon" src={statisticsIcon} />
           <h3>Statistics</h3>
         </Link>
       </li>
