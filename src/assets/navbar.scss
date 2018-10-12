@@ -37,3 +37,19 @@
   text-decoration: none;
   padding: 4px;
 }
+
+#navbar--history-icon:hover {
+  background-color: $peter-green;
+}
+
+#navbar--examinations-icon:hover {
+  background-color: $peter-red;
+}
+
+#navbar--extras-icon:hover {
+  background-color: $peter-yellow;
+}
+
+#navbar--statistics-icon:hover {
+  background-color: $peter-blue;
+}
