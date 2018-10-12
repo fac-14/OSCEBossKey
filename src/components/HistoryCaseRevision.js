@@ -6,7 +6,6 @@ import functions from "../utils/HistoryCaseRevision.functions";
 import Header from "./Header";
 import Body from "./Body";
 import dummyData from "../utils/dummy-data.json";
-import "../assets/history-case-revision.scss";
 
 // <HistoryCaseRevision> :: manages state across all child components
 export default class HistoryCaseRevision extends React.Component {

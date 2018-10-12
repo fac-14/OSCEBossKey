@@ -1,12 +1,10 @@
-@import "./reset.scss";
-
 #header--top-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   padding: 4px;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 img {

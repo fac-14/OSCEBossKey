@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import dummyData from "../utils/dummy-data.json";
-
+import AddNewStation from "./AddNewStation";
+import ExamName from "./ExamName";
 import Navbar from "./Navbar";
 
 class History extends React.Component {
@@ -17,15 +18,19 @@ class History extends React.Component {
     const stationElements = Object.keys(this.state.stations).map(
       (element, index) => (
         <Link key={index} to={`/history/${element}`}>
-          <div key={index}>{element}</div>
+          <div className="stations" key={index}>
+            {element}
+          </div>
         </Link>
       )
     );
     return (
       <React.Fragment>
-        <h1>History</h1>
-        <p>Add new</p>
-        {stationElements}
+        <ExamName exam="history" />
+        <div id="history">
+          <AddNewStation />
+          {stationElements}
+        </div>
         <Navbar />
       </React.Fragment>
     );
