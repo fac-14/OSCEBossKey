@@ -62,8 +62,6 @@ app.get("/api/history/:station", (req, res) => {
 });
 
 app.get("/api/history/:station/case/:id", (req, res) => {
-  // do we NEED station?
-  // History_Cases - primary_key, grab mark_scheme_id
   database("History_Cases")
     .select({
       fields: ["case_title", "case_details", "mark_scheme_id"],
@@ -76,7 +74,14 @@ app.get("/api/history/:station/case/:id", (req, res) => {
           title: record[0].get("case_title"),
           details: record[0].get("case_details")
         };
-        functions.returnPopulatedArray(res, payload);
+        database("Mark_Scheme").find(
+          record[0].get("mark_scheme_id"),
+          (err, scheme) => {
+            if (err) functions.returnEmptyPayload(res, err, {});
+            payload.mark_scheme = [...scheme.fields.mark_scheme.split(", ")];
+            functions.returnPopulatedArray(res, payload);
+          }
+        );
       }
     });
 });
