@@ -14,7 +14,8 @@
     "test": "parcel build index.html && jest",
     "test-watch": "parcel build index.html && jest --watch",
     "report-coverage": "codecov",
-    "start": "parcel build index.html && nodemon src/index.js",
+    "start": "parcel build index.html && node src/index.js",
+    "start-dev": "parcel build index.html && nodemon src/index.js",
     "build": "parcel build index.html",
     "build-watch": "parcel watch build index.html && parcel watch build src/assets"
   },
@@ -30,12 +31,6 @@
   },
   "homepage": "https://github.com/fac-14/OSCEBossKey#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
     "codecov": "^3.1.0",
     "eslint": "^5.6.1",
     "eslint-config-prettier": "^3.1.0",
@@ -43,24 +38,31 @@
     "eslint-plugin-jest": "^21.24.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
-    "node-sass": "^4.9.3",
     "nodemon": "^1.18.4",
-    "parcel-bundler": "^1.10.1",
     "react-testing-library": "^5.1.1",
-    "sass": "^1.14.1",
     "supertest": "^3.3.0"
   },
   "dependencies": {
     "airtable": "^0.5.7",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.3",
+    "node-sass": "^4.9.3",
+    "parcel-bundler": "^1.10.1",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-hammerjs": "^1.0.1",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "sass": "^1.14.1",
+    "serve-favicon": "^2.5.0"
   }
 }
