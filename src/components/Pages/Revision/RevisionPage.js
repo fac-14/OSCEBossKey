@@ -2,13 +2,13 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import functions from "../utils/HistoryCaseRevision.functions";
-import Header from "./Header";
-import Body from "./Body";
-import dummyData from "../utils/dummy-data.json";
+import functions from "../../../utils/HistoryCaseRevision.functions";
+import TopBar from "../../TopBar/TopBar";
+import RevisionContainer from "./RevisionContainer";
+import dummyData from "../../../utils/dummy-data.json";
 
-// <HistoryCaseRevision> :: manages state across all child components
-export default class HistoryCaseRevision extends React.Component {
+// <Revision> :: manages state across all child components
+export default class RevisionPage extends React.Component {
   state = {
     stationName: null,
     caseTitle: null,
@@ -21,14 +21,14 @@ export default class HistoryCaseRevision extends React.Component {
 
   componentDidMount() {
     const { station, caseid } = this.props.match.params;
-    const markScheme = dummyData.history[station][caseid]["mark-scheme"].map(
-      element => ({ text: element, completed: false })
+    const revisionList = dummyData.history[station][caseid]["mark-scheme"].map(
+      listElement => ({ text: listElement, completed: false })
     );
     this.setState({
       stationName: station,
       caseTitle: dummyData.history[station][caseid].title,
       caseDetails: dummyData.history[station][caseid].details,
-      markSchemeElements: markScheme
+      markSchemeElements: revisionList
     });
   }
 
@@ -54,17 +54,17 @@ export default class HistoryCaseRevision extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header
-          className="header"
+        <TopBar
+          id="topbar"
           stationName={this.state.stationName}
-          caseTitle={this.state.caseTitle}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
-        <Body
-          className="body"
+        <RevisionContainer
+          id="revision"
           markComplete={this.markComplete}
           swipe={this.swipe}
+          caseTitle={this.state.caseTitle}
           caseDetails={this.state.caseDetails}
           caseDetailsDisplayed={this.state.caseDetailsDisplayed}
           markSchemeElements={this.state.markSchemeElements}
@@ -75,6 +75,6 @@ export default class HistoryCaseRevision extends React.Component {
   }
 }
 
-HistoryCaseRevision.propTypes = {
+RevisionPage.propTypes = {
   match: PropTypes.object
 };

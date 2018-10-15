@@ -3,31 +3,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BackButton from "./BackButton";
-import StationName from "./StationName";
-import TickButton from "./TickButton";
-import CaseTitle from "./CaseTitle";
+import CompleteButton from "./CompleteButton";
 
-export default class Header extends React.Component {
+export default class TopBar extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="header--top-row">
+        <div id="topbar-container">
           <BackButton />
-          <StationName stationName={this.props.stationName} />
-          <TickButton
+          <h3 id="topbar-title">{this.props.stationName}</h3>
+          <CompleteButton
             submitCase={this.props.submitCase}
             tickDisplayed={this.props.tickDisplayed}
           />
         </div>
-        <CaseTitle caseTitle={this.props.caseTitle} />
       </React.Fragment>
     );
   }
 }
 
-Header.propTypes = {
+TopBar.propTypes = {
   submitCase: PropTypes.func,
   stationName: PropTypes.string,
-  tickDisplayed: PropTypes.bool,
-  caseTitle: PropTypes.string
+  tickDisplayed: PropTypes.bool
 };

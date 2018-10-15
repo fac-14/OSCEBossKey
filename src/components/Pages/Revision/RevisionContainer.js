@@ -4,8 +4,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
 import { ActiveSwipe, InactiveSwipe } from "./SwipeBalls";
+import RevisionTitle from "./RevisionTitle";
 
-export default class Body extends React.Component {
+export default class RevisionContainer extends React.Component {
   render() {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
@@ -19,8 +20,9 @@ export default class Body extends React.Component {
       )
     );
     return (
-      <div className="body-content">
-        <div className="swipe-balls">
+      <div id="revision">
+        <RevisionTitle caseTitle={this.props.caseTitle} />
+        <div id="swipe-balls">
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -34,14 +36,13 @@ export default class Body extends React.Component {
           )}
         </div>
         <Hammer onSwipe={this.props.swipe}>
-          <div className="content">
+          <div id="revision-container">
             {this.props.caseDetailsDisplayed ? (
-              <p data-testid="case-details">{this.props.caseDetails}</p>
+              <p id="revision-text" data-testid="case-details">
+                {this.props.caseDetails}
+              </p>
             ) : (
-              <ul
-                className="history--case-mark-scheme"
-                data-testid="mark-scheme-list"
-              >
+              <ul id="revision-list" data-testid="mark-scheme-list">
                 {markSchemeArray}
               </ul>
             )}
@@ -52,7 +53,7 @@ export default class Body extends React.Component {
   }
 }
 
-Body.propTypes = {
+RevisionContainer.propTypes = {
   markComplete: PropTypes.func,
   swipe: PropTypes.func,
   caseDetailsDisplayed: PropTypes.bool,

@@ -1,13 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import HistoryCaseRevision from "../src/components/HistoryCaseRevision";
+import Revision from "../src/components/Pages/Revision/RevisionPage";
 import { render, fireEvent } from "react-testing-library";
 
 const { getByTestId } = render(
   <Router>
-    <HistoryCaseRevision
-      match={{ params: { station: "chest-pain", caseid: "0" } }}
-    />
+    <Revision match={{ params: { station: "chest-pain", caseid: "0" } }} />
   </Router>
 );
 

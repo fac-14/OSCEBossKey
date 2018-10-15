@@ -6,14 +6,14 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import all page classes here
-import Home from "./Home";
-import HistoryStationCases from "./HistoryStationCases";
-import HistoryCaseRevision from "./HistoryCaseRevision";
-import History from "./History";
-import Examinations from "./Examinations";
-import Extras from "./Extras";
-import Statistics from "./Statistics";
-import NewHistoryCase from "./NewHistoryCase";
+import Home from "./Pages/Home";
+import Cases from "./Cases/CasesPage";
+import Revision from "./Pages/Revision/RevisionPage";
+import History from "./Pages/History";
+import Examinations from "./Pages/Examinations";
+import Extras from "./Pages/Extras";
+import Statistics from "./Pages/Statistics";
+import NewCase from "./Cases/NewCase";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
 // we should probably add a 404 component to display when the user hits a route for which there is no component
@@ -25,23 +25,18 @@ const App = () => (
       <Route strict exact path="/examinations" component={Examinations} />
       <Route strict exact path="/extras" component={Extras} />
       <Route strict exact path="/stats" component={Statistics} />
-      <Route
-        strict
-        exact
-        path="/history/:station"
-        component={HistoryStationCases}
-      />
+      <Route strict exact path="/history/:station" component={Cases} />
       <Route
         strict
         exact
         path="/history/:station/add-case"
-        component={NewHistoryCase}
+        component={NewCase}
       />
       <Route
         strict
         exact
         path="/history/:station/case/:caseid"
-        component={HistoryCaseRevision}
+        component={Revision}
       />
     </div>
   </Router>

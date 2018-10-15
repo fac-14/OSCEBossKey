@@ -1,0 +1,58 @@
+#revision .strike {
+  text-decoration: line-through;
+  background-color: $peter-green !important;
+  color: $darkgrey;
+  color: #fff;
+  background-color: $peter-green-faded;
+}
+
+#revision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#revision #revision-title {
+  font-weight: 700;
+  margin: 64px 16px 16px 16px;
+}
+
+#revision #swipe-balls {
+  margin-bottom: 16px;
+  // border: 1px solid blue;
+}
+
+#revision #swipe-balls > button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+#revision #revision-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  overflow-y: scroll;
+  // background-color: yellow;
+}
+
+#revision #revision-text {
+  padding: 0 16px;
+  line-height: 1.2;
+  // border: 1px solid grey;
+}
+
+#revision #revision-list {
+  width: 100%;
+  // border: 1px solid red;
+}
+
+#revision #revision-list li {
+  height: 48px;
+  display: flex;
+  margin: 8px 0;
+  padding: 8px;
+  align-items: center;
+  background-color: white;
+}
