@@ -16,7 +16,7 @@ app.get("/api/history", (req, res) => {
   database("History_Stations")
     .select()
     .firstPage((err, records) => {
-      if (err) functions.returnEmptyArray(res, err);
+      if (err) functions.returnEmptyPayload(res, err);
       else {
         const stations = [];
         records.forEach(record => {
@@ -35,7 +35,7 @@ app.get("/api/history/:station", (req, res) => {
       filterByFormula: `({station_name} = '${req.params.station}')`
     })
     .firstPage((err, record) => {
-      if (err || record.length === 0) functions.returnEmptyArray(res, err);
+      if (err || record.length === 0) functions.returnEmptyPayload(res, err);
       else {
         database("History_Cases")
           .select({
@@ -53,12 +53,21 @@ app.get("/api/history/:station", (req, res) => {
               fetchNextPage();
             },
             err => {
-              if (err) functions.returnEmptyArray(res, err);
+              if (err) functions.returnEmptyPayload(res, err);
               functions.returnPopulatedArray(res, caseTitles);
             }
           );
       }
     });
+});
+
+app.get("/api/history/:station/case/:id", (req, res) => {
+  const err = "Make test";
+  console.log("Testing :id API call!");
+  functions.returnEmptyPayload(res, err, {});
+  // do we NEED station?
+  // History_Cases - primary_key, grab mark_scheme_id
+  // Mark_Scheme - mark_scheme
 });
 
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval

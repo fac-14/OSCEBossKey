@@ -1,8 +1,8 @@
 const functions = {
-  returnEmptyArray: (res, err) => {
+  returnEmptyPayload: (res, err, value = []) => {
     console.error(err);
     res.set("Content-Type", "application/json");
-    res.send(JSON.stringify({ payload: [] }));
+    res.send(JSON.stringify({ payload: value }));
   },
   returnPopulatedArray: (res, array) => {
     res.set("Content-Type", "application/json");
