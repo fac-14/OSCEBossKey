@@ -47,4 +47,17 @@ describe("GET requests to /api/history/:station/case/:id returns payload related
         done();
       });
   });
+  test("GET request to /api/history/chest-pain/case/1 returns correct title", done => {
+    expect.assertions(1);
+    request(app)
+      .get("/api/history/chest-pain/case/1")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        expect(res.body.payload.title).toEqual(
+          "57-year-old male started feeling chest pain after drinking milk"
+        );
+        done();
+      });
+  });
 });
