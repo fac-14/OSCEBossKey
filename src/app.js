@@ -62,12 +62,23 @@ app.get("/api/history/:station", (req, res) => {
 });
 
 app.get("/api/history/:station/case/:id", (req, res) => {
-  const err = "Make test";
-  console.log("Testing :id API call!");
-  functions.returnEmptyPayload(res, err, {});
   // do we NEED station?
   // History_Cases - primary_key, grab mark_scheme_id
-  // Mark_Scheme - mark_scheme
+  database("History_Cases")
+    .select({
+      fields: ["case_title", "case_details", "mark_scheme_id"],
+      filterByFormula: `({primary_key} = '${req.params.id}')`
+    })
+    .firstPage((err, record) => {
+      if (err) functions.returnEmptyPayload(res, err, {});
+      else {
+        const payload = {
+          title: record[0].get("case_title"),
+          details: record[0].get("case_details")
+        };
+        functions.returnPopulatedArray(res, payload);
+      }
+    });
 });
 
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval
