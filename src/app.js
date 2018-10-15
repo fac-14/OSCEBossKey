@@ -3,30 +3,61 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const database = require("./database");
 
+const functions = require("./utils/airtableReturns");
+
 const app = express();
 app.set("port", process.env.PORT || 3333);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// all static files (css, etc.)
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
-app.get("/database-test", (req, res) => {
+app.get("/api/history", (req, res) => {
+  database("History_Stations")
+    .select()
+    .firstPage((err, records) => {
+      if (err) functions.returnEmptyArray(res, err);
+      else {
+        const stations = [];
+        records.forEach(record => {
+          stations.push(record.get("station_name"));
+        });
+        functions.returnPopulatedArray(res, stations);
+      }
+    });
+});
+
+app.get("/api/history/:station", (req, res) => {
+  const caseTitles = [];
   database("History_Stations")
     .select({
-      view: "Grid view"
+      fields: ["primary_key"],
+      filterByFormula: `({station_name} = '${req.params.station}')`
     })
-    .firstPage((err, records) => {
-      if (err) {
-        console.error(err);
-        return;
+    .firstPage((err, record) => {
+      if (err || record.length === 0) functions.returnEmptyArray(res, err);
+      else {
+        database("History_Cases")
+          .select({
+            fields: ["case_title", "primary_key"],
+            filterByFormula: `({station_id} = ${record[0].get("primary_key")})`
+          })
+          .eachPage(
+            (records, fetchNextPage) => {
+              records.forEach(record => {
+                caseTitles.push({
+                  title: record.get("case_title"),
+                  id: record.get("primary_key")
+                });
+              });
+              fetchNextPage();
+            },
+            err => {
+              if (err) functions.returnEmptyArray(res, err);
+              functions.returnPopulatedArray(res, caseTitles);
+            }
+          );
       }
-      records.forEach(record => {
-        console.log("Retrieved", record.get("station_name"));
-      });
-      res.status(200);
-      res.send("<h1>hi</h1>");
     });
 });
 

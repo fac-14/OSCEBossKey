@@ -3,21 +3,32 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import dummyData from "../utils/dummy-data.json";
-
 import StationName from "./StationName";
 import AddNewCase from "./AddNewCase";
 import Navbar from "./Navbar";
 
+import airtableQuery from "../utils/fetch";
+
 class HistoryStationCases extends React.Component {
   state = {
     station: this.props.match.params.station,
-    cases: dummyData.history[this.props.match.params.station]
+    cases: []
   };
+
+  componentDidMount() {
+    airtableQuery(`/api/history/${this.state.station}`).then(res => {
+      this.setState(() => ({
+        cases: res.payload
+      }));
+    });
+  }
 
   render() {
     const caseElements = this.state.cases.map((element, index) => (
-      <Link key={index} to={`/history/${this.state.station}/case/${index}`}>
+      <Link
+        key={index}
+        to={`/history/${this.state.station}/case/${element.id}`}
+      >
         <div key={index}>{element.title}</div>
       </Link>
     ));
