@@ -47,6 +47,18 @@ describe("GET requests to /api/history/:station/case/:id returns payload related
         done();
       });
   });
+  test("Invalid GET request to /api/history/chest-pain/case returns empty payload object", done => {
+    expect.assertions(2);
+    request(app)
+      .get("/api/history/chest-pain/case/0")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        expect(typeof res.body.payload === "object").toBeTruthy();
+        expect(res.body.title).toBeFalsy();
+        done();
+      });
+  });
   test("GET request to /api/history/chest-pain/case/1 returns correct title", done => {
     expect.assertions(1);
     request(app)
