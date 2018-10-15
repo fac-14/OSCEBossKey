@@ -4,9 +4,9 @@ const functions = {
     res.set("Content-Type", "application/json");
     res.send(JSON.stringify({ payload: value }));
   },
-  returnPopulatedArray: (res, array) => {
+  returnPopulatedPayload: (res, data) => {
     res.set("Content-Type", "application/json");
-    res.send(JSON.stringify({ payload: array }));
+    res.send(JSON.stringify({ payload: data }));
   }
 };
 

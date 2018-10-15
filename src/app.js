@@ -22,7 +22,7 @@ app.get("/api/history", (req, res) => {
         records.forEach(record => {
           stations.push(record.get("station_name"));
         });
-        functions.returnPopulatedArray(res, stations);
+        functions.returnPopulatedPayload(res, stations);
       }
     });
 });
@@ -54,7 +54,7 @@ app.get("/api/history/:station", (req, res) => {
             },
             err => {
               if (err) functions.returnEmptyPayload(res, err);
-              functions.returnPopulatedArray(res, caseTitles);
+              functions.returnPopulatedPayload(res, caseTitles);
             }
           );
       }
@@ -79,7 +79,7 @@ app.get("/api/history/:station/case/:id", (req, res) => {
           (err, scheme) => {
             if (err) functions.returnEmptyPayload(res, err, {});
             payload.mark_scheme = [...scheme.fields.mark_scheme.split(", ")];
-            functions.returnPopulatedArray(res, payload);
+            functions.returnPopulatedPayload(res, payload);
           }
         );
       }
