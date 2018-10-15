@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const favicon = require("serve-favicon");
 const database = require("./database");
 
 const functions = require("./utils/airtableReturns");
@@ -11,7 +10,6 @@ app.set("port", process.env.PORT || 3333);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(favicon(path.join(__dirname, "..", "public", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
 app.get("/api/history", (req, res) => {
