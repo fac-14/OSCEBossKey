@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import functions from "../../../utils/HistoryCaseRevision.functions";
 import TopBar from "../../TopBar/TopBar";
 import RevisionContainer from "./RevisionContainer";
-import dummyData from "../../../utils/dummy-data.json";
 import airtableQuery from "../../../utils/fetch";
 
 // <Revision> :: manages state across all child components
@@ -20,6 +19,7 @@ export default class RevisionPage extends React.Component {
     markSchemeElements: []
   };
 
+  // when component is mounted, run (async) local API query and update state when response arrives
   componentDidMount() {
     const { station, caseid } = this.props.match.params;
     airtableQuery(`/api/history/${station}/case/${caseid}`).then(res => {
