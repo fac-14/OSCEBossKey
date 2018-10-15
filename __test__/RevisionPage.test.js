@@ -14,6 +14,8 @@ fetchMock.mock("end:/api/history/chest-pain/case/1", {
   }
 });
 
+// wrapping in new <Router> tags is required for <Revision> component to render nav (which has <Link> elements)
+// overwriting React Router match prop with necessary information for test
 const { getByTestId } = render(
   <Router>
     <Revision match={{ params: { station: "chest-pain", caseid: "1" } }} />
@@ -34,5 +36,4 @@ describe("Testing Body component", () => {
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
-  // test for strikethrough mark scheme elements
 });
