@@ -62,6 +62,7 @@
     "react-hammerjs": "^1.0.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "sass": "^1.14.1"
+    "sass": "^1.14.1",
+    "serve-favicon": "^2.5.0"
   }
 }
