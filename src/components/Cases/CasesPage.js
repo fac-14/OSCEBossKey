@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Title from "./Title";
-import AddNew from "./AddNew";
+import AddNew from "../Pages/AddNew/AddNewBanner";
 import Navbar from "../Navbar/Navbar";
 
 import airtableQuery from "../../utils/fetch";

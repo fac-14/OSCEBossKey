@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import AddNew from "../Stations/AddNew";
+import AddNew from "./AddNew/AddNewTile";
 import Title from "../Stations/Title";
 import Navbar from "../Navbar/Navbar";
 

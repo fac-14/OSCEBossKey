@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default class AddNew extends React.Component {
+export default class AddNewBanner extends React.Component {
   render() {
     const link =
       "/history/" + this.props.station.replace(" ", "-") + "/add-case";
@@ -14,6 +14,6 @@ export default class AddNew extends React.Component {
   }
 }
 
-AddNew.propTypes = {
+AddNewBanner.propTypes = {
   station: PropTypes.string
 };

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import dummyData from "../../utils/dummy-data.json";
-import AddNew from "./AddNew";
+import AddNewTile from "../Pages/AddNew/AddNewTile";
 import Title from "./Title";
 import Navbar from "../Navbar/Navbar";
 
@@ -26,7 +26,7 @@ class StationsPage extends React.Component {
       <React.Fragment>
         <Title exam="history" />
         <div id="tile-wrapper">
-          <AddNew />
+          <AddNewTile />
           {stationTiles}
         </div>
         <Navbar />
