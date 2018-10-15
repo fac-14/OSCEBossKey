@@ -68,7 +68,8 @@ app.get("/api/history/:station/case/:id", (req, res) => {
       filterByFormula: `({primary_key} = '${req.params.id}')`
     })
     .firstPage((err, record) => {
-      if (err) functions.returnEmptyPayload(res, err, {});
+      if (err || record.length === 0)
+        functions.returnEmptyPayload(res, err, {});
       else {
         const payload = {
           title: record[0].get("case_title"),
@@ -77,7 +78,8 @@ app.get("/api/history/:station/case/:id", (req, res) => {
         database("Mark_Scheme").find(
           record[0].get("mark_scheme_id"),
           (err, scheme) => {
-            if (err) functions.returnEmptyPayload(res, err, {});
+            if (err || record.length === 0)
+              functions.returnEmptyPayload(res, err, {});
             payload.mark_scheme = [...scheme.fields.mark_scheme.split(", ")];
             functions.returnPopulatedPayload(res, payload);
           }
