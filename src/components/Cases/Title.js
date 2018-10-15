@@ -3,12 +3,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class StationName extends React.Component {
+export default class CasesPageTitle extends React.Component {
   render() {
-    return <h1 id="header--station-name">{this.props.stationName}</h1>;
+    return <h1 id="title">{this.props.stationName}</h1>;
   }
 }
 
-StationName.propTypes = {
+CasesPageTitle.propTypes = {
   stationName: PropTypes.string
 };

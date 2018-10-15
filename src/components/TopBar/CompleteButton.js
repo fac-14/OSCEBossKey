@@ -3,14 +3,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import tickIcon from "../assets/icons/tick.svg";
+import tickIcon from "../../assets/icons/tick_white.svg";
 
-export default class TickButton extends React.Component {
+export default class CompleteButton extends React.Component {
   render() {
     return (
       <Link to="/stats">
         <button
-          id="button--tick"
+          id="complete"
           onClick={() => this.props.submitCase()}
           className={
             this.props.tickDisplayed ? `tick--displayed` : `tick--not-displayed`
@@ -23,7 +23,7 @@ export default class TickButton extends React.Component {
   }
 }
 
-TickButton.propTypes = {
+CompleteButton.propTypes = {
   submitCase: PropTypes.func,
   tickDisplayed: PropTypes.bool
 };

@@ -1,0 +1,50 @@
+#navbar {
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background: $grey;
+}
+
+#navbar li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#navbar a {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navbar img {
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+}
+
+#navbar .text {
+  font-family: $text-font;
+  font-size: 8px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#navbar #history-icon:hover {
+  background-color: $peter-green;
+}
+
+#navbar #examinations-icon:hover {
+  background-color: $peter-red;
+}
+
+#navbar #extras-icon:hover {
+  background-color: $yellow;
+}
+
+#navbar #statistics-icon:hover {
+  background-color: $peter-blue;
+}

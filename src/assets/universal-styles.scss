@@ -1,5 +1,36 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #e6e6d4;
+}
+
 #root {
-  background-color: $grey;
-  margin-bottom: 48px;
-  padding-bottom: 4px;
+  margin-bottom: 52px;
+  font-family: $text-font;
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#root a {
+  text-decoration: none;
+  color: black;
+}
+
+#root .page-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#root #title {
+  text-transform: uppercase;
+  font-family: $title-font;
+  font-size: 28pt;
+  letter-spacing: 10%;
+  text-align: center;
+  padding: 32px 0;
+  // border: 1px solid yellow;
 }
