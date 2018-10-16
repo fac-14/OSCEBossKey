@@ -11,19 +11,19 @@ export default class ResultsContainer extends React.Component {
       <div id="revision">
         <RevisionTitle caseTitle="Results" />
         <div id="revision-container">
-          <p id="revision-text" data-testid="Results">
-            <h1>
+          <ul id="revision-list">
+            <li class="result-list-item" id="score-percent">
               {Math.floor(
                 (this.props.markSchemeCompleted / this.props.markSchemeTotal) *
                   100
               )}
               %
-            </h1>
-            <h2>
+            </li>
+            <li class="result-list-item">
               You performed {this.props.markSchemeCompleted} of{" "}
               {this.props.markSchemeTotal} tasks.
-            </h2>
-          </p>
+            </li>
+          </ul>
         </div>
       </div>
     );
