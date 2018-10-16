@@ -9,6 +9,7 @@ export default class CompleteButton extends React.Component {
     return (
       <button
         id="complete"
+        data-testid="complete"
         onClick={() => this.props.submitCase()}
         className={
           this.props.tickDisplayed ? `tick--displayed` : `tick--not-displayed`
