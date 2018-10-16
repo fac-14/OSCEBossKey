@@ -11,6 +11,8 @@ import dummyData from "../../../utils/dummy-data.json";
 export default class RevisionPage extends React.Component {
   state = {
     stationName: null,
+    time: 0,
+    intervalId: null,
     caseTitle: null,
     caseDetails: null,
     tickDisplayed: false,
@@ -28,16 +30,26 @@ export default class RevisionPage extends React.Component {
       stationName: station,
       caseTitle: dummyData.history[station][caseid].title,
       caseDetails: dummyData.history[station][caseid].details,
-      markSchemeElements: revisionList
+      markSchemeElements: revisionList,
+      intervalId: setInterval(this.timerCount, 1000)
     });
   }
 
+  timerCount = () => {
+    console.log(this.state.time);
+    this.setState(prevState => {
+      return {
+        time: prevState.time + 1
+      };
+    });
+  };
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
   submitCase = () => {
     /*
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
+    clearInterval(this.state.intervalId);
     console.log("CLICKED: submitCase()");
   };
 
