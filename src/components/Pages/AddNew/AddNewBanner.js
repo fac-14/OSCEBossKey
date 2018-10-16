@@ -4,10 +4,12 @@ import PropTypes from "prop-types";
 
 export default class AddNewBanner extends React.Component {
   render() {
-    const link =
-      "/history/" + this.props.station.replace(" ", "-") + "/add-case";
     return (
-      <Link to={link} id="add-case" className="banner">
+      <Link
+        to={`/${this.props.exam}/${this.props.station}/add-case`}
+        id="add-case"
+        className="banner"
+      >
         <div className="banner-text" onClick={this.props.submitStation}>
           {" "}
           Add New
@@ -18,6 +20,7 @@ export default class AddNewBanner extends React.Component {
 }
 
 AddNewBanner.propTypes = {
+  exam: PropTypes.string,
   station: PropTypes.string,
   submitStation: PropTypes.func
 };

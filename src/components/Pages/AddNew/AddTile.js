@@ -25,8 +25,6 @@ export default class AddTile extends React.Component {
     this.setState({ station: input });
   };
 
-  // add new banner
-
   render() {
     return (
       <React.Fragment>
@@ -39,10 +37,13 @@ export default class AddTile extends React.Component {
         <div id="add-new-wrapper">
           <NewTileInput exam={this.state.exam} userTypes={this.userTypes} />
           <InstructionText text={"Add case"} />
-          <AddNewBanner
-            station={this.state.station}
-            submitStation={this.submitTile}
-          />
+          <div id="banner-wrapper">
+            <AddNewBanner
+              exam={this.state.exam}
+              station={this.state.station.replace(/\s/g, "-")}
+              submitStation={this.submitTile}
+            />
+          </div>
         </div>
       </React.Fragment>
     );
