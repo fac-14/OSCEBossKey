@@ -13,7 +13,7 @@ import History from "./Pages/History";
 import Examinations from "./Pages/Examinations";
 import Extras from "./Pages/Extras";
 import Statistics from "./Pages/Statistics";
-import NewCase from "./Cases/NewCase";
+import NewCase from "./Pages/AddNew/NewCase";
 import AddTile from "./Pages/AddNew/AddTile";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
