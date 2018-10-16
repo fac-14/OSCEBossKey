@@ -12,10 +12,8 @@ export default class TopBar extends React.Component {
       <React.Fragment>
         <div id="topbar-container">
           <BackButton />
-          <h3 id="topbar-title">
-            {this.props.stationName}
-            <span>{timeDisplay.timerFormat(this.props.time)}</span>
-          </h3>
+          <h3 id="topbar-title">{this.props.stationName}</h3>
+          <h3 id="topbar-timer">{timeDisplay.timerFormat(this.props.time)}</h3>
           {this.props.tickDisplayed && (
             <CompleteButton
               submitCase={this.props.submitCase}
