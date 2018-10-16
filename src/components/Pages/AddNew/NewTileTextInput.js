@@ -31,6 +31,5 @@ export default class NewTileTextInput extends React.Component {
 }
 
 NewTileTextInput.propTypes = {
-  exam: PropTypes.string,
   userTypes: PropTypes.func
 };

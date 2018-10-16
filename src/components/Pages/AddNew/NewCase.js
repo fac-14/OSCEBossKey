@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import airtableQuery from "../../../utils/fetch";
 
+import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
 
 export default class NewCase extends React.Component {
@@ -31,15 +32,25 @@ export default class NewCase extends React.Component {
     );
   };
 
+  userTypes = input => {
+    this.setState({ caseTitle: input });
+  };
+
   render() {
     return (
-      <React.Fragment id="add-new-wrapper">
+      <React.Fragment>
         <TopBar
           exam={this.props.match.params.exam}
           stationName={this.props.match.params.station}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
+        <div id="add-new-wrapper">
+          <NewTileInput
+            instructionText={"Case title"}
+            userTypes={this.userTypes}
+          />
+        </div>
       </React.Fragment>
     );
   }

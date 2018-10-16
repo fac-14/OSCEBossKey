@@ -8,17 +8,14 @@ export default class NewTileInput extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <InstructionText text={"Add station"} />
-        <NewTileTextInput
-          exam={this.props.exam}
-          userTypes={this.props.userTypes}
-        />
+        <InstructionText text={this.props.instructionText} />
+        <NewTileTextInput userTypes={this.props.userTypes} />
       </React.Fragment>
     );
   }
 }
 
 NewTileInput.propTypes = {
-  exam: PropTypes.string,
+  instructionText: PropTypes.string,
   userTypes: PropTypes.func
 };

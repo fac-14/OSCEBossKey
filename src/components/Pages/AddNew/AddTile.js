@@ -34,7 +34,10 @@ export default class AddTile extends React.Component {
           tickDisplayed={true}
         />
         <div id="add-new-wrapper">
-          <NewTileInput exam={this.state.exam} userTypes={this.userTypes} />
+          <NewTileInput
+            instructionText={"Add station"}
+            userTypes={this.userTypes}
+          />
           <InstructionText text={"Add case"} />
           <div id="banner-wrapper">
             <AddNewBanner
