@@ -14,7 +14,7 @@ import Examinations from "./Pages/Examinations";
 import Extras from "./Pages/Extras";
 import Statistics from "./Pages/Statistics";
 import NewCase from "./Cases/NewCase";
-import AddTile from "./Pages/AddTile";
+import AddTile from "./Pages/AddNew/AddTile";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
 // we should probably add a 404 component to display when the user hits a route for which there is no component

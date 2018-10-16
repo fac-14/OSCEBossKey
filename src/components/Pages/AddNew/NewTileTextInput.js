@@ -12,12 +12,10 @@ export default class NewTileTextInput extends React.Component {
   // {`/api/${this.props.exam}`
   // }
 
-  handleChange(event) {
-    return () => {
-      this.props.userTypes(event.target.value);
-      this.setState({ value: event.target.value });
-    };
-  }
+  handleChange = event => {
+    this.props.userTypes(event.target.value);
+    this.setState({ value: event.target.value });
+  };
 
   render() {
     return (
