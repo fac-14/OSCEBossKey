@@ -39,7 +39,10 @@ export default class AddTile extends React.Component {
         <div id="add-new-wrapper">
           <NewTileInput exam={this.state.exam} userTypes={this.userTypes} />
           <InstructionText text={"Add case"} />
-          <AddNewBanner station={this.state.station} />
+          <AddNewBanner
+            station={this.state.station}
+            submitStation={this.submitTile}
+          />
         </div>
       </React.Fragment>
     );

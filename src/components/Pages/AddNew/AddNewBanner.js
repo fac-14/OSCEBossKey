@@ -8,12 +8,16 @@ export default class AddNewBanner extends React.Component {
       "/history/" + this.props.station.replace(" ", "-") + "/add-case";
     return (
       <Link to={link} id="add-case" className="banner">
-        <div className="banner-text"> Add New</div>
+        <div className="banner-text" onClick={this.props.submitStation}>
+          {" "}
+          Add New
+        </div>
       </Link>
     );
   }
 }
 
 AddNewBanner.propTypes = {
-  station: PropTypes.string
+  station: PropTypes.string,
+  submitStation: PropTypes.func
 };
