@@ -13,6 +13,7 @@ export default class TopBar extends React.Component {
           <BackButton link={this.props.exam} />
           <h3 id="topbar-title">{this.props.stationName}</h3>
           <CompleteButton
+            exam={this.props.exam}
             submitCase={this.props.submitCase}
             tickDisplayed={this.props.tickDisplayed}
           />

@@ -8,7 +8,7 @@ import tickIcon from "../../assets/icons/tick_white.svg";
 export default class CompleteButton extends React.Component {
   render() {
     return (
-      <Link to="/stats">
+      <Link to={`/${this.props.exam}`}>
         <button
           id="complete"
           onClick={() => this.props.submitCase()}
@@ -24,6 +24,7 @@ export default class CompleteButton extends React.Component {
 }
 
 CompleteButton.propTypes = {
+  exam: PropTypes.string,
   submitCase: PropTypes.func,
   tickDisplayed: PropTypes.bool
 };

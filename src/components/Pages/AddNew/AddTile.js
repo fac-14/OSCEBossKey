@@ -13,6 +13,7 @@ export default class AddTile extends React.Component {
   };
 
   submitTile() {
+    console.log("case submitted");
     // add station to database
     // redirect to History page
     return false;
@@ -22,7 +23,6 @@ export default class AddTile extends React.Component {
     this.setState({ station: input });
   };
 
-  // back
   // add new banner
 
   render() {
