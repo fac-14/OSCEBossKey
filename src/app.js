@@ -12,6 +12,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
+app.get("/api/add-station/:station", (req, res) => {
+  database("History_Stations").create(
+    {
+      station_name: req.params.station
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
+});
+
 app.get("/api/history", (req, res) => {
   database("History_Stations")
     .select()

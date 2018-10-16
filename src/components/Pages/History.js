@@ -18,9 +18,13 @@ class HistoryPage extends React.Component {
   };
 
   componentDidMount() {
-    airtableQuery("/api/history/").then(res => {
-      this.setState(() => ({ stations: res.payload }));
-    });
+    // two requests so that it fetches the new data from a recent POST request
+    // this is terrible and I'm sorry
+    airtableQuery("/api/history/").then(
+      airtableQuery("/api/history/").then(res => {
+        this.setState(() => ({ stations: res.payload }));
+      })
+    );
   }
 
   render() {

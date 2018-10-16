@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -6,18 +8,18 @@ import InstructionText from "./InstructionText";
 import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
 
+import airtableQuery from "../../../utils/fetch";
+
 export default class AddTile extends React.Component {
   state = {
     exam: this.props.match.params.exam,
     station: ""
   };
 
-  submitTile() {
+  submitTile = () => {
     console.log("case submitted");
-    // add station to database
-    // redirect to History page
-    return false;
-  }
+    airtableQuery(`/api/add-station/${this.state.station}`);
+  };
 
   userTypes = input => {
     this.setState({ station: input });
