@@ -52,19 +52,30 @@ app.get("/api/get-station/:station", (req, res) => {
       )}')`
     })
     .firstPage((err, record) => {
-      console.log("record length:", record.length);
       if (err || record.length === 0) {
         console.log("sending back empty array due to error/no record");
         return functions.returnEmptyArray(res, err);
       }
-      console.log("sending back primary key");
-      console.log("record[0].get()", record[0].get("primary_key"));
-      return functions.returnPopulatedArray(res, record[0].get("primary_key"));
+      return functions.returnPopulatedArray(res, record[0].id);
     });
 });
 
-app.get("/api/add-case/:station_id", (req, res) => {
-  console.log(req.body);
+app.post("/api/add-case/:station", (req, res) => {
+  database("History_Cases").create(
+    {
+      station_id: [req.params.station],
+      case_title: req.body.title,
+      case_details: req.body.details,
+      mark_scheme: req.body.markscheme
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
 });
 
 app.get("/api/history/:station", (req, res) => {

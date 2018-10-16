@@ -10,19 +10,22 @@ import TopBar from "../../TopBar/TopBar";
 export default class NewCase extends React.Component {
   state = {
     tickDisplayed: false,
-    caseTitle: "",
-    caseDetails: "",
-    markScheme: []
+    caseTitle: "test case title",
+    caseDetails: "test case details",
+    markScheme: ["test", "case", "mark", "scheme"]
   };
 
   submitCase = () => {
     airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
       res => {
-        console.log("added station to database");
-        console.log("res:", res);
-        fetch(`/api/add-case/${res}`, {
+        fetch(`/api/add-case/${res.payload}`, {
           method: "post",
-          body: JSON.stringify({ text: "hello world" })
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+          },
+          body: `title=${this.state.caseTitle}&details=${
+            this.state.caseDetails
+          }&markscheme=${this.state.markScheme.join(", ")}`
         });
       }
     );
