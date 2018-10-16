@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const database = require("./database");
-
 const functions = require("./utils/airtableReturns");
 
 const app = express();
@@ -61,6 +60,8 @@ app.get("/api/history/:station", (req, res) => {
     });
 });
 
+// the airTable query doesn't actually use req.params.station for error checking or validation
+// this will cause an extra API call but it might be a nice addition when the amount of data starts to grow
 app.get("/api/history/:station/case/:id", (req, res) => {
   database("History_Cases")
     .select({
@@ -71,17 +72,16 @@ app.get("/api/history/:station/case/:id", (req, res) => {
       if (err || record.length === 0)
         functions.returnEmptyPayload(res, err, {});
       else {
-        const payload = {
-          title: record[0].get("case_title"),
-          details: record[0].get("case_details")
-        };
         database("Mark_Scheme").find(
           record[0].get("mark_scheme_id"),
           (err, scheme) => {
             if (err || record.length === 0)
               functions.returnEmptyPayload(res, err, {});
-            payload.mark_scheme = [...scheme.fields.mark_scheme.split(", ")];
-            functions.returnPopulatedPayload(res, payload);
+            functions.returnPopulatedPayload(res, {
+              title: record[0].get("case_title"),
+              details: record[0].get("case_details"),
+              mark_scheme: [...scheme.fields.mark_scheme.split(", ")]
+            });
           }
         );
       }

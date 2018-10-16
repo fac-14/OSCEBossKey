@@ -11,10 +11,6 @@ test("GET /api/history returns list of station names as a JSON object", done => 
       expect(Array.isArray(res.body.payload)).toBeTruthy();
       done();
     });
-  // .catch(err => {
-  //   console.log(err);
-  //   done(err);
-  // });
 });
 
 describe("GET requests to /api/history/:station return lists of cases related to :station", () => {
@@ -28,10 +24,6 @@ describe("GET requests to /api/history/:station return lists of cases related to
         expect(Array.isArray(res.body.payload)).toBeTruthy();
         done();
       });
-    // .catch(err => {
-    //   console.log(err);
-    //   done(err);
-    // });
   });
 });
 
