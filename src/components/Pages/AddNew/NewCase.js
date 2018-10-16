@@ -10,7 +10,7 @@ export default class NewCase extends React.Component {
     return (
       <React.Fragment id="add-new-wrapper">
         <TopBar
-          exam={this.props.match.exam}
+          exam={this.props.match.params.exam}
           stationName={this.props.match.params.station}
         />
       </React.Fragment>
