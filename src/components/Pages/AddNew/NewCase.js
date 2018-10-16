@@ -19,11 +19,10 @@ export default class NewCase extends React.Component {
     airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
       res => {
         console.log("added station to database");
+        console.log("res:", res);
         fetch(`/api/add-case/${res}`, {
           method: "post",
-          body: {
-            // set body here
-          }
+          body: JSON.stringify({ text: "hello world" })
         });
       }
     );

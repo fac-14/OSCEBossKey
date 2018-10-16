@@ -46,13 +46,20 @@ app.get("/api/get-station/:station", (req, res) => {
   database("History_Stations")
     .select({
       fields: ["primary_key"],
-      filterByFormula: `({station_name} = '${req.params.station}')`
+      filterByFormula: `({station_name} = '${req.params.station.replace(
+        /-/g,
+        " "
+      )}')`
     })
     .firstPage((err, record) => {
-      if (err || record.length === 0) functions.returnEmptyArray(res, err);
-      else {
-        return record[0].get("primary-key");
+      console.log("record length:", record.length);
+      if (err || record.length === 0) {
+        console.log("sending back empty array due to error/no record");
+        return functions.returnEmptyArray(res, err);
       }
+      console.log("sending back primary key");
+      console.log("record[0].get()", record[0].get("primary_key"));
+      return functions.returnPopulatedArray(res, record[0].get("primary_key"));
     });
 });
 
