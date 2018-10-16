@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Revision from "../src/components/Pages/Revision/RevisionPage";
 import { render, fireEvent } from "react-testing-library";
 
-const { getByTestId } = render(
+const { getByText, getByTestId } = render(
   <Router>
     <Revision match={{ params: { station: "chest-pain", caseid: "0" } }} />
   </Router>
@@ -22,6 +22,11 @@ describe("Testing Body component", () => {
     expect(getByTestId("mark-scheme-list")).toBeTruthy();
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
+  });
+  test("when more than one element of the mark scheme is completed, the submission tick should render", () => {
+    fireEvent.click(getByText("Introduces themselves"));
+    fireEvent.click(getByTestId("complete"));
+    expect(getByText("Results")).toBeTruthy();
   });
   // test for strikethrough mark scheme elements
 });
