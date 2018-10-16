@@ -3,9 +3,22 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Revision from "../src/components/Pages/Revision/RevisionPage";
 import { render, fireEvent } from "react-testing-library";
 
+// setup a mock API call with fetch-mock to provide <Revision> component with correct information
+const fetchMock = require("fetch-mock");
+fetchMock.mock("end:/api/history/chest-pain/case/1", {
+  payload: {
+    title: "32-year-old man has panic attack after mocking fetch() in Node",
+    details:
+      "poor 32-year-old man is very thankful for fetch-mock and node-fetch packages",
+    mark_scheme: ["one", "two", "three"]
+  }
+});
+
+// wrapping in new <Router> tags is required for <Revision> component to render nav (which has <Link> elements)
+// overwriting React Router match prop with necessary information for test
 const { getByTestId } = render(
   <Router>
-    <Revision match={{ params: { station: "chest-pain", caseid: "0" } }} />
+    <Revision match={{ params: { station: "chest-pain", caseid: "1" } }} />
   </Router>
 );
 
@@ -23,5 +36,4 @@ describe("Testing Body component", () => {
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
-  // test for strikethrough mark scheme elements
 });

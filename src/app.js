@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const database = require("./database");
-
 const functions = require("./utils/airtableReturns");
 
 const app = express();
@@ -16,13 +15,13 @@ app.get("/api/history", (req, res) => {
   database("History_Stations")
     .select()
     .firstPage((err, records) => {
-      if (err) functions.returnEmptyArray(res, err);
+      if (err) functions.returnEmptyPayload(res, err);
       else {
         const stations = [];
         records.forEach(record => {
           stations.push(record.get("station_name"));
         });
-        functions.returnPopulatedArray(res, stations);
+        functions.returnPopulatedPayload(res, stations);
       }
     });
 });
@@ -35,7 +34,7 @@ app.get("/api/history/:station", (req, res) => {
       filterByFormula: `({station_name} = '${req.params.station}')`
     })
     .firstPage((err, record) => {
-      if (err || record.length === 0) functions.returnEmptyArray(res, err);
+      if (err || record.length === 0) functions.returnEmptyPayload(res, err);
       else {
         database("History_Cases")
           .select({
@@ -53,10 +52,38 @@ app.get("/api/history/:station", (req, res) => {
               fetchNextPage();
             },
             err => {
-              if (err) functions.returnEmptyArray(res, err);
-              functions.returnPopulatedArray(res, caseTitles);
+              if (err) functions.returnEmptyPayload(res, err);
+              functions.returnPopulatedPayload(res, caseTitles);
             }
           );
+      }
+    });
+});
+
+// the airTable query doesn't actually use req.params.station for error checking or validation
+// this will cause an extra API call but it might be a nice addition when the amount of data starts to grow
+app.get("/api/history/:station/case/:id", (req, res) => {
+  database("History_Cases")
+    .select({
+      fields: ["case_title", "case_details", "mark_scheme_id"],
+      filterByFormula: `({primary_key} = '${req.params.id}')`
+    })
+    .firstPage((err, record) => {
+      if (err || record.length === 0)
+        functions.returnEmptyPayload(res, err, {});
+      else {
+        database("Mark_Scheme").find(
+          record[0].get("mark_scheme_id"),
+          (err, scheme) => {
+            if (err || record.length === 0)
+              functions.returnEmptyPayload(res, err, {});
+            functions.returnPopulatedPayload(res, {
+              title: record[0].get("case_title"),
+              details: record[0].get("case_details"),
+              mark_scheme: [...scheme.fields.mark_scheme.split(", ")]
+            });
+          }
+        );
       }
     });
 });
