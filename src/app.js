@@ -42,6 +42,24 @@ app.get("/api/history", (req, res) => {
     });
 });
 
+app.get("/api/get-station/:station", (req, res) => {
+  database("History_Stations")
+    .select({
+      fields: ["primary_key"],
+      filterByFormula: `({station_name} = '${req.params.station}')`
+    })
+    .firstPage((err, record) => {
+      if (err || record.length === 0) functions.returnEmptyArray(res, err);
+      else {
+        return record[0].get("primary-key");
+      }
+    });
+});
+
+app.get("/api/add-case/:station_id", (req, res) => {
+  console.log(req.body);
+});
+
 app.get("/api/history/:station", (req, res) => {
   const caseTitles = [];
   database("History_Stations")

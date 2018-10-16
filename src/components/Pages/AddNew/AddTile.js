@@ -17,7 +17,6 @@ export default class AddTile extends React.Component {
   };
 
   submitTile = () => {
-    console.log("case submitted");
     airtableQuery(`/api/add-station/${this.state.station}`);
   };
 
