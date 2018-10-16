@@ -1,11 +1,12 @@
 /* eslint-disable class-methods-use-this */
+/* eslint-disable no-invalid-this */
 
 import React from "react";
 import PropTypes from "prop-types";
 import functions from "../../../utils/HistoryCaseRevision.functions";
-import timeDisplay from "../../../utils/timer.function";
 import TopBar from "../../TopBar/TopBar";
 import RevisionContainer from "./RevisionContainer";
+import ResultsContainer from "./ResultsContainer";
 import dummyData from "../../../utils/dummy-data.json";
 
 // <Revision> :: manages state across all child components
@@ -18,6 +19,7 @@ export default class RevisionPage extends React.Component {
     caseDetails: null,
     tickDisplayed: false,
     caseDetailsDisplayed: true,
+    resultsDisplayed: false,
     markSchemeCompleted: 0,
     markSchemeElements: []
   };
@@ -37,11 +39,9 @@ export default class RevisionPage extends React.Component {
   }
 
   timerCount = () => {
-    this.setState(prevState => {
-      return {
-        time: prevState.time + 1
-      };
-    });
+    this.setState(prevState => ({
+      time: prevState.time + 1
+    }));
   };
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
@@ -50,10 +50,7 @@ export default class RevisionPage extends React.Component {
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
     clearInterval(this.state.intervalId);
-    console.log(
-      "CLICKED: submitCase()",
-      timeDisplay.timerFormat(this.state.time)
-    );
+    this.setState({ resultsDisplayed: !this.state.resultsDisplayed });
   };
 
   //swipe between the case details and the mark scheme
@@ -67,6 +64,26 @@ export default class RevisionPage extends React.Component {
   };
 
   render() {
+    const revisionContainer = (
+      <RevisionContainer
+        id="revision"
+        markComplete={this.markComplete}
+        swipe={this.swipe}
+        caseTitle={this.state.caseTitle}
+        caseDetails={this.state.caseDetails}
+        caseDetailsDisplayed={this.state.caseDetailsDisplayed}
+        markSchemeElements={this.state.markSchemeElements}
+        markSchemeCompleted={this.state.markSchemeCompleted}
+      />
+    );
+
+    const resultsContainer = (
+      <ResultsContainer
+        markSchemeTotal={this.state.markSchemeElements.length}
+        markSchemeCompleted={this.state.markSchemeCompleted}
+        markSchemeElements={this.state.markSchemeElements}
+      />
+    );
     return (
       <React.Fragment>
         <TopBar
@@ -76,16 +93,7 @@ export default class RevisionPage extends React.Component {
           tickDisplayed={this.state.tickDisplayed}
           time={this.state.time}
         />
-        <RevisionContainer
-          id="revision"
-          markComplete={this.markComplete}
-          swipe={this.swipe}
-          caseTitle={this.state.caseTitle}
-          caseDetails={this.state.caseDetails}
-          caseDetailsDisplayed={this.state.caseDetailsDisplayed}
-          markSchemeElements={this.state.markSchemeElements}
-          markSchemeCompleted={this.state.markSchemeCompleted}
-        />
+        {this.state.resultsDisplayed ? resultsContainer : revisionContainer}
       </React.Fragment>
     );
   }
