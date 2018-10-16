@@ -10,7 +10,7 @@ import xIcon from "../../assets/icons/back.svg";
 export default class BackButton extends React.Component {
   render() {
     return (
-      <Link to="/history/chest-pain">
+      <Link to={`/${this.props.link}`}>
         <button id="back">
           <img src={xIcon} />
         </button>
@@ -18,6 +18,10 @@ export default class BackButton extends React.Component {
     );
   }
 }
+
+BackButton.propTypes = {
+  link: PropTypes.string
+};
 
 BackButton.contextTypes = {
   router: PropTypes.object

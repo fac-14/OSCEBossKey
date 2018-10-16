@@ -10,7 +10,7 @@ export default class TopBar extends React.Component {
     return (
       <React.Fragment>
         <div id="topbar-container">
-          <BackButton />
+          <BackButton link={this.props.exam} />
           <h3 id="topbar-title">{this.props.stationName}</h3>
           <CompleteButton
             submitCase={this.props.submitCase}
@@ -23,6 +23,7 @@ export default class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
+  exam: PropTypes.string,
   submitCase: PropTypes.func,
   stationName: PropTypes.string,
   tickDisplayed: PropTypes.bool

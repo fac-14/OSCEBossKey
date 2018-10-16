@@ -33,6 +33,7 @@ export default class AddTile extends React.Component {
     return (
       <React.Fragment>
         <TopBar
+          exam={this.state.exam}
           submitCase={this.submitTile}
           stationName={"add new"}
           tickDisplayed={true}
