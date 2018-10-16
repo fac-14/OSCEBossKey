@@ -6,11 +6,9 @@ export default class NewTileTextInput extends React.Component {
     value: "station_name"
   };
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  // post request to database
-  // {`/api/${this.props.exam}`
-  // }
+  handleSubmit(event) {
+    event.preventDefault();
+  }
 
   handleChange = event => {
     this.props.userTypes(event.target.value);
