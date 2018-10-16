@@ -50,7 +50,10 @@ export default class RevisionPage extends React.Component {
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
     clearInterval(this.state.intervalId);
-    this.setState({ resultsDisplayed: !this.state.resultsDisplayed });
+    this.setState({
+      tickDisplayed: !this.state.tickDisplayed,
+      resultsDisplayed: !this.state.resultsDisplayed
+    });
   };
 
   //swipe between the case details and the mark scheme

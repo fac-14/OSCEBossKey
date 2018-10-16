@@ -16,10 +16,12 @@ export default class TopBar extends React.Component {
             {this.props.stationName}
             <span>{timeDisplay.timerFormat(this.props.time)}</span>
           </h3>
-          <CompleteButton
-            submitCase={this.props.submitCase}
-            tickDisplayed={this.props.tickDisplayed}
-          />
+          {this.props.tickDisplayed && (
+            <CompleteButton
+              submitCase={this.props.submitCase}
+              tickDisplayed={this.props.tickDisplayed}
+            />
+          )}
         </div>
       </React.Fragment>
     );
