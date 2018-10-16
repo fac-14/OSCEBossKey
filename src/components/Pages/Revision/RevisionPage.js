@@ -3,6 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import functions from "../../../utils/HistoryCaseRevision.functions";
+import timeDisplay from "../../../utils/timer.function";
 import TopBar from "../../TopBar/TopBar";
 import RevisionContainer from "./RevisionContainer";
 import dummyData from "../../../utils/dummy-data.json";
@@ -36,7 +37,6 @@ export default class RevisionPage extends React.Component {
   }
 
   timerCount = () => {
-    console.log(this.state.time);
     this.setState(prevState => {
       return {
         time: prevState.time + 1
@@ -50,7 +50,10 @@ export default class RevisionPage extends React.Component {
     * render feedback page passing this.state.markSchemeCompleted as a prop
     */
     clearInterval(this.state.intervalId);
-    console.log("CLICKED: submitCase()");
+    console.log(
+      "CLICKED: submitCase()",
+      timeDisplay.timerFormat(this.state.time)
+    );
   };
 
   //swipe between the case details and the mark scheme
