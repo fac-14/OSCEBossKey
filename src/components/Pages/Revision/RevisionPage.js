@@ -74,6 +74,7 @@ export default class RevisionPage extends React.Component {
           stationName={this.state.stationName}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
+          time={this.state.time}
         />
         <RevisionContainer
           id="revision"
