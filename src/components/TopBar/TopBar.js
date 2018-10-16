@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import BackButton from "./BackButton";
 import CompleteButton from "./CompleteButton";
-import timeDisplay from "../../utils/timer.function";
+import timerFormat from "../../utils/timerFormat";
 
 export default class TopBar extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export default class TopBar extends React.Component {
           <BackButton />
           <h3 id="topbar-title">
             {this.props.stationName}
-            <span>{timeDisplay.timerFormat(this.props.time)}</span>
+            <span>{timerFormat(this.props.time)}</span>
           </h3>
           {this.props.tickDisplayed && (
             <CompleteButton
