@@ -7,6 +7,7 @@ import airtableQuery from "../../../utils/fetch";
 
 import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
+import InstructionText from "./InstructionText";
 
 export default class NewCase extends React.Component {
   state = {
@@ -36,6 +37,10 @@ export default class NewCase extends React.Component {
     this.setState({ caseTitle: input });
   };
 
+  caseDetailsChange = event => {
+    this.setState({ caseDetails: event.target.value });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -49,6 +54,12 @@ export default class NewCase extends React.Component {
           <NewTileInput
             instructionText={"Case title"}
             userTypes={this.userTypes}
+          />
+          <InstructionText text={"Case details"} />
+          <textarea
+            onChange={this.caseDetailsChange}
+            placeholder="Add patient details"
+            max-length="5000"
           />
         </div>
       </React.Fragment>
