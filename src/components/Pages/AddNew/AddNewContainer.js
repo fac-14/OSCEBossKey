@@ -17,6 +17,7 @@ export default class AddNewContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    event.target["new-mark-scheme-element"].value = "";
     this.props.newMarkSchemeElement(this.state.newMarkSchemeElement);
   };
 
