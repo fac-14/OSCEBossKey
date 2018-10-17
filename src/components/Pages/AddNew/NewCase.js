@@ -75,6 +75,13 @@ export default class NewCase extends React.Component {
   };
 
   newMarkSchemeElement = input => {
+    fetch("/api/add-mark-scheme-element", {
+      method: "post",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      body: `element=${input}`
+    });
     this.setState(prevState => {
       const newMarkSchemeElements = prevState.markSchemeElements.slice();
       newMarkSchemeElements.push({

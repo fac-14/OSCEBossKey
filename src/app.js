@@ -130,6 +130,21 @@ app.get("/api/history/:station", (req, res) => {
     });
 });
 
+app.post("/api/add-mark-scheme-element", (req, res) => {
+  database("History_Mark_Scheme_Elements").create(
+    {
+      mark_scheme_elements: req.body.element
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
+});
+
 // the airTable query doesn't actually use req.params.station for error checking or validation
 // this will cause an extra API call but it might be a nice addition when the amount of data starts to grow
 app.get("/api/history/:station/case/:id", (req, res) => {
