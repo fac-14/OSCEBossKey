@@ -13,11 +13,24 @@ import airtableQuery from "../../utils/fetch";
 import removeHyphens from "../../utils/removeHyphens";
 
 export class ExtrasPage extends React.Component {
+  state = {
+    stations: []
+  };
+
+  componentDidMount() {
+    // two requests so that it fetches the new data from a recent POST request
+    // this is terrible and I'm sorry
+    airtableQuery("/api/extras/").then(
+      airtableQuery("/api/extras/").then(res => {
+        this.setState(() => ({ stations: res.payload }));
+      })
+    );
+  }
   render() {
-    const stationTiles = Object.keys(this.state.stations).map((tile, index) => (
-      <Link key={index} to={`/history/${tile}`}>
+    const stationTiles = this.state.stations.map((tile, index) => (
+      <Link key={index} to={`/extras/${tile}`}>
         <div className="tile" key={index}>
-          {tile}
+          {removeHyphens(tile)}
         </div>
       </Link>
     ));
