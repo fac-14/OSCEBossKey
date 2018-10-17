@@ -65,25 +65,18 @@ app.get("/api/history/:station", (req, res) => {
 app.get("/api/history/:station/case/:id", (req, res) => {
   database("History_Cases")
     .select({
-      fields: ["case_title", "case_details", "mark_scheme_id"],
+      fields: ["case_title", "case_details", "mark_scheme"],
       filterByFormula: `({primary_key} = '${req.params.id}')`
     })
     .firstPage((err, record) => {
       if (err || record.length === 0)
         functions.returnEmptyPayload(res, err, {});
       else {
-        database("Mark_Scheme").find(
-          record[0].get("mark_scheme_id"),
-          (err, scheme) => {
-            if (err || record.length === 0)
-              functions.returnEmptyPayload(res, err, {});
-            functions.returnPopulatedPayload(res, {
-              title: record[0].get("case_title"),
-              details: record[0].get("case_details"),
-              mark_scheme: [...scheme.fields.mark_scheme.split(", ")]
-            });
-          }
-        );
+        functions.returnPopulatedPayload(res, {
+          title: record[0].get("case_title"),
+          details: record[0].get("case_details"),
+          mark_scheme: [...record[0].get("mark_scheme").split(", ")]
+        });
       }
     });
 });

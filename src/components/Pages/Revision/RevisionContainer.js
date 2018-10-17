@@ -58,5 +58,6 @@ RevisionContainer.propTypes = {
   swipe: PropTypes.func,
   caseDetailsDisplayed: PropTypes.bool,
   caseDetails: PropTypes.string,
+  caseTitle: PropTypes.string,
   markSchemeElements: PropTypes.arrayOf(PropTypes.object)
 };

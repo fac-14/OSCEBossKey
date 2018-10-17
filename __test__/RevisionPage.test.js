@@ -10,13 +10,13 @@ fetchMock.mock("end:/api/history/chest-pain/case/1", {
     title: "32-year-old man has panic attack after mocking fetch() in Node",
     details:
       "poor 32-year-old man is very thankful for fetch-mock and node-fetch packages",
-    mark_scheme: ["one", "two", "three"]
+    mark_scheme: ["Introduces themselves", "Eats", "Shoots", "Leaves"]
   }
 });
 
 // wrapping in new <Router> tags is required for <Revision> component to render nav (which has <Link> elements)
 // overwriting React Router match prop with necessary information for test
-const { getByTestId } = render(
+const { getByText, getByTestId } = render(
   <Router>
     <Revision match={{ params: { station: "chest-pain", caseid: "1" } }} />
   </Router>
@@ -36,4 +36,10 @@ describe("Testing Body component", () => {
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
+  test("when more than one element of the mark scheme is completed, the submission tick should render", () => {
+    fireEvent.click(getByText("Introduces themselves"));
+    fireEvent.click(getByTestId("complete"));
+    expect(getByText("Results")).toBeTruthy();
+  });
+  // test for strikethrough mark scheme elements
 });
