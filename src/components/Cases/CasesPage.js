@@ -37,9 +37,11 @@ class CasesPage extends React.Component {
     ));
     return (
       <React.Fragment>
-        <Title stationName={this.state.station} />
+        <Title
+          stationName={this.state.station && removeHyphens(this.state.station)}
+        />
         <div id="banner-wrapper">
-          <AddNew station={this.state.station} />
+          <AddNew exam="history" station={this.state.station} />
           {caseBanners}
         </div>
         <Navbar />
