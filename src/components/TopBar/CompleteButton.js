@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 export default class CompleteButton extends React.Component {
   render() {
     return (
-      <Link to={`/${this.props.exam}`}>
+      <React.Fragment>
+        {this.props.exam && `<Link to=${this.props.exam}>`}
         <button
           id="complete"
           data-testid="complete"
@@ -19,7 +20,8 @@ export default class CompleteButton extends React.Component {
         >
           <img src={tickIcon} />
         </button>
-      </Link>
+        {this.props.exam && `</Link>`}
+      </React.Fragment>
     );
   }
 }

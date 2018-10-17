@@ -36,6 +36,8 @@ describe("Testing Body component", () => {
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
+  // This passes even when the CompleteButton component is hijacked with a React Router link - why?
+  // Can React Testing Library interpret <Link /> components?
   test("when more than one element of the mark scheme is completed, the submission tick should render", () => {
     fireEvent.click(getByText("Introduces themselves"));
     fireEvent.click(getByTestId("complete"));

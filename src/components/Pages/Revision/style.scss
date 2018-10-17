@@ -63,7 +63,17 @@
   color: $peter-green;
 }
 
+#results-h3 {
+  font-weight: 700;
+  margin: 8px 0;
+  text-transform: uppercase;
+}
+
 #revision #revision-list .result-list-item {
   display: flex;
   justify-content: center;
+}
+
+.timer-long {
+  color: $peter-red;
 }

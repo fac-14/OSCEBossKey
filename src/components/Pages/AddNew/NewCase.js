@@ -45,7 +45,7 @@ export default class NewCase extends React.Component {
     return (
       <React.Fragment>
         <TopBar
-          exam={this.props.match.params.exam}
+          backLink={this.props.match.params.exam}
           stationName={this.props.match.params.station}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
