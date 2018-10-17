@@ -52,7 +52,6 @@ app.get("/api/get-station/:station", (req, res) => {
     })
     .firstPage((err, record) => {
       if (err || record.length === 0) {
-        console.log("sending back empty array due to error/no record");
         return functions.returnEmptyPayload(res, err);
       }
       return functions.returnPopulatedPayload(res, record[0].id);
@@ -60,7 +59,6 @@ app.get("/api/get-station/:station", (req, res) => {
 });
 
 app.get("/api/get-mark-scheme-elements", (req, res) => {
-  console.log("this is the server");
   const markSchemeArray = [];
   database("History_Mark_Scheme_Elements")
     .select({
@@ -71,14 +69,10 @@ app.get("/api/get-mark-scheme-elements", (req, res) => {
         records.forEach(record =>
           markSchemeArray.push(record.get("mark_scheme_elements"))
         );
-        console.log("markscheme elements fetched:", markSchemeArray);
         fetchNextPage();
       },
       err => {
-        if (err) {
-          console.error(err);
-          return;
-        }
+        if (err) return console.error(err);
         return functions.returnPopulatedPayload(res, markSchemeArray);
       }
     );
