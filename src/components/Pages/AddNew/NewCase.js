@@ -15,8 +15,7 @@ export default class NewCase extends React.Component {
     caseTitle: "test case title",
     caseDetails: "test case details",
     caseDetailsDisplayed: true,
-    markSchemeElements: [],
-    markSchemeCompleted: 0
+    markSchemeElements: []
   };
 
   // write query to get mark scheme element
@@ -53,8 +52,18 @@ export default class NewCase extends React.Component {
   }
 
   // write a function to add to list
-  markComplete = () => {
-    console.log("markComplete() clicked");
+  markComplete = id => {
+    this.setState(prevState => {
+      // make a copy of the previous state
+      const markSchemeElements = prevState.markSchemeElements.map(element => ({
+        text: element.text,
+        added: element.added
+      }));
+      // in that copy, change added => true/false for the correct element
+      markSchemeElements[id].added = !markSchemeElements[id].added;
+      // return the copied array as the new state
+      return { markSchemeElements };
+    });
   };
 
   //swipe between the case details and the mark scheme
