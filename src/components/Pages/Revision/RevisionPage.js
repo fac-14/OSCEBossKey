@@ -7,7 +7,7 @@ import functions from "../../../utils/RevisionPage.functions";
 import TopBar from "../../TopBar/TopBar";
 import RevisionContainer from "./RevisionContainer";
 import ResultsContainer from "./ResultsContainer";
-import dummyData from "../../../utils/dummy-data.json";
+import airtableQuery from "../../../utils/fetch";
 
 // <Revision> :: manages state across all child components
 export default class RevisionPage extends React.Component {
@@ -24,22 +24,26 @@ export default class RevisionPage extends React.Component {
     markSchemeElements: []
   };
 
-  // query data store (async) to retrieve :caseid
+  // when component is mounted, run (async) local API query and update state when response arrives
   // update state & begin timer when retrieved
   componentDidMount() {
     const { station, caseid } = this.props.match.params;
-    const revisionList = dummyData.history[station][caseid]["mark-scheme"].map(
-      listElement => ({ text: listElement, completed: false })
-    );
-    this.setState({
-      stationName: station,
-      caseTitle: dummyData.history[station][caseid].title,
-      caseDetails: dummyData.history[station][caseid].details,
-      markSchemeElements: revisionList,
-      intervalId: setInterval(
-        () => this.setState({ time: this.state.time + 1 }),
-        1000
-      )
+    airtableQuery(`/api/history/${station}/case/${caseid}`).then(res => {
+      const { title, details, mark_scheme } = res.payload;
+      const revisionList = mark_scheme.map(listElement => ({
+        text: listElement,
+        completed: false
+      }));
+      this.setState({
+        stationName: station,
+        caseTitle: title,
+        caseDetails: details,
+        markSchemeElements: revisionList,
+        intervalId: setInterval(
+          () => this.setState({ time: this.state.time + 1 }),
+          1000
+        )
+      });
     });
   }
 
