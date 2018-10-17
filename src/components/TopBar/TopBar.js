@@ -14,7 +14,7 @@ export default class TopBar extends React.Component {
       <React.Fragment>
         <div id="topbar-container">
           <BackButton link={this.props.exam} />
-          <h3 id="topbar-title">{removeHyphens(this.props.stationName)}</h3>
+          <h3 id="topbar-title">{this.props.stationName}</h3>
           <h3 id="topbar-timer">{timerFormat(this.props.time)}</h3>
           {this.props.tickDisplayed && (
             <CompleteButton

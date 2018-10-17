@@ -3,6 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import tickIcon from "../../assets/icons/tick_white.svg";
+import { Link } from "react-router-dom";
 
 export default class CompleteButton extends React.Component {
   render() {
