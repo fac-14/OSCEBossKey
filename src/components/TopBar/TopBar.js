@@ -13,7 +13,7 @@ export default class TopBar extends React.Component {
     return (
       <React.Fragment>
         <div id="topbar-container">
-          <BackButton link={this.props.exam} />
+          <BackButton link={this.props.backLink} />
           <h3 id="topbar-title">{this.props.stationName}</h3>
           <h3 id="topbar-timer">{timerFormat(this.props.time)}</h3>
           {this.props.tickDisplayed && (
@@ -30,7 +30,7 @@ export default class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
-  exam: PropTypes.string,
+  backLink: PropTypes.string,
   submitCase: PropTypes.func,
   stationName: PropTypes.string,
   tickDisplayed: PropTypes.bool,

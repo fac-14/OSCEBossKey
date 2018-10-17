@@ -90,10 +90,12 @@ export default class RevisionPage extends React.Component {
         markSchemeElements={this.state.markSchemeElements}
       />
     );
+    const { exam, station } = this.props.match.params;
     return (
       <React.Fragment>
         <TopBar
           id="topbar"
+          backLink={`${exam}/${station}`}
           stationName={this.state.stationName}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
