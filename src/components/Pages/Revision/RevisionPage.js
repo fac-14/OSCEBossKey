@@ -88,6 +88,7 @@ export default class RevisionPage extends React.Component {
         markSchemeTotal={this.state.markSchemeElements.length}
         markSchemeCompleted={this.state.markSchemeCompleted}
         markSchemeElements={this.state.markSchemeElements}
+        caseTitle={this.state.caseTitle}
       />
     );
     const { exam, station } = this.props.match.params;

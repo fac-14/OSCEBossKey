@@ -8,7 +8,8 @@ export default class ResultsContainer extends React.Component {
   render() {
     return (
       <div id="revision">
-        <RevisionTitle caseTitle="Results" />
+        <RevisionTitle caseTitle={this.props.caseTitle} />
+        <h3 id="results-h3">Results</h3>
         <div id="revision-container">
           <ul id="revision-list">
             <li className="result-list-item" id="score-percent">
@@ -32,5 +33,6 @@ export default class ResultsContainer extends React.Component {
 ResultsContainer.propTypes = {
   markSchemeCompleted: PropTypes.number,
   markSchemeTotal: PropTypes.number,
-  markSchemeElements: PropTypes.arrayOf(PropTypes.object)
+  markSchemeElements: PropTypes.arrayOf(PropTypes.object),
+  caseTitle: PropTypes.string
 };
