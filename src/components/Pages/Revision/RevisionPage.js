@@ -3,7 +3,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import functions from "../../../utils/HistoryCaseRevision.functions";
+import functions from "../../../utils/RevisionPage.functions";
 import TopBar from "../../TopBar/TopBar";
 import RevisionContainer from "./RevisionContainer";
 import ResultsContainer from "./ResultsContainer";
@@ -24,6 +24,8 @@ export default class RevisionPage extends React.Component {
     markSchemeElements: []
   };
 
+  // query data store (async) to retrieve :caseid
+  // update state & begin timer when retrieved
   componentDidMount() {
     const { station, caseid } = this.props.match.params;
     const revisionList = dummyData.history[station][caseid]["mark-scheme"].map(
@@ -34,21 +36,16 @@ export default class RevisionPage extends React.Component {
       caseTitle: dummyData.history[station][caseid].title,
       caseDetails: dummyData.history[station][caseid].details,
       markSchemeElements: revisionList,
-      intervalId: setInterval(this.timerCount, 1000)
+      intervalId: setInterval(
+        () => this.setState({ time: this.state.time + 1 }),
+        1000
+      )
     });
   }
 
-  timerCount = () => {
-    this.setState(prevState => ({
-      time: prevState.time + 1
-    }));
-  };
   //log marks and progress user to feedback screen
   //todo: how do we link this into database/data store?
   submitCase = () => {
-    /*
-    * render feedback page passing this.state.markSchemeCompleted as a prop
-    */
     clearInterval(this.state.intervalId);
     this.setState({
       tickDisplayed: !this.state.tickDisplayed,
@@ -66,6 +63,8 @@ export default class RevisionPage extends React.Component {
     this.setState(prevState => functions.markComplete(id, prevState));
   };
 
+  // render resultsContainer if user has submitted, revisionContainer if not
+  // note: revision container also has two displays of its own
   render() {
     const revisionContainer = (
       <RevisionContainer
