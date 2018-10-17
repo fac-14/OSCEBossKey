@@ -7,6 +7,14 @@ import timerFormat from "../../../utils/timerFormat";
 
 export default class ResultsContainer extends React.Component {
   render() {
+    const missed = [...this.props.markSchemeElements]
+      .filter(mark => !mark.completed)
+      .map((mark, index) => (
+        <li key={index} className="result-list-item">
+          {mark.text}
+        </li>
+      ));
+    console.log(missed);
     return (
       <div id="revision">
         <RevisionTitle caseTitle={this.props.caseTitle} />
@@ -26,6 +34,8 @@ export default class ResultsContainer extends React.Component {
               {timerFormat(this.props.timeElapsed)}.
             </li>
           </ul>
+          <h3 id="results-h3">You missed {missed.length} items</h3>
+          <ul id="revision-list">{missed}</ul>
         </div>
       </div>
     );
