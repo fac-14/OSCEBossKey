@@ -1,4 +1,4 @@
-import functions from "../src/utils/HistoryCaseRevision.functions";
+import functions from "../src/utils/RevisionPage.functions";
 
 const state = {
   stationName: "null",

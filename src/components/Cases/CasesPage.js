@@ -9,6 +9,8 @@ import Title from "./Title";
 import AddNew from "../Pages/AddNew/AddNewBanner";
 import Navbar from "../Navbar/Navbar";
 
+import removeHyphens from "../../utils/removeHyphens";
+
 import airtableQuery from "../../utils/fetch";
 
 class CasesPage extends React.Component {
@@ -35,7 +37,7 @@ class CasesPage extends React.Component {
     ));
     return (
       <React.Fragment>
-        <Title stationName={this.state.station} />
+        <Title stationName={removeHyphens(this.state.station)} />
         <div id="banner-wrapper">
           <AddNew station={this.state.station} />
           {caseBanners}

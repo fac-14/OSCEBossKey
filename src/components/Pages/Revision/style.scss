@@ -56,3 +56,14 @@
   align-items: center;
   background-color: white;
 }
+
+#score-percent {
+  font-size: 28pt;
+  font-weight: 700;
+  color: $peter-green;
+}
+
+#revision #revision-list .result-list-item {
+  display: flex;
+  justify-content: center;
+}
