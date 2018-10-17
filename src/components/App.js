@@ -13,7 +13,8 @@ import History from "./Pages/History";
 import Examinations from "./Pages/Examinations";
 import Extras from "./Pages/Extras";
 import Statistics from "./Pages/Statistics";
-import NewCase from "./Cases/NewCase";
+import NewCase from "./Pages/AddNew/NewCase";
+import AddTile from "./Pages/AddNew/AddTile";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
 // we should probably add a 404 component to display when the user hits a route for which there is no component
@@ -26,18 +27,14 @@ const App = () => (
       <Route strict exact path="/extras" component={Extras} />
       <Route strict exact path="/stats" component={Statistics} />
       <Route strict exact path="/history/:station" component={Cases} />
+      <Route strict exact path="/:exam/:station/add-case" component={NewCase} />
       <Route
         strict
         exact
-        path="/history/:station/add-case"
-        component={NewCase}
-      />
-      <Route
-        strict
-        exact
-        path="/history/:station/case/:caseid"
+        path="/:exam/:station/case/:caseid"
         component={Revision}
       />
+      <Route strict exact path="/:exam/add/station" component={AddTile} />
     </div>
   </Router>
 );

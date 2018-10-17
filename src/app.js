@@ -11,6 +11,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
+app.get("/api/add-station/:station", (req, res) => {
+  database("History_Stations").create(
+    {
+      station_name: req.params.station
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
+});
+
 app.get("/api/history", (req, res) => {
   database("History_Stations")
     .select()
@@ -24,6 +39,42 @@ app.get("/api/history", (req, res) => {
         functions.returnPopulatedPayload(res, stations);
       }
     });
+});
+
+app.get("/api/get-station/:station", (req, res) => {
+  database("History_Stations")
+    .select({
+      fields: ["primary_key"],
+      filterByFormula: `({station_name} = '${req.params.station.replace(
+        /-/g,
+        " "
+      )}')`
+    })
+    .firstPage((err, record) => {
+      if (err || record.length === 0) {
+        console.log("sending back empty array due to error/no record");
+        return functions.returnEmptyArray(res, err);
+      }
+      return functions.returnPopulatedArray(res, record[0].id);
+    });
+});
+
+app.post("/api/add-case/:station", (req, res) => {
+  database("History_Cases").create(
+    {
+      station_id: [req.params.station],
+      case_title: req.body.title,
+      case_details: req.body.details,
+      mark_scheme: req.body.markscheme
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
 });
 
 app.get("/api/history/:station", (req, res) => {

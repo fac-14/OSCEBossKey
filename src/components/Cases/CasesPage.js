@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Title from "./Title";
-import AddNew from "./AddNew";
+import AddNew from "../Pages/AddNew/AddNewBanner";
 import Navbar from "../Navbar/Navbar";
 
 import removeHyphens from "../../utils/removeHyphens";
@@ -37,7 +37,7 @@ class CasesPage extends React.Component {
     ));
     return (
       <React.Fragment>
-        <Title stationName={removeHyphens(this.state.station)} />
+        <Title stationName={this.state.station} />
         <div id="banner-wrapper">
           <AddNew station={this.state.station} />
           {caseBanners}

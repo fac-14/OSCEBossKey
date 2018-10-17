@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import AddNew from "../Stations/AddNew";
+import AddNew from "./AddNew/AddNewTile";
 import Title from "../Stations/Title";
 import Navbar from "../Navbar/Navbar";
 
@@ -18,9 +18,13 @@ class HistoryPage extends React.Component {
   };
 
   componentDidMount() {
-    airtableQuery("/api/history/").then(res => {
-      this.setState(() => ({ stations: res.payload }));
-    });
+    // two requests so that it fetches the new data from a recent POST request
+    // this is terrible and I'm sorry
+    airtableQuery("/api/history/").then(
+      airtableQuery("/api/history/").then(res => {
+        this.setState(() => ({ stations: res.payload }));
+      })
+    );
   }
 
   render() {
