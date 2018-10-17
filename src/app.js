@@ -53,9 +53,9 @@ app.get("/api/get-station/:station", (req, res) => {
     .firstPage((err, record) => {
       if (err || record.length === 0) {
         console.log("sending back empty array due to error/no record");
-        return functions.returnEmptyArray(res, err);
+        return functions.returnEmptyPayload(res, err);
       }
-      return functions.returnPopulatedArray(res, record[0].id);
+      return functions.returnPopulatedPayload(res, record[0].id);
     });
 });
 

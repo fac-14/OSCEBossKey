@@ -11,7 +11,7 @@ import functions from "../../../utils/RevisionPage.functions";
 
 export default class NewCase extends React.Component {
   state = {
-    tickDisplayed: false,
+    tickDisplayed: true,
     caseTitle: "test case title",
     caseDetails: "test case details",
     caseDetailsDisplayed: true,
@@ -21,6 +21,10 @@ export default class NewCase extends React.Component {
   // write query to get mark scheme element
 
   submitCase = () => {
+    const markScheme = [];
+    this.state.markSchemeElements.forEach(element => {
+      markScheme.push(element.text);
+    });
     airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
       res => {
         fetch(`/api/add-case/${res.payload}`, {
@@ -30,7 +34,7 @@ export default class NewCase extends React.Component {
           },
           body: `title=${this.state.caseTitle}&details=${
             this.state.caseDetails
-          }&markscheme=${this.state.markScheme.join(", ")}`
+          }&markscheme=${markScheme.join(", ")}`
         });
       }
     );
