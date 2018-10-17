@@ -9,18 +9,24 @@ export default class CompleteButton extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.exam && `<Link to=${this.props.exam}>`}
-        <button
-          id="complete"
-          data-testid="complete"
-          onClick={() => this.props.submitCase()}
-          className={
-            this.props.tickDisplayed ? `tick--displayed` : `tick--not-displayed`
+        <Link
+          to={
+            this.props.exam ? `/${this.props.exam}/${this.props.station}` : ""
           }
         >
-          <img src={tickIcon} />
-        </button>
-        {this.props.exam && `</Link>`}
+          <button
+            id="complete"
+            data-testid="complete"
+            onClick={() => this.props.submitCase()}
+            className={
+              this.props.tickDisplayed
+                ? `tick--displayed`
+                : `tick--not-displayed`
+            }
+          >
+            <img src={tickIcon} />
+          </button>
+        </Link>
       </React.Fragment>
     );
   }
@@ -28,6 +34,7 @@ export default class CompleteButton extends React.Component {
 
 CompleteButton.propTypes = {
   exam: PropTypes.string,
+  station: PropTypes.string,
   submitCase: PropTypes.func,
   tickDisplayed: PropTypes.bool
 };

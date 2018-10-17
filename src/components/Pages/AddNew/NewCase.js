@@ -25,20 +25,19 @@ export default class NewCase extends React.Component {
     this.state.markSchemeElements.forEach(element => {
       if (element.added) markScheme.push(element.text);
     });
-    console.log(markScheme);
-    airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
-      res => {
-        fetch(`/api/add-case/${res.payload}`, {
-          method: "post",
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-          },
-          body: `title=${this.state.caseTitle}&details=${
-            this.state.caseDetails
-          }&markscheme=${markScheme.join(", ")}`
-        });
-      }
-    );
+    return airtableQuery(
+      `/api/get-station/${this.props.match.params.station}`
+    ).then(res => {
+      fetch(`/api/add-case/${res.payload}`, {
+        method: "post",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: `title=${this.state.caseTitle}&details=${
+          this.state.caseDetails
+        }&markscheme=${markScheme.join(", ")}`
+      });
+    });
   };
 
   componentDidMount() {
@@ -107,8 +106,10 @@ export default class NewCase extends React.Component {
     return (
       <React.Fragment>
         <TopBar
+          timer={false}
           backLink={this.props.match.params.exam}
           stationName={this.props.match.params.station}
+          station={this.props.match.params.station}
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
