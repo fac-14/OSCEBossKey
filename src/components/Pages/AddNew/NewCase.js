@@ -92,19 +92,21 @@ export default class NewCase extends React.Component {
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
-        <NewTileInput
-          instructionText={"Case title"}
-          userTypes={this.userTypes}
-        />
-        <AddNewContainer
-          id="add-new-container"
-          markComplete={this.markComplete}
-          swipe={this.swipe}
-          caseDetails={this.state.caseDetails}
-          caseDetailsDisplayed={this.state.caseDetailsDisplayed}
-          markSchemeElements={this.state.markSchemeElements}
-          markSchemeCompleted={this.state.markSchemeCompleted}
-        />
+        <div id="add-new-wrapper">
+          <NewTileInput
+            instructionText={"Case title"}
+            userTypes={this.userTypes}
+          />
+          <AddNewContainer
+            id="add-new-container"
+            markComplete={this.markComplete}
+            swipe={this.swipe}
+            caseDetails={this.state.caseDetails}
+            caseDetailsDisplayed={this.state.caseDetailsDisplayed}
+            markSchemeElements={this.state.markSchemeElements}
+            markSchemeCompleted={this.state.markSchemeCompleted}
+          />
+        </div>
       </React.Fragment>
     );
   }

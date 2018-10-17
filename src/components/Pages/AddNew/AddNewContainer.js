@@ -20,7 +20,7 @@ export default class AddNewContainer extends React.Component {
       )
     );
     return (
-      <div id="add-new-wrapper">
+      <div>
         <div id="swipe-balls">
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
