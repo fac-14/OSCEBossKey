@@ -14,7 +14,6 @@ export default class ResultsContainer extends React.Component {
           {mark.text}
         </li>
       ));
-    console.log(missed);
     return (
       <div id="revision">
         <RevisionTitle caseTitle={this.props.caseTitle} />
