@@ -54,7 +54,7 @@ export default class AddNewContainer extends React.Component {
               <div id="add-new-text" data-testid="new-case-details">
                 <InstructionText text={"Case details"} />
                 <textarea
-                  onChange={this.caseDetailsChange}
+                  onChange={this.props.caseDetailsChange}
                   placeholder="Add patient details"
                   max-length="5000"
                 />
@@ -86,6 +86,7 @@ export default class AddNewContainer extends React.Component {
 AddNewContainer.propTypes = {
   markComplete: PropTypes.func,
   swipe: PropTypes.func,
+  caseDetailsChange: PropTypes.func,
   caseDetailsDisplayed: PropTypes.bool,
   caseDetails: PropTypes.string,
   caseTitle: PropTypes.string,

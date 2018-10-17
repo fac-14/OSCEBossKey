@@ -11,9 +11,9 @@ import functions from "../../../utils/RevisionPage.functions";
 
 export default class NewCase extends React.Component {
   state = {
-    tickDisplayed: true,
-    caseTitle: "test case title",
-    caseDetails: "test case details",
+    tickDisplayed: false,
+    caseTitle: "",
+    caseDetails: "",
     caseDetailsDisplayed: true,
     markSchemeElements: []
   };
@@ -23,8 +23,9 @@ export default class NewCase extends React.Component {
   submitCase = () => {
     const markScheme = [];
     this.state.markSchemeElements.forEach(element => {
-      markScheme.push(element.text);
+      if (element.added) markScheme.push(element.text);
     });
+    console.log(markScheme);
     airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
       res => {
         fetch(`/api/add-case/${res.payload}`, {
@@ -62,7 +63,11 @@ export default class NewCase extends React.Component {
         added: element.added
       }));
       markSchemeElements[id].added = !markSchemeElements[id].added;
-      return { markSchemeElements };
+      return {
+        tickDisplayed: !!markSchemeElements.filter(element => element.added)
+          .length,
+        markSchemeElements
+      };
     });
   };
 
@@ -117,6 +122,7 @@ export default class NewCase extends React.Component {
             markComplete={this.markComplete}
             swipe={this.swipe}
             caseDetails={this.state.caseDetails}
+            caseDetailsChange={this.caseDetailsChange}
             caseDetailsDisplayed={this.state.caseDetailsDisplayed}
             markSchemeElements={this.state.markSchemeElements}
             markSchemeCompleted={this.state.markSchemeCompleted}
