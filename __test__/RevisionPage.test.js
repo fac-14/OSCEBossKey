@@ -10,7 +10,7 @@ fetchMock.mock("end:/api/history/chest-pain/case/1", {
     title: "32-year-old man has panic attack after mocking fetch() in Node",
     details:
       "poor 32-year-old man is very thankful for fetch-mock and node-fetch packages",
-    mark_scheme: ["one", "two", "three"]
+    mark_scheme: ["Introduces themselves", "Eats", "Shoots", "Leaves"]
   }
 });
 
