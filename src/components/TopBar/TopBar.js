@@ -18,7 +18,12 @@ export default class TopBar extends React.Component {
             {this.props.stationName && removeHyphens(this.props.stationName)}
           </h3>
           {this.props.timer && (
-            <h3 id="topbar-timer">{timerFormat(this.props.time)}</h3>
+            <h3
+              className={this.props.time >= 600 ? `timer-long` : ``}
+              id="topbar-timer"
+            >
+              {timerFormat(this.props.time)}
+            </h3>
           )}
           {this.props.tickDisplayed && (
             <CompleteButton

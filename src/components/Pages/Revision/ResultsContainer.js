@@ -3,6 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import RevisionTitle from "./RevisionTitle";
+import timerFormat from "../../../utils/timerFormat";
 
 export default class ResultsContainer extends React.Component {
   render() {
@@ -21,7 +22,8 @@ export default class ResultsContainer extends React.Component {
             </li>
             <li className="result-list-item">
               You performed {this.props.markSchemeCompleted} of{" "}
-              {this.props.markSchemeTotal} tasks.
+              {this.props.markSchemeTotal} tasks in{" "}
+              {timerFormat(this.props.timeElapsed)}.
             </li>
           </ul>
         </div>
@@ -34,5 +36,6 @@ ResultsContainer.propTypes = {
   markSchemeCompleted: PropTypes.number,
   markSchemeTotal: PropTypes.number,
   markSchemeElements: PropTypes.arrayOf(PropTypes.object),
-  caseTitle: PropTypes.string
+  caseTitle: PropTypes.string,
+  timeElapsed: PropTypes.number
 };
