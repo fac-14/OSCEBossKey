@@ -59,6 +59,31 @@ app.get("/api/get-station/:station", (req, res) => {
     });
 });
 
+app.get("/api/get-mark-scheme-elements", (req, res) => {
+  console.log("this is the server");
+  const markSchemeArray = [];
+  database("History_Mark_Scheme_Elements")
+    .select({
+      fields: ["mark_scheme_elements"]
+    })
+    .eachPage(
+      (records, fetchNextPage) => {
+        records.forEach(record =>
+          markSchemeArray.push(record.get("mark_scheme_elements"))
+        );
+        console.log("markscheme elements fetched:", markSchemeArray);
+        fetchNextPage();
+      },
+      err => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        return functions.returnPopulatedPayload(res, markSchemeArray);
+      }
+    );
+});
+
 app.post("/api/add-case/:station", (req, res) => {
   database("History_Cases").create(
     {

@@ -4,18 +4,22 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import airtableQuery from "../../../utils/fetch";
-
-import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
-import InstructionText from "./InstructionText";
+import AddNewContainer from "./AddNewContainer";
+import NewTileInput from "./NewTileInput";
+import functions from "../../../utils/RevisionPage.functions";
 
 export default class NewCase extends React.Component {
   state = {
     tickDisplayed: false,
     caseTitle: "test case title",
     caseDetails: "test case details",
-    markScheme: ["test", "case", "mark", "scheme"]
+    caseDetailsDisplayed: true,
+    markSchemeElements: [],
+    markSchemeCompleted: 0
   };
+
+  // write query to get mark scheme element
 
   submitCase = () => {
     airtableQuery(`/api/get-station/${this.props.match.params.station}`).then(
@@ -31,6 +35,31 @@ export default class NewCase extends React.Component {
         });
       }
     );
+  };
+
+  componentDidMount() {
+    airtableQuery("/api/get-mark-scheme-elements").then(res => {
+      const markSchemeElements = [];
+      res.payload.forEach(element => {
+        markSchemeElements.push({
+          text: element,
+          added: false
+        });
+      });
+      this.setState({
+        markSchemeElements
+      });
+    });
+  }
+
+  // write a function to add to list
+  markComplete = () => {
+    console.log("markComplete() clicked");
+  };
+
+  //swipe between the case details and the mark scheme
+  swipe = () => {
+    this.setState(prevState => functions.swipe(prevState));
   };
 
   userTypes = input => {
@@ -50,18 +79,19 @@ export default class NewCase extends React.Component {
           submitCase={this.submitCase}
           tickDisplayed={this.state.tickDisplayed}
         />
-        <div id="add-new-wrapper">
-          <NewTileInput
-            instructionText={"Case title"}
-            userTypes={this.userTypes}
-          />
-          <InstructionText text={"Case details"} />
-          <textarea
-            onChange={this.caseDetailsChange}
-            placeholder="Add patient details"
-            max-length="5000"
-          />
-        </div>
+        <NewTileInput
+          instructionText={"Case title"}
+          userTypes={this.userTypes}
+        />
+        <AddNewContainer
+          id="add-new-container"
+          markComplete={this.markComplete}
+          swipe={this.swipe}
+          caseDetails={this.state.caseDetails}
+          caseDetailsDisplayed={this.state.caseDetailsDisplayed}
+          markSchemeElements={this.state.markSchemeElements}
+          markSchemeCompleted={this.state.markSchemeCompleted}
+        />
       </React.Fragment>
     );
   }
