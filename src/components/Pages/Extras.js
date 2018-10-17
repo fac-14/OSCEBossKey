@@ -9,11 +9,10 @@ import AddNew from "./AddNew/AddNewTile";
 import Title from "../Stations/Title";
 import Navbar from "../Navbar/Navbar";
 
-export class ExtrasPage extends React.Component {
-  state = {
-    stations: dummyData.history
-  };
+import airtableQuery from "../../utils/fetch";
+import removeHyphens from "../../utils/removeHyphens";
 
+export class ExtrasPage extends React.Component {
   render() {
     const stationTiles = Object.keys(this.state.stations).map((tile, index) => (
       <Link key={index} to={`/history/${tile}`}>
