@@ -41,6 +41,21 @@ app.get("/api/history", (req, res) => {
     });
 });
 
+app.get("/api/examinations", (req, res) => {
+  database("Examinations_Stations")
+    .select()
+    .firstPage((err, records) => {
+      if (err) functions.returnEmptyPayload(res, err);
+      else {
+        const stations = [];
+        records.forEach(record => {
+          stations.push(record.get("station_name"));
+        });
+        functions.returnPopulatedPayload(res, stations);
+      }
+    });
+});
+
 app.get("/api/get-station/:station", (req, res) => {
   database("History_Stations")
     .select({
