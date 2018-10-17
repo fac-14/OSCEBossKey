@@ -55,28 +55,36 @@ export default class NewCase extends React.Component {
     });
   }
 
-  // write a function to add to list
   markComplete = id => {
     this.setState(prevState => {
-      // make a copy of the previous state
       const markSchemeElements = prevState.markSchemeElements.map(element => ({
         text: element.text,
         added: element.added
       }));
-      // in that copy, change added => true/false for the correct element
       markSchemeElements[id].added = !markSchemeElements[id].added;
-      // return the copied array as the new state
       return { markSchemeElements };
     });
   };
 
-  //swipe between the case details and the mark scheme
   swipe = () => {
     this.setState(prevState => functions.swipe(prevState));
   };
 
   userTypes = input => {
     this.setState({ caseTitle: input });
+  };
+
+  newMarkSchemeElement = input => {
+    this.setState(prevState => {
+      const newMarkSchemeElements = prevState.markSchemeElements.slice();
+      newMarkSchemeElements.push({
+        text: input,
+        added: true
+      });
+      return {
+        markSchemeElements: newMarkSchemeElements
+      };
+    });
   };
 
   caseDetailsChange = event => {
@@ -105,6 +113,7 @@ export default class NewCase extends React.Component {
             caseDetailsDisplayed={this.state.caseDetailsDisplayed}
             markSchemeElements={this.state.markSchemeElements}
             markSchemeCompleted={this.state.markSchemeCompleted}
+            newMarkSchemeElement={this.newMarkSchemeElement}
           />
         </div>
       </React.Fragment>

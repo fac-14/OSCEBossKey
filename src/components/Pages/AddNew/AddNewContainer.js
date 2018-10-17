@@ -7,6 +7,19 @@ import { ActiveSwipe, InactiveSwipe } from "../Revision/SwipeBalls";
 import InstructionText from "./InstructionText";
 
 export default class AddNewContainer extends React.Component {
+  state = {
+    newMarkSchemeElement: ""
+  };
+
+  handleChange = event => {
+    this.setState({ newMarkSchemeElement: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.newMarkSchemeElement(this.state.newMarkSchemeElement);
+  };
+
   render() {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
@@ -46,9 +59,21 @@ export default class AddNewContainer extends React.Component {
                 />
               </div>
             ) : (
-              <ul id="add-new-list" data-testid="new-mark-scheme-list">
-                {markSchemeArray}
-              </ul>
+              // user input
+              <React.Fragment>
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="text"
+                    name="new-mark-scheme-element"
+                    placeholder="add new"
+                    onChange={this.handleChange}
+                  />
+                  <input type="submit" value="&#43;" />
+                </form>
+                <ul id="add-new-list" data-testid="new-mark-scheme-list">
+                  {markSchemeArray}
+                </ul>
+              </React.Fragment>
             )}
           </div>
         </Hammer>
@@ -63,5 +88,6 @@ AddNewContainer.propTypes = {
   caseDetailsDisplayed: PropTypes.bool,
   caseDetails: PropTypes.string,
   caseTitle: PropTypes.string,
-  markSchemeElements: PropTypes.arrayOf(PropTypes.object)
+  markSchemeElements: PropTypes.arrayOf(PropTypes.object),
+  newMarkSchemeElement: PropTypes.func
 };
