@@ -9,8 +9,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Cases from "./Cases/CasesPage";
 import Revision from "./Pages/Revision/RevisionPage";
-import History from "./Pages/History";
-import Examinations from "./Pages/Examinations";
+import CategoryListing from "./CategoryListing";
 import Extras from "./Pages/Extras";
 import Statistics from "./Pages/Statistics";
 import NewCase from "./Pages/AddNew/NewCase";
@@ -22,8 +21,18 @@ const App = () => (
   <Router>
     <div className="page-wrapper">
       <Route exact path="/" component={Home} />
-      <Route strict exact path="/history" component={History} />
-      <Route strict exact path="/examinations" component={Examinations} />
+      <Route
+        strict
+        exact
+        path="/history"
+        render={() => <CategoryListing section="history" />}
+      />
+      <Route
+        strict
+        exact
+        path="/examinations"
+        render={() => <CategoryListing section="examinations" />}
+      />
       <Route strict exact path="/extras" component={Extras} />
       <Route strict exact path="/stats" component={Statistics} />
       <Route strict exact path="/history/:station" component={Cases} />
