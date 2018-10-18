@@ -1,15 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import InstructionText from "./InstructionText";
 import NewTileTextInput from "./NewTileTextInput";
+
+const StyledNewTileInputContainer = styled.div`
+  margin-bottom: 16px;
+`;
 
 export default class NewTileInput extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <InstructionText text={this.props.instructionText} />
-        <NewTileTextInput userTypes={this.props.userTypes} />
+        <StyledNewTileInputContainer>
+          <InstructionText text={this.props.instructionText} />
+          <NewTileTextInput userTypes={this.props.userTypes} />
+        </StyledNewTileInputContainer>
       </React.Fragment>
     );
   }
