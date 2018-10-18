@@ -21,13 +21,15 @@ const Tile = styled.div`
   color: ${props => props.color || "#fff"};
   font-family: "Nova Round", Helvetica, sans-serif;
   font-size: 21px;
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
   margin: 0 8px;
   overflow: hidden;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  font-size: 21px;
 `;
 
 const Wrapper = styled.div`
@@ -70,7 +72,6 @@ export default class CategoryListing extends React.Component {
   }
 
   render() {
-    this.generateLink();
     const stationTiles = this.state.stations.map((tile, index) => (
       <StyledLink
         bgColour={this.props.bg}
