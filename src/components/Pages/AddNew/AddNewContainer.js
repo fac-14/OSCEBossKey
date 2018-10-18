@@ -62,7 +62,7 @@ const MarkSchemeList = styled.ul`
 const MarkSchemeListItem = styled.li`
   display: flex;
   margin: 4px 0;
-  padding: 8px 8px;
+  padding: 8px;
   align-items: center;
   color: ${({ added }) => added && "white"};
   background-color: ${({ added }) => (added ? "#009f5c" : "white")};
