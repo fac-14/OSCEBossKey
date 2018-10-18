@@ -46,3 +46,16 @@ textarea {
   line-height: 1.2;
   font-family: $text-font;
 }
+
+#icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 48px);
+  width: 100vw;
+  margin: 48px 0;
+}
+
+#icon-wrapper #coming-soon-icon {
+  height: 80vmin;
+}
