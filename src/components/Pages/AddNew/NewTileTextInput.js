@@ -48,6 +48,7 @@ export default class NewTileTextInput extends React.Component {
           name="station_name"
           onChange={this.handleChange}
           className="input"
+          autofocus="autofocus"
         />
       </NewTileTextInputForm>
     );
