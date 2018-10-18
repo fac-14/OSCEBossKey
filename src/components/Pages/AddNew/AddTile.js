@@ -42,6 +42,7 @@ export default class AddTile extends React.Component {
           stationName={"add new"}
           station={this.state.station}
           tickDisplayed={true}
+          addNewFlow={true}
         />
         <StyledInstructionContainer>
           <NewTileInput
