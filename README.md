@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/fac-14/OSCEBossKey/branch/master/graph/badge.svg)](https://codecov.io/gh/fac-14/OSCEBossKey)
 
 Weeks 13-16 > Tech for Better project
-## [Run in the browser](https://reverent-ptolemy-d2df8c.netlify.com/)
+## [Run in the browser](https://oscebosskey.herokuapp.com)
 
 ## Instructions to run the program locally
 
