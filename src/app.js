@@ -26,51 +26,6 @@ app.get("/api/add-station/:station", (req, res) => {
   );
 });
 
-app.get("/api/history", (req, res) => {
-  database("History_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
-app.get("/api/examinations", (req, res) => {
-  database("Examinations_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
-app.get("/api/extras", (req, res) => {
-  database("Extras_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
 app.get("/api/get-station/:station", (req, res) => {
   database("History_Stations")
     .select({
@@ -160,6 +115,30 @@ app.get("/api/history/:station/case/:id", (req, res) => {
         });
       }
     });
+});
+
+app.get("/api/:section/", (req, res) => {
+  const section = req.params.section.replace(/^\w/, c => c.toUpperCase());
+  if (
+    section === "History" ||
+    section === "Examinations" ||
+    section === "Extras"
+  ) {
+    database(`${section}_Stations`)
+      .select()
+      .firstPage((err, records) => {
+        if (err) functions.returnEmptyPayload(res, err);
+        else {
+          const stations = [];
+          records.forEach(record => {
+            stations.push(record.get("station_name"));
+          });
+          functions.returnPopulatedPayload(res, stations);
+        }
+      });
+  } else {
+    functions.returnEmptyPayload(res, `Incorrect Route: ${section} `);
+  }
 });
 
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval
