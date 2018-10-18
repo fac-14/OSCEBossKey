@@ -31,7 +31,9 @@ export default class AddTile extends React.Component {
   };
 
   userTypes = input => {
-    this.setState({ station: input, tickDisplayed: true });
+    input
+      ? this.setState({ station: input, tickDisplayed: true })
+      : this.setState({ station: "", tickDisplayed: false });
   };
 
   render() {
