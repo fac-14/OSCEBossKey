@@ -22,6 +22,10 @@ const MarkSchemeListItem = styled.li`
   background-color: ${({ added }) => (added ? "#009f5c" : "white")};
 `;
 
+const StyledDiv = styled.div`
+  margin-bottom: ${({ swipeBalls }) => (swipeBalls ? "16px" : 0)};
+`;
+
 export default class AddNewContainer extends React.Component {
   state = {
     newMarkSchemeElement: ""
@@ -51,7 +55,7 @@ export default class AddNewContainer extends React.Component {
     );
     return (
       <div>
-        <div id="swipe-balls">
+        <StyledDiv swipeBalls={true}>
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -63,7 +67,7 @@ export default class AddNewContainer extends React.Component {
               <ActiveSwipe swipe={this.props.swipe} />
             </React.Fragment>
           )}
-        </div>
+        </StyledDiv>
         <Hammer onSwipe={this.props.swipe}>
           <div id="add-new-container">
             {this.props.caseDetailsDisplayed ? (
