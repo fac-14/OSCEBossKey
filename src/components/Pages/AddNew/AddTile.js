@@ -22,7 +22,8 @@ const StyledAddNewBannerContainer = styled.div`
 export default class AddTile extends React.Component {
   state = {
     exam: this.props.match.params.exam,
-    station: ""
+    station: "",
+    tickDisplayed: false
   };
 
   submitTile = () => {
@@ -30,7 +31,7 @@ export default class AddTile extends React.Component {
   };
 
   userTypes = input => {
-    this.setState({ station: input });
+    this.setState({ station: input, tickDisplayed: true });
   };
 
   render() {
@@ -41,7 +42,7 @@ export default class AddTile extends React.Component {
           submitCase={this.submitTile}
           stationName={"add new"}
           station={this.state.station}
-          tickDisplayed={true}
+          tickDisplayed={this.state.tickDisplayed}
         />
         <StyledInstructionContainer>
           <NewTileInput
