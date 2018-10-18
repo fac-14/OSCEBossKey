@@ -8,18 +8,8 @@ import styled from "styled-components";
 import { ActiveSwipe, InactiveSwipe } from "../Revision/SwipeBalls";
 import InstructionText from "./InstructionText";
 
-const MarkSchemeList = styled.ul`
-  width: 100%;
-`;
-
-const MarkSchemeListItem = styled.li`
-  height: 48px;
-  display: flex;
-  margin: 8px 0;
-  padding: 8px;
-  align-items: center;
-  color: ${({ added }) => added && "white"};
-  background-color: ${({ added }) => (added ? "#009f5c" : "white")};
+const WrapperDiv = styled.div`
+  text-align: center;
 `;
 
 const StyledDiv = styled.div`
@@ -68,6 +58,20 @@ const StyledButton = styled.input`
   }
 `;
 
+const MarkSchemeList = styled.ul`
+  width: 100%;
+`;
+
+const MarkSchemeListItem = styled.li`
+  height: 48px;
+  display: flex;
+  margin: 8px 0;
+  padding: 8px;
+  align-items: center;
+  color: ${({ added }) => added && "white"};
+  background-color: ${({ added }) => (added ? "#009f5c" : "white")};
+`;
+
 export default class AddNewContainer extends React.Component {
   state = {
     newMarkSchemeElement: ""
@@ -96,7 +100,7 @@ export default class AddNewContainer extends React.Component {
       )
     );
     return (
-      <div>
+      <WrapperDiv>
         <StyledDiv swipeBalls={true}>
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
@@ -142,7 +146,7 @@ export default class AddNewContainer extends React.Component {
             )}
           </div>
         </Hammer>
-      </div>
+      </WrapperDiv>
     );
   }
 }
