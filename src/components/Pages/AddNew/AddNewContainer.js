@@ -26,16 +26,22 @@ const StyledDiv = styled.div`
   margin-bottom: ${({ swipeBalls }) => (swipeBalls ? "16px" : 0)};
 `;
 
-const StyledInput = styled.input`
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
   background-color: rgba(0, 159, 92, 0.2);
+`;
+
+const StyledInput = styled.input`
   font-family: "Nova Round", Helvetica, sans-serif;
+  background-color: rgba(0, 159, 92, 0);
   color: #009f5c;
   font-size: 20px;
   text-transform: uppercase;
   line-height: 1.2;
   height: 74px;
   width: calc(100% - 106px);
-  margin-bottom: 16px;
   padding: 0 16px;
   border: none;
 
@@ -51,10 +57,15 @@ const StyledInput = styled.input`
 const StyledButton = styled.input`
   height: 74px;
   width: 74px;
-  margin-bottom: 16px;
   padding: 0 16px;
   border: none;
-  background-color: hotpink;
+  background-color: rgba(0, 159, 92, 0);
+  color: #009f5c;
+  font-size: 32px;
+
+  :focus {
+    outline-color: #009f5c;
+  }
 `;
 
 export default class AddNewContainer extends React.Component {
@@ -112,7 +123,7 @@ export default class AddNewContainer extends React.Component {
               </div>
             ) : (
               <React.Fragment>
-                <form onSubmit={this.handleSubmit}>
+                <StyledForm onSubmit={this.handleSubmit}>
                   <StyledInput
                     type="text"
                     name="new-mark-scheme-element"
@@ -120,7 +131,7 @@ export default class AddNewContainer extends React.Component {
                     onChange={this.handleChange}
                   />
                   <StyledButton type="submit" value="&#43;" />
-                </form>
+                </StyledForm>
                 <MarkSchemeList
                   id="add-new-list"
                   data-testid="new-mark-scheme-list"
