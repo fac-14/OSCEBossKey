@@ -13,7 +13,7 @@
 }
 
 #navbar a {
-  padding: 4px;
+  padding: 4px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,18 +35,22 @@
   font-weight: bold;
 }
 
-#navbar #history-icon:hover {
+#navbar #history-icon:hover,
+.history-li:hover {
   background-color: $peter-green;
 }
 
-#navbar #examinations-icon:hover {
+#navbar #examinations-icon:hover,
+.examinations-li:hover {
   background-color: $peter-red;
 }
 
-#navbar #extras-icon:hover {
+#navbar #extras-icon:hover,
+.extras-li:hover {
   background-color: $yellow;
 }
 
-#navbar #statistics-icon:hover {
+#navbar #statistics-icon:hover,
+.stats-li:hover {
   background-color: $peter-blue;
 }
