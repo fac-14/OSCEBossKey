@@ -10,8 +10,10 @@ import Navbar from "./Navbar/Navbar";
 import airtableQuery from "../utils/fetch";
 import removeHyphens from "../utils/removeHyphens";
 
-// fadeRed: #e6c4aa
-// fadeYellow: eddb9a
+const Name = styled.p`
+  overflow-wrap: break-word;
+  overflow: hidden;
+`;
 
 const Tile = styled.div`
   display: flex;
@@ -25,6 +27,7 @@ const Tile = styled.div`
   text-align: center;
   text-transform: uppercase;
   margin: 0 8px;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -67,7 +70,9 @@ export default class CategoryListing extends React.Component {
         key={index}
         to={`/${this.props.section}/${tile}`}
       >
-        <Tile key={index}>{removeHyphens(tile)}</Tile>
+        <Tile key={index}>
+          <Name>{removeHyphens(tile)}</Name>
+        </Tile>
       </StyledLink>
     ));
     const addNew = (
@@ -76,7 +81,9 @@ export default class CategoryListing extends React.Component {
         to={`/${this.props.section}/add/station`}
         id="add-station"
       >
-        <Tile color={this.props.bg}>Add New</Tile>
+        <Tile color={this.props.bg}>
+          <Name>Add New</Name>
+        </Tile>
       </StyledLink>
     );
     return (
