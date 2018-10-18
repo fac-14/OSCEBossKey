@@ -18,11 +18,10 @@ const NewTileTextInputElement = styled.input`
   text-transform: uppercase;
   line-height: 1.2;
   letter-spacing: 1px;
-  outline: none;
-`;
 
-const NewTileTextInputSubmit = styled.input`
-  background-color: green;
+  :focus {
+    outline-color: #c7c7b2;
+  }
 `;
 
 export default class NewTileTextInput extends React.Component {

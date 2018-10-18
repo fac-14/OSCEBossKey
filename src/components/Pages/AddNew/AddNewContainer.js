@@ -39,7 +39,7 @@ const StyledInput = styled.input`
   }
 
   :focus {
-    outline-color: #009f5c;
+    outline-color: #c7c7b2;
   }
 `;
 
@@ -51,7 +51,7 @@ const StyledButton = styled.input`
   font-size: 32px;
 
   :focus {
-    outline-color: #009f5c;
+    outline-color: #c7c7b2;
   }
 `;
 
