@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 4px;
+  padding-right: 16px;
   height: 40px;
   background-color: $darkgrey;
   color: #fff;
@@ -20,6 +21,10 @@
   padding: 0 16px;
   border: none;
   background-color: transparent;
+}
+
+#topbar-container #complete {
+  padding-right: 0 !important;
 }
 
 #topbar-title {
