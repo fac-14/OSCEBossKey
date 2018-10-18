@@ -28,7 +28,7 @@ export class ExtrasPage extends React.Component {
   }
   render() {
     const stationTiles = this.state.stations.map((tile, index) => (
-      <Link key={index} to={`/extras/${tile}`}>
+      <Link key={index} to={`/coming-soon`}>
         <div className="tile" key={index}>
           {removeHyphens(tile)}
         </div>

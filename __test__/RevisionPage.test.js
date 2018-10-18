@@ -14,6 +14,9 @@ fetchMock.mock("end:/api/history/chest-pain/case/1", {
   }
 });
 
+// mock our setInterval function with a Jest fakeTimer
+jest.useFakeTimers();
+
 // wrapping in new <Router> tags is required for <Revision> component to render nav (which has <Link> elements)
 // overwriting React Router match prop with necessary information for test
 const { getByText, getByTestId } = render(
@@ -28,6 +31,10 @@ describe("Testing Body component", () => {
     expect(caseDetails).toBeTruthy();
     expect(() => getByTestId("mark-scheme-list")).toThrow();
   });
+  test("setInterval should be called when page is rendered", () => {
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+  });
   test("when swipe button is clicked, mark scheme should render", () => {
     const swipeButton = getByTestId("mark-ball");
     fireEvent.click(swipeButton);
@@ -36,6 +43,7 @@ describe("Testing Body component", () => {
     const markSchemeList = getByTestId("mark-scheme-list");
     expect(markSchemeList.children.length).toBeGreaterThan(0);
   });
+
   // This passes even when the CompleteButton component is hijacked with a React Router link - why?
   // Can React Testing Library interpret <Link /> components?
   test("when more than one element of the mark scheme is completed, the submission tick should render", () => {
