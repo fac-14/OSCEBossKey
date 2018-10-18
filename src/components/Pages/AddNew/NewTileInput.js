@@ -6,7 +6,6 @@ import InstructionText from "./InstructionText";
 import NewTileTextInput from "./NewTileTextInput";
 
 const StyledNewTileInputContainer = styled.div`
-  background: blue;
   margin-bottom: 16px;
 `;
 

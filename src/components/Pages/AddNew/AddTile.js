@@ -12,12 +12,11 @@ import TopBar from "../../TopBar/TopBar";
 import airtableQuery from "../../../utils/fetch";
 
 const StyledInstructionContainer = styled.div`
-  background-color: yellow;
   margin-top: 100px;
 `;
 
 const StyledAddNewBannerContainer = styled.div`
-  margin: 16px 0;
+  margin-bottom: 16px;
 `;
 
 export default class AddTile extends React.Component {
