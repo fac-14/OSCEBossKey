@@ -54,11 +54,13 @@ export default class AddTile extends React.Component {
           <InstructionText text={"Add case"} />
         </StyledInstructionContainer>
         <StyledAddNewBannerContainer>
-          <AddNewBanner
-            exam={this.state.exam}
-            station={this.state.station.replace(/\s/g, "-")}
-            submitStation={this.submitTile}
-          />
+          {this.state.station && (
+            <AddNewBanner
+              exam={this.state.exam}
+              station={this.state.station.replace(/\s/g, "-")}
+              submitStation={this.submitTile}
+            />
+          )}
         </StyledAddNewBannerContainer>
       </React.Fragment>
     );
