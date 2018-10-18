@@ -43,6 +43,7 @@
     "node-fetch": "^2.2.0",
     "nodemon": "^1.18.4",
     "react-testing-library": "^5.1.1",
+    "styled-components": "^4.0.2",
     "supertest": "^3.3.0"
   },
   "dependencies": {
@@ -50,7 +51,6 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "babel-plugin-styled-components": "^1.8.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -67,7 +67,6 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "sass": "^1.14.1",
-    "serve-favicon": "^2.5.0",
-    "styled-components": "^4.0.2"
+    "serve-favicon": "^2.5.0"
   }
 }
