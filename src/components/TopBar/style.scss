@@ -1,0 +1,36 @@
+#topbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+  height: 40px;
+  background-color: $darkgrey;
+  color: #fff;
+  font-family: $title-font;
+  text-transform: uppercase;
+  //border: 1px solid red;
+}
+
+#topbar-container #back,
+#topbar-container #complete {
+  padding: 0 16px;
+  border: none;
+  background-color: transparent;
+}
+
+#topbar-title {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+#topbar-timer {
+  width: 60px;
+}
+
+#topbar img {
+  height: 20px;
+}
