@@ -18,7 +18,8 @@ const MarkSchemeListItem = styled.li`
   margin: 8px 0;
   padding: 8px;
   align-items: center;
-  background-color: white;
+  color: ${({ added }) => added && "white"};
+  background-color: ${({ added }) => (added ? "#009f5c" : "white")};
 `;
 
 export default class AddNewContainer extends React.Component {
@@ -40,7 +41,7 @@ export default class AddNewContainer extends React.Component {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
         <MarkSchemeListItem
-          className={element.added ? "added" : ""}
+          added={element.added}
           key={index}
           onClick={() => this.props.markComplete(index)}
         >
