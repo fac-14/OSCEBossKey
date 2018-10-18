@@ -63,12 +63,19 @@ export default class CategoryListing extends React.Component {
     );
   }
 
+  generateLink(name) {
+    if (this.props.section === "history")
+      return `/${this.props.section}/${name}`;
+    return `/coming-soon`;
+  }
+
   render() {
+    this.generateLink();
     const stationTiles = this.state.stations.map((tile, index) => (
       <StyledLink
         bgColour={this.props.bg}
         key={index}
-        to={`/${this.props.section}/${tile}`}
+        to={this.generateLink(tile)}
       >
         <Tile key={index}>
           <Name>{removeHyphens(tile)}</Name>
@@ -78,7 +85,7 @@ export default class CategoryListing extends React.Component {
     const addNew = (
       <StyledLink
         bgColour={this.props.fadedBg}
-        to={`/${this.props.section}/add/station`}
+        to={this.generateLink("/add/station")}
         id="add-station"
       >
         <Tile color={this.props.bg}>

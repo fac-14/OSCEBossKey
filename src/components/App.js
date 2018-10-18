@@ -6,7 +6,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 // import all page classes here
-import Home from "./Pages/Home";
 import Cases from "./Cases/CasesPage";
 import Revision from "./Pages/Revision/RevisionPage";
 import CategoryListing from "./CategoryListing";
