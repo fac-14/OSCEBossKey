@@ -53,6 +53,22 @@ const StyledButton = styled.input`
   }
 `;
 
+const StyledTextArea = styled.textarea`
+  resize: none;
+  margin: 16px;
+  padding: 8px;
+  width: calc(100vw - 48px);
+  height: calc(100vh - 322px);
+  border: none;
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "Roboto", Helvetica, sans-serif;
+
+  :focus {
+    outline-color: #c7c7b2;
+  }
+`;
+
 const MarkSchemeList = styled.ul`
   width: 100%;
 `;
@@ -116,7 +132,7 @@ export default class AddNewContainer extends React.Component {
             {this.props.caseDetailsDisplayed ? (
               <div id="add-new-text" data-testid="new-case-details">
                 <InstructionText text={"Case details"} />
-                <textarea
+                <StyledTextArea
                   onChange={this.props.caseDetailsChange}
                   placeholder="Add patient details"
                   max-length="5000"
