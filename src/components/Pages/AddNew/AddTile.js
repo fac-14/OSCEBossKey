@@ -43,13 +43,11 @@ export default class AddTile extends React.Component {
           station={this.state.station}
           tickDisplayed={true}
         />
-        {/* <StyledInstructionContainer> */}
         <NewTileInput
           instructionText={"Add station"}
           userTypes={this.userTypes}
         />
         <InstructionText text={"Add case"} />
-        {/* </StyledInstructionContainer> */}
         <StyledAddNewBannerContainer>
           <AddNewBanner
             exam={this.state.exam}
