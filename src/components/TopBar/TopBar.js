@@ -27,6 +27,7 @@ export default class TopBar extends React.Component {
           )}
           {this.props.tickDisplayed && (
             <CompleteButton
+              addNewFlow={this.props.addNewFlow}
               exam={this.props.backLink}
               station={this.props.station}
               onClick={this.props.submitCase}
@@ -40,6 +41,7 @@ export default class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
+  addNewFlow: PropTypes.bool,
   backLink: PropTypes.string,
   exam: PropTypes.string,
   submitCase: PropTypes.func,
