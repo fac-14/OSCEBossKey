@@ -3,8 +3,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
+import styled from "styled-components";
+
 import { ActiveSwipe, InactiveSwipe } from "../Revision/SwipeBalls";
 import InstructionText from "./InstructionText";
+
+const MarkSchemeList = styled.ul`
+  width: 100%;
+`;
+
+const MarkSchemeListItem = styled.li`
+  height: 48px;
+  display: flex;
+  margin: 8px 0;
+  padding: 8px;
+  align-items: center;
+  background-color: white;
+`;
 
 export default class AddNewContainer extends React.Component {
   state = {
@@ -24,13 +39,13 @@ export default class AddNewContainer extends React.Component {
   render() {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
-        <li
-          className={element.added ? "strike" : ""}
+        <MarkSchemeListItem
+          className={element.added ? "added" : ""}
           key={index}
           onClick={() => this.props.markComplete(index)}
         >
           {element.text}
-        </li>
+        </MarkSchemeListItem>
       )
     );
     return (
@@ -71,9 +86,12 @@ export default class AddNewContainer extends React.Component {
                   />
                   <input type="submit" value="&#43;" />
                 </form>
-                <ul id="add-new-list" data-testid="new-mark-scheme-list">
+                <MarkSchemeList
+                  id="add-new-list"
+                  data-testid="new-mark-scheme-list"
+                >
                   {markSchemeArray}
-                </ul>
+                </MarkSchemeList>
               </React.Fragment>
             )}
           </div>
