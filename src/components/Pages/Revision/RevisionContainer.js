@@ -65,7 +65,7 @@ export default class RevisionContainer extends React.Component {
                 {this.props.caseDetails}
               </p>
             ) : (
-              <MarkSchemeList id="revision-list" data-testid="mark-scheme-list">
+              <MarkSchemeList data-testid="mark-scheme-list">
                 {markSchemeArray}
               </MarkSchemeList>
             )}

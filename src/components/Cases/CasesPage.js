@@ -54,7 +54,7 @@ class CasesPage extends React.Component {
         <Title
           stationName={this.state.station && removeHyphens(this.state.station)}
         />
-        <div id="banner-wrapper">
+        <div>
           <AddNew exam="history" station={this.state.station} />
           <CaseList>{caseBanners}</CaseList>
         </div>
