@@ -18,8 +18,6 @@ export default class NewCase extends React.Component {
     markSchemeElements: []
   };
 
-  // write query to get mark scheme element
-
   submitCase = () => {
     const markScheme = [];
     this.state.markSchemeElements.forEach(element => {

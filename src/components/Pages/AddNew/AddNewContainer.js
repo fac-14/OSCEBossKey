@@ -26,6 +26,37 @@ const StyledDiv = styled.div`
   margin-bottom: ${({ swipeBalls }) => (swipeBalls ? "16px" : 0)};
 `;
 
+const StyledInput = styled.input`
+  background-color: rgba(0, 159, 92, 0.2);
+  font-family: "Nova Round", Helvetica, sans-serif;
+  color: #009f5c;
+  font-size: 20px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  height: 74px;
+  width: calc(100% - 106px);
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border: none;
+
+  ::placeholder {
+    color: rgba(0, 159, 92, 0.4);
+  }
+
+  :focus {
+    outline-color: #009f5c;
+  }
+`;
+
+const StyledButton = styled.input`
+  height: 74px;
+  width: 74px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border: none;
+  background-color: hotpink;
+`;
+
 export default class AddNewContainer extends React.Component {
   state = {
     newMarkSchemeElement: ""
@@ -80,16 +111,15 @@ export default class AddNewContainer extends React.Component {
                 />
               </div>
             ) : (
-              // user input
               <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
-                  <input
+                  <StyledInput
                     type="text"
                     name="new-mark-scheme-element"
-                    placeholder="add new"
+                    placeholder="add new..."
                     onChange={this.handleChange}
                   />
-                  <input type="submit" value="&#43;" />
+                  <StyledButton type="submit" value="&#43;" />
                 </form>
                 <MarkSchemeList
                   id="add-new-list"
