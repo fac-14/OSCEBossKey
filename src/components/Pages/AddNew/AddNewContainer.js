@@ -29,10 +29,9 @@ const StyledInput = styled.input`
   color: #009f5c;
   font-size: 20px;
   text-transform: uppercase;
-  height: 74px;
-  width: calc(100% - 106px);
+  width: calc(100% - 64px);
   line-height: 1.2;
-  padding: 0 16px;
+  padding: 16px;
   border: none;
 
   ::placeholder {
@@ -45,8 +44,6 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.input`
-  height: 74px;
-  width: 74px;
   padding: 0 16px;
   border: none;
   background-color: rgba(0, 159, 92, 0);
