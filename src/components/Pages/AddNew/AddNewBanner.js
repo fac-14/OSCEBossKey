@@ -3,34 +3,26 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const StyledAddNewBanner = styled(Link)`
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  background-color: rgba(0, 159, 92, 0.2);
-  height: 74px;
-  margin: 4px 0;
-  width: 100%;
-  text-decoration: none;
-`;
-
-const StyledAddNewBannerText = styled.div`
+const StyledCase = styled.div`
   font-family: "Nova Round", Helvetica, sans-serif;
-  margin: 0 16px;
+  background-color: rgba(0, 159, 92, 0.2);
   color: #009f5c;
+  font-size: 20px;
+  text-transform: uppercase;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.2;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: none;
 `;
 
 export default class AddNewBanner extends React.Component {
   render() {
     return (
-      <StyledAddNewBanner
-        to={`/${this.props.exam}/${this.props.station}/add-case`}
-      >
-        <StyledAddNewBannerText onClick={this.props.submitStation}>
-          {" "}
-          Add New
-        </StyledAddNewBannerText>
-      </StyledAddNewBanner>
+      <Link to={`/${this.props.exam}/${this.props.station}/add-case`}>
+        <StyledCase onClick={this.props.submitStation}> Add New</StyledCase>
+      </Link>
     );
   }
 }

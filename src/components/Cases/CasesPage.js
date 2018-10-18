@@ -11,34 +11,22 @@ import AddNew from "../Pages/AddNew/AddNewBanner";
 import Navbar from "../Navbar/Navbar";
 
 import removeHyphens from "../../utils/removeHyphens";
-
 import airtableQuery from "../../utils/fetch";
 
-const Banner = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: #009f5c;
-  height: 74px;
+const CaseList = styled.ul`
   width: 100%;
-  font-family: "Roboto", Helvetica, sans-serif;
-  line-height: 1.2;
 `;
 
-const BannerText = styled.p`
-  padding: 0 16px;
-  color: #fff;
-`;
-
-const BannerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledLink = styled(Link)`
+const CaseListItem = styled.li`
   display: flex;
   margin: 4px 0;
-  width: 100%;
-  text-decoration: none;
+  padding: 16px;
+  align-items: center;
+  color: white;
+  background-color: #009f5c;
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-word;
 `;
 
 class CasesPage extends React.Component {
@@ -57,24 +45,19 @@ class CasesPage extends React.Component {
 
   render() {
     const caseBanners = this.state.cases.map((banner, index) => (
-      <StyledLink
-        key={index}
-        to={`/history/${this.state.station}/case/${banner.id}`}
-      >
-        <Banner key={index}>
-          <BannerText>{banner.title}</BannerText>
-        </Banner>
-      </StyledLink>
+      <Link key={index} to={`/history/${this.state.station}/case/${banner.id}`}>
+        <CaseListItem key={index}>{banner.title}</CaseListItem>
+      </Link>
     ));
     return (
       <React.Fragment>
         <Title
           stationName={this.state.station && removeHyphens(this.state.station)}
         />
-        <BannerWrapper>
+        <div>
           <AddNew exam="history" station={this.state.station} />
-          {caseBanners}
-        </BannerWrapper>
+          <CaseList>{caseBanners}</CaseList>
+        </div>
         <Navbar />
       </React.Fragment>
     );

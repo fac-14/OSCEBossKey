@@ -3,8 +3,73 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
+import styled from "styled-components";
+
 import { ActiveSwipe, InactiveSwipe } from "../Revision/SwipeBalls";
 import InstructionText from "./InstructionText";
+
+const WrapperDiv = styled.div`
+  text-align: center;
+`;
+
+const StyledSwipeBallsDiv = styled.div`
+  margin-bottom: 16px;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  background-color: rgba(0, 159, 92, 0.2);
+`;
+
+const StyledInput = styled.input`
+  font-family: "Nova Round", Helvetica, sans-serif;
+  background-color: rgba(0, 159, 92, 0);
+  color: #009f5c;
+  font-size: 20px;
+  text-transform: uppercase;
+  width: calc(100% - 64px);
+  line-height: 1.2;
+  padding: 16px;
+  border: none;
+
+  ::placeholder {
+    color: rgba(0, 159, 92, 0.4);
+  }
+
+  :focus {
+    outline-color: #009f5c;
+  }
+`;
+
+const StyledButton = styled.input`
+  padding: 0 16px;
+  border: none;
+  background-color: rgba(0, 159, 92, 0);
+  color: #009f5c;
+  font-size: 32px;
+
+  :focus {
+    outline-color: #009f5c;
+  }
+`;
+
+const MarkSchemeList = styled.ul`
+  width: 100%;
+`;
+
+const MarkSchemeListItem = styled.li`
+  display: flex;
+  margin: 4px 0;
+  padding: 8px;
+  align-items: center;
+  color: ${({ added }) => added && "white"};
+  background-color: ${({ added }) => (added ? "#009f5c" : "white")};
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-word;
+`;
 
 export default class AddNewContainer extends React.Component {
   state = {
@@ -24,18 +89,18 @@ export default class AddNewContainer extends React.Component {
   render() {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
-        <li
-          className={element.added ? "strike" : ""}
+        <MarkSchemeListItem
+          added={element.added}
           key={index}
           onClick={() => this.props.markComplete(index)}
         >
           {element.text}
-        </li>
+        </MarkSchemeListItem>
       )
     );
     return (
-      <div>
-        <div id="swipe-balls">
+      <WrapperDiv>
+        <StyledSwipeBallsDiv>
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -47,7 +112,7 @@ export default class AddNewContainer extends React.Component {
               <ActiveSwipe swipe={this.props.swipe} />
             </React.Fragment>
           )}
-        </div>
+        </StyledSwipeBallsDiv>
         <Hammer onSwipe={this.props.swipe}>
           <div id="add-new-container">
             {this.props.caseDetailsDisplayed ? (
@@ -60,25 +125,27 @@ export default class AddNewContainer extends React.Component {
                 />
               </div>
             ) : (
-              // user input
               <React.Fragment>
-                <form onSubmit={this.handleSubmit}>
-                  <input
+                <StyledForm onSubmit={this.handleSubmit}>
+                  <StyledInput
                     type="text"
                     name="new-mark-scheme-element"
-                    placeholder="add new"
+                    placeholder="add new..."
                     onChange={this.handleChange}
                   />
-                  <input type="submit" value="&#43;" />
-                </form>
-                <ul id="add-new-list" data-testid="new-mark-scheme-list">
+                  <StyledButton type="submit" value="&#43;" />
+                </StyledForm>
+                <MarkSchemeList
+                  id="add-new-list"
+                  data-testid="new-mark-scheme-list"
+                >
                   {markSchemeArray}
-                </ul>
+                </MarkSchemeList>
               </React.Fragment>
             )}
           </div>
         </Hammer>
-      </div>
+      </WrapperDiv>
     );
   }
 }
