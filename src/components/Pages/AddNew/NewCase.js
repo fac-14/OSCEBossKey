@@ -104,6 +104,7 @@ export default class NewCase extends React.Component {
     return (
       <React.Fragment>
         <TopBar
+          addNewFlow={true}
           timer={false}
           backLink={this.props.match.params.exam}
           stationName={this.props.match.params.station}
