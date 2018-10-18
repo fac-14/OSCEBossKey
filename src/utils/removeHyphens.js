@@ -1,3 +1,3 @@
-const removeHyphens = string => (!string ? string : string.replace(/-/g, " "));
+const removeHyphens = string => string.replace(/-/g, " ");
 
 export default removeHyphens;
