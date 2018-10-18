@@ -29,9 +29,9 @@ const StyledInput = styled.input`
   color: #009f5c;
   font-size: 20px;
   text-transform: uppercase;
-  line-height: 1.2;
   height: 74px;
   width: calc(100% - 106px);
+  line-height: 1.2;
   padding: 0 16px;
   border: none;
 
@@ -63,13 +63,15 @@ const MarkSchemeList = styled.ul`
 `;
 
 const MarkSchemeListItem = styled.li`
-  height: 48px;
   display: flex;
-  margin: 8px 0;
-  padding: 8px;
+  margin: 4px 0;
+  padding: 8px 8px;
   align-items: center;
   color: ${({ added }) => added && "white"};
   background-color: ${({ added }) => (added ? "#009f5c" : "white")};
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-word;
 `;
 
 export default class AddNewContainer extends React.Component {
