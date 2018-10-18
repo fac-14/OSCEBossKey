@@ -85,7 +85,7 @@ export default class CategoryListing extends React.Component {
     const addNew = (
       <StyledLink
         bgColour={this.props.fadedBg}
-        to={this.generateLink("/add/station")}
+        to={this.generateLink("add/station")}
         id="add-station"
       >
         <Tile color={this.props.bg}>

@@ -29,7 +29,7 @@ export default class TopBar extends React.Component {
             <CompleteButton
               exam={this.props.backLink}
               station={this.props.station}
-              submitCase={this.props.submitCase}
+              onClick={this.props.submitCase}
               tickDisplayed={this.props.tickDisplayed}
             />
           )}
