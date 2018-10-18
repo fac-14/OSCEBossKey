@@ -5,16 +5,18 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import AddNew from "./Pages/AddNew/AddNewTile";
 import Navbar from "./Navbar/Navbar";
 
 import airtableQuery from "../utils/fetch";
 import removeHyphens from "../utils/removeHyphens";
 
+// fadeRed: #e6c4aa
+// fadeYellow: eddb9a
+
 const Tile = styled.div`
   display: flex;
   height: 133px;
-  color: #fff;
+  color: ${props => props.color || "#fff"};
   font-family: "Nova Round", Helvetica, sans-serif;
   font-size: 21px;
   display: flex;
@@ -68,11 +70,20 @@ export default class CategoryListing extends React.Component {
         <Tile key={index}>{removeHyphens(tile)}</Tile>
       </StyledLink>
     ));
+    const addNew = (
+      <StyledLink
+        bgColour={this.props.fadedBg}
+        to={`/${this.props.section}/add/station`}
+        id="add-station"
+      >
+        <Tile color={this.props.bg}>Add New</Tile>
+      </StyledLink>
+    );
     return (
       <React.Fragment>
         <h1 id="title">{this.props.section}</h1>
         <Wrapper>
-          <AddNew />
+          {addNew}
           {stationTiles}
         </Wrapper>
         <Navbar />
@@ -83,5 +94,6 @@ export default class CategoryListing extends React.Component {
 
 CategoryListing.propTypes = {
   section: PropTypes.string,
-  bg: PropTypes.string
+  bg: PropTypes.string,
+  fadedBg: PropTypes.string
 };

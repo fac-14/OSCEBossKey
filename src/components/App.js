@@ -36,19 +36,29 @@ const App = () => (
         strict
         exact
         path="/history"
-        render={() => <CategoryListing bg="#009f5c" section="history" />}
+        render={() => (
+          <CategoryListing bg="#009f5c" fadedBg="#B8D8BC" section="history" />
+        )}
       />
       <Route
         strict
         exact
         path="/examinations"
-        render={() => <CategoryListing bg="#ffbe00" section="examinations" />}
+        render={() => (
+          <CategoryListing
+            bg="#e53d00"
+            fadedBg="#e6c4aa"
+            section="examinations"
+          />
+        )}
       />
       <Route
         strict
         exact
         path="/extras"
-        render={() => <CategoryListing bg="#e53d00" section="extras" />}
+        render={() => (
+          <CategoryListing bg="#ffbe00" fadedBg="#eddb9a" section="extras" />
+        )}
       />
     </div>
   </Router>
