@@ -4,6 +4,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import Title from "./Title";
 import AddNew from "../Pages/AddNew/AddNewBanner";
@@ -12,6 +13,33 @@ import Navbar from "../Navbar/Navbar";
 import removeHyphens from "../../utils/removeHyphens";
 
 import airtableQuery from "../../utils/fetch";
+
+const Banner = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #009f5c;
+  height: 74px;
+  width: 100%;
+  font-family: "Roboto", Helvetica, sans-serif;
+  line-height: 1.2;
+`;
+
+const BannerText = styled.p`
+  padding: 0 16px;
+  color: #fff;
+`;
+
+const BannerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  margin: 4px 0;
+  width: 100%;
+  text-decoration: none;
+`;
 
 class CasesPage extends React.Component {
   state = {
@@ -29,21 +57,24 @@ class CasesPage extends React.Component {
 
   render() {
     const caseBanners = this.state.cases.map((banner, index) => (
-      <Link key={index} to={`/history/${this.state.station}/case/${banner.id}`}>
-        <div className="banner" key={index}>
-          <p className="banner-text">{banner.title}</p>
-        </div>
-      </Link>
+      <StyledLink
+        key={index}
+        to={`/history/${this.state.station}/case/${banner.id}`}
+      >
+        <Banner key={index}>
+          <BannerText>{banner.title}</BannerText>
+        </Banner>
+      </StyledLink>
     ));
     return (
       <React.Fragment>
         <Title
           stationName={this.state.station && removeHyphens(this.state.station)}
         />
-        <div id="banner-wrapper">
+        <BannerWrapper>
           <AddNew exam="history" station={this.state.station} />
           {caseBanners}
-        </div>
+        </BannerWrapper>
         <Navbar />
       </React.Fragment>
     );
