@@ -2,6 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import AddNewBanner from "./AddNewBanner";
 import InstructionText from "./InstructionText";
@@ -9,6 +10,15 @@ import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
 
 import airtableQuery from "../../../utils/fetch";
+
+const StyledInstructionContainer = styled.div`
+  background-color: yellow;
+  margin-top: 100px;
+`;
+
+const StyledAddNewBannerContainer = styled.div`
+  margin: 16px 0;
+`;
 
 export default class AddTile extends React.Component {
   state = {
@@ -34,20 +44,20 @@ export default class AddTile extends React.Component {
           station={this.state.station}
           tickDisplayed={true}
         />
-        <div id="add-new-wrapper">
+        <StyledInstructionContainer>
           <NewTileInput
             instructionText={"Add station"}
             userTypes={this.userTypes}
           />
           <InstructionText text={"Add case"} />
-          <div id="banner-wrapper">
-            <AddNewBanner
-              exam={this.state.exam}
-              station={this.state.station.replace(/\s/g, "-")}
-              submitStation={this.submitTile}
-            />
-          </div>
-        </div>
+        </StyledInstructionContainer>
+        <StyledAddNewBannerContainer>
+          <AddNewBanner
+            exam={this.state.exam}
+            station={this.state.station.replace(/\s/g, "-")}
+            submitStation={this.submitTile}
+          />
+        </StyledAddNewBannerContainer>
       </React.Fragment>
     );
   }
