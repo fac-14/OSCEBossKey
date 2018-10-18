@@ -31,6 +31,7 @@ export default class AddTile extends React.Component {
           backLink={this.state.exam}
           submitCase={this.submitTile}
           stationName={"add new"}
+          station={this.state.station}
           tickDisplayed={true}
         />
         <div id="add-new-wrapper">

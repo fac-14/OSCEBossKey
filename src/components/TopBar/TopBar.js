@@ -27,7 +27,8 @@ export default class TopBar extends React.Component {
           )}
           {this.props.tickDisplayed && (
             <CompleteButton
-              exam={this.props.exam}
+              exam={this.props.backLink}
+              station={this.props.station}
               submitCase={this.props.submitCase}
               tickDisplayed={this.props.tickDisplayed}
             />
@@ -43,6 +44,7 @@ TopBar.propTypes = {
   exam: PropTypes.string,
   submitCase: PropTypes.func,
   stationName: PropTypes.string,
+  station: PropTypes.string,
   tickDisplayed: PropTypes.bool,
   time: PropTypes.number,
   timer: PropTypes.bool

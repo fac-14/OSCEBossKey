@@ -37,11 +37,30 @@ app.get("/api/get-station/:station", (req, res) => {
     })
     .firstPage((err, record) => {
       if (err || record.length === 0) {
-        console.log("sending back empty array due to error/no record");
-        return functions.returnEmptyArray(res, err);
+        return functions.returnEmptyPayload(res, err);
       }
-      return functions.returnPopulatedArray(res, record[0].id);
+      return functions.returnPopulatedPayload(res, record[0].id);
     });
+});
+
+app.get("/api/get-mark-scheme-elements", (req, res) => {
+  const markSchemeArray = [];
+  database("History_Mark_Scheme_Elements")
+    .select({
+      fields: ["mark_scheme_elements"]
+    })
+    .eachPage(
+      (records, fetchNextPage) => {
+        records.forEach(record =>
+          markSchemeArray.push(record.get("mark_scheme_elements"))
+        );
+        fetchNextPage();
+      },
+      err => {
+        if (err) return console.error(err);
+        return functions.returnPopulatedPayload(res, markSchemeArray);
+      }
+    );
 });
 
 app.post("/api/add-case/:station", (req, res) => {
@@ -94,6 +113,21 @@ app.get("/api/history/:station", (req, res) => {
           );
       }
     });
+});
+
+app.post("/api/add-mark-scheme-element", (req, res) => {
+  database("History_Mark_Scheme_Elements").create(
+    {
+      mark_scheme_elements: req.body.element
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
 });
 
 // the airTable query doesn't actually use req.params.station for error checking or validation
