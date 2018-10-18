@@ -3,7 +3,7 @@ import "../assets/index.scss";
 import React from "react";
 
 // this is the module that lets us do the routing
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 // import all page classes here
 import Home from "./Pages/Home";
@@ -20,7 +20,7 @@ import ComingSoon from "./Pages/ComingSoon";
 const App = () => (
   <Router>
     <div className="page-wrapper">
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" render={() => <Redirect to="/history" />} />
       <Route strict exact path="/coming-soon" component={ComingSoon} />
       <Route strict exact path="/stats" component={Statistics} />
       <Route strict exact path="/history/:station" component={Cases} />
