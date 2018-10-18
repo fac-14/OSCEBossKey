@@ -18,8 +18,8 @@ const MarkSchemeList = styled.ul`
 
 const MarkSchemeListItem = styled.li`
   display: flex;
-  margin: 4px 0;
-  padding: 8px 8px;
+  margin: 4px;
+  padding: 16px;
   align-items: center;
   color: ${({ completed }) => completed && "white"};
   background-color: ${({ completed }) => (completed ? "#009f5c" : "white")};
