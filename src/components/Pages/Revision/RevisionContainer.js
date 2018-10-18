@@ -3,20 +3,39 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Hammer from "react-hammerjs";
+import styled from "styled-components";
+
 import { ActiveSwipe, InactiveSwipe } from "./SwipeBalls";
 import RevisionTitle from "./RevisionTitle";
+
+const MarkSchemeList = styled.ul`
+  width: 100%;
+`;
+
+const MarkSchemeListItem = styled.li`
+  display: flex;
+  margin: 4px 0;
+  padding: 8px 8px;
+  align-items: center;
+  color: ${({ completed }) => completed && "white"};
+  background-color: ${({ completed }) => (completed ? "#009f5c" : "white")};
+  text-decoration: ${({ completed }) => (completed ? "line-through" : "none")};
+  text-align: left;
+  word-wrap: break-word;
+  word-break: break-word;
+`;
 
 export default class RevisionContainer extends React.Component {
   render() {
     const markSchemeArray = this.props.markSchemeElements.map(
       (element, index) => (
-        <li
-          className={element.completed ? "strike" : ""}
+        <MarkSchemeListItem
+          completed={element.completed}
           key={index}
           onClick={() => this.props.markComplete(index)}
         >
           {element.text}
-        </li>
+        </MarkSchemeListItem>
       )
     );
     return (
@@ -42,9 +61,9 @@ export default class RevisionContainer extends React.Component {
                 {this.props.caseDetails}
               </p>
             ) : (
-              <ul id="revision-list" data-testid="mark-scheme-list">
+              <MarkSchemeList id="revision-list" data-testid="mark-scheme-list">
                 {markSchemeArray}
-              </ul>
+              </MarkSchemeList>
             )}
           </div>
         </Hammer>
