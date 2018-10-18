@@ -8,7 +8,6 @@ export default class StatisticsPage extends React.Component {
     return (
       <div>
         <ComingSoon />
-        <Navbar />
       </div>
     );
   }
