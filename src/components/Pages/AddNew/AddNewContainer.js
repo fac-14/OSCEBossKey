@@ -24,11 +24,9 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  font-family: "Nova Round", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
   background-color: rgba(0, 159, 92, 0);
-  color: #009f5c;
   font-size: 20px;
-  text-transform: uppercase;
   width: calc(100% - 64px);
   line-height: 1.2;
   padding: 16px;
@@ -130,7 +128,7 @@ export default class AddNewContainer extends React.Component {
                   <StyledInput
                     type="text"
                     name="new-mark-scheme-element"
-                    placeholder="add new..."
+                    placeholder="Add new..."
                     onChange={this.handleChange}
                   />
                   <StyledButton type="submit" value="&#43;" />
