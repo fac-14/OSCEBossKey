@@ -10,6 +10,7 @@ import NewTileInput from "./NewTileInput";
 import TopBar from "../../TopBar/TopBar";
 
 import airtableQuery from "../../../utils/fetch";
+import removeWhitespace from "../../../utils/removeWhitespace";
 
 const StyledInstructionContainer = styled.div`
   margin-top: 100px;
@@ -26,7 +27,7 @@ export default class AddTile extends React.Component {
   };
 
   submitTile = () => {
-    airtableQuery(`/api/add-station/${this.state.station}`);
+    airtableQuery(`/api/add-station/${removeWhitespace(this.state.station)}`);
   };
 
   userTypes = input => {
