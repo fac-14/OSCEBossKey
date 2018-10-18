@@ -13,6 +13,7 @@ import CategoryListing from "./CategoryListing";
 import Statistics from "./Pages/Statistics";
 import NewCase from "./Pages/AddNew/NewCase";
 import AddTile from "./Pages/AddNew/AddTile";
+import ComingSoon from "./Pages/ComingSoon";
 
 // App is no longer a React component, but a function that returns a different page component, e.g. HistoryCaseRevision, depending on the route
 // we should probably add a 404 component to display when the user hits a route for which there is no component
@@ -20,6 +21,17 @@ const App = () => (
   <Router>
     <div className="page-wrapper">
       <Route exact path="/" component={Home} />
+      <Route strict exact path="/coming-soon" component={ComingSoon} />
+      <Route strict exact path="/stats" component={Statistics} />
+      <Route strict exact path="/history/:station" component={Cases} />
+      <Route strict exact path="/:exam/:station/add-case" component={NewCase} />
+      <Route
+        strict
+        exact
+        path="/:exam/:station/case/:caseid"
+        component={Revision}
+      />
+      <Route strict exact path="/:exam/add/station" component={AddTile} />
       <Route
         strict
         exact
@@ -38,16 +50,6 @@ const App = () => (
         path="/extras"
         render={() => <CategoryListing bg="#e53d00" section="extras" />}
       />
-      <Route strict exact path="/stats" component={Statistics} />
-      <Route strict exact path="/history/:station" component={Cases} />
-      <Route strict exact path="/:exam/:station/add-case" component={NewCase} />
-      <Route
-        strict
-        exact
-        path="/:exam/:station/case/:caseid"
-        component={Revision}
-      />
-      <Route strict exact path="/:exam/add/station" component={AddTile} />
     </div>
   </Router>
 );

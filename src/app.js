@@ -26,51 +26,6 @@ app.get("/api/add-station/:station", (req, res) => {
   );
 });
 
-app.get("/api/history", (req, res) => {
-  database("History_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
-app.get("/api/examinations", (req, res) => {
-  database("Examinations_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
-app.get("/api/extras", (req, res) => {
-  database("Extras_Stations")
-    .select()
-    .firstPage((err, records) => {
-      if (err) functions.returnEmptyPayload(res, err);
-      else {
-        const stations = [];
-        records.forEach(record => {
-          stations.push(record.get("station_name"));
-        });
-        functions.returnPopulatedPayload(res, stations);
-      }
-    });
-});
-
 app.get("/api/get-station/:station", (req, res) => {
   database("History_Stations")
     .select({
@@ -82,11 +37,30 @@ app.get("/api/get-station/:station", (req, res) => {
     })
     .firstPage((err, record) => {
       if (err || record.length === 0) {
-        console.log("sending back empty array due to error/no record");
-        return functions.returnEmptyArray(res, err);
+        return functions.returnEmptyPayload(res, err);
       }
-      return functions.returnPopulatedArray(res, record[0].id);
+      return functions.returnPopulatedPayload(res, record[0].id);
     });
+});
+
+app.get("/api/get-mark-scheme-elements", (req, res) => {
+  const markSchemeArray = [];
+  database("History_Mark_Scheme_Elements")
+    .select({
+      fields: ["mark_scheme_elements"]
+    })
+    .eachPage(
+      (records, fetchNextPage) => {
+        records.forEach(record =>
+          markSchemeArray.push(record.get("mark_scheme_elements"))
+        );
+        fetchNextPage();
+      },
+      err => {
+        if (err) return console.error(err);
+        return functions.returnPopulatedPayload(res, markSchemeArray);
+      }
+    );
 });
 
 app.post("/api/add-case/:station", (req, res) => {
@@ -141,6 +115,21 @@ app.get("/api/history/:station", (req, res) => {
     });
 });
 
+app.post("/api/add-mark-scheme-element", (req, res) => {
+  database("History_Mark_Scheme_Elements").create(
+    {
+      mark_scheme_elements: req.body.element
+    },
+    (err, record) => {
+      if (err) {
+        // TODO: handle error better
+        console.error(err);
+        return;
+      }
+    }
+  );
+});
+
 // the airTable query doesn't actually use req.params.station for error checking or validation
 // this will cause an extra API call but it might be a nice addition when the amount of data starts to grow
 app.get("/api/history/:station/case/:id", (req, res) => {
@@ -160,6 +149,30 @@ app.get("/api/history/:station/case/:id", (req, res) => {
         });
       }
     });
+});
+
+app.get("/api/:section/", (req, res) => {
+  const section = req.params.section.replace(/^\w/, c => c.toUpperCase());
+  if (
+    section === "History" ||
+    section === "Examinations" ||
+    section === "Extras"
+  ) {
+    database(`${section}_Stations`)
+      .select()
+      .firstPage((err, records) => {
+        if (err) functions.returnEmptyPayload(res, err);
+        else {
+          const stations = [];
+          records.forEach(record => {
+            stations.push(record.get("station_name"));
+          });
+          functions.returnPopulatedPayload(res, stations);
+        }
+      });
+  } else {
+    functions.returnEmptyPayload(res, `Incorrect Route: ${section} `);
+  }
 });
 
 // this serves index.html no matter what the route, so that React routing can take charge of what to display and the server stays out of interval
