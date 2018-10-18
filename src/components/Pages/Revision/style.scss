@@ -15,13 +15,11 @@
   align-items: center;
   width: 100vw;
   overflow-y: scroll;
-  // background-color: yellow;
 }
 
 #revision #revision-text {
   padding: 0 16px;
   line-height: 1.2;
-  // border: 1px solid grey;
 }
 
 #score-percent {
@@ -34,8 +32,4 @@
   font-weight: 700;
   margin: 8px 0;
   text-transform: uppercase;
-}
-
-.timer-long {
-  color: $peter-red;
 }
