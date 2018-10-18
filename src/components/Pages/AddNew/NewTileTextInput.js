@@ -43,6 +43,7 @@ export default class NewTileTextInput extends React.Component {
     return (
       <NewTileTextInputForm onSubmit={this.handleSubmit}>
         <NewTileTextInputElement
+          autocomplete="off"
           type="text"
           name="station_name"
           onChange={this.handleChange}
