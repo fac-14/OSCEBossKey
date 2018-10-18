@@ -12,9 +12,9 @@ import TopBar from "../../TopBar/TopBar";
 import airtableQuery from "../../../utils/fetch";
 import removeWhitespace from "../../../utils/removeWhitespace";
 
-const StyledInstructionContainer = styled.div`
-  margin-top: 100px;
-`;
+// const StyledInstructionContainer = styled.div`
+//   margin-top: 100px;
+// `;
 
 const StyledAddNewBannerContainer = styled.div`
   margin-bottom: 16px;
@@ -45,13 +45,11 @@ export default class AddTile extends React.Component {
           tickDisplayed={true}
           addNewFlow={true}
         />
-        <StyledInstructionContainer>
-          <NewTileInput
-            instructionText={"Add station"}
-            userTypes={this.userTypes}
-          />
-          <InstructionText text={"Add case"} />
-        </StyledInstructionContainer>
+        <NewTileInput
+          instructionText={"Add station"}
+          userTypes={this.userTypes}
+        />
+        <InstructionText text={"Add case"} />
         <StyledAddNewBannerContainer>
           <AddNewBanner
             exam={this.state.exam}

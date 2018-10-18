@@ -7,6 +7,7 @@ import NewTileTextInput from "./NewTileTextInput";
 
 const StyledNewTileInputContainer = styled.div`
   margin-bottom: 16px;
+  margin-top: 100px;
 `;
 
 export default class NewTileInput extends React.Component {
