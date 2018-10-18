@@ -12,8 +12,8 @@ const WrapperDiv = styled.div`
   text-align: center;
 `;
 
-const StyledDiv = styled.div`
-  margin-bottom: ${({ swipeBalls }) => (swipeBalls ? "16px" : 0)};
+const StyledSwipeBallsDiv = styled.div`
+  margin-bottom: 16px;
 `;
 
 const StyledForm = styled.form`
@@ -100,7 +100,7 @@ export default class AddNewContainer extends React.Component {
     );
     return (
       <WrapperDiv>
-        <StyledDiv swipeBalls={true}>
+        <StyledSwipeBallsDiv>
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -112,7 +112,7 @@ export default class AddNewContainer extends React.Component {
               <ActiveSwipe swipe={this.props.swipe} />
             </React.Fragment>
           )}
-        </StyledDiv>
+        </StyledSwipeBallsDiv>
         <Hammer onSwipe={this.props.swipe}>
           <div id="add-new-container">
             {this.props.caseDetailsDisplayed ? (

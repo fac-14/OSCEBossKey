@@ -8,6 +8,10 @@ import styled from "styled-components";
 import { ActiveSwipe, InactiveSwipe } from "./SwipeBalls";
 import RevisionTitle from "./RevisionTitle";
 
+const StyledSwipeBallsDiv = styled.div`
+  margin-bottom: 16px;
+`;
+
 const MarkSchemeList = styled.ul`
   width: 100%;
 `;
@@ -41,7 +45,7 @@ export default class RevisionContainer extends React.Component {
     return (
       <div id="revision">
         <RevisionTitle caseTitle={this.props.caseTitle} />
-        <div id="swipe-balls">
+        <StyledSwipeBallsDiv>
           {this.props.caseDetailsDisplayed ? (
             <React.Fragment>
               <ActiveSwipe swipe={this.props.swipe} />
@@ -53,7 +57,7 @@ export default class RevisionContainer extends React.Component {
               <ActiveSwipe swipe={this.props.swipe} />
             </React.Fragment>
           )}
-        </div>
+        </StyledSwipeBallsDiv>
         <Hammer onSwipe={this.props.swipe}>
           <div id="revision-container">
             {this.props.caseDetailsDisplayed ? (
