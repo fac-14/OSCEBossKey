@@ -24,11 +24,9 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  font-family: "Nova Round", Helvetica, sans-serif;
+  font-family: "Roboto", Helvetica, sans-serif;
   background-color: rgba(0, 159, 92, 0);
-  color: #009f5c;
   font-size: 20px;
-  text-transform: uppercase;
   width: calc(100% - 64px);
   line-height: 1.2;
   padding: 16px;
@@ -39,7 +37,7 @@ const StyledInput = styled.input`
   }
 
   :focus {
-    outline-color: #009f5c;
+    outline-color: #c7c7b2;
   }
 `;
 
@@ -51,7 +49,23 @@ const StyledButton = styled.input`
   font-size: 32px;
 
   :focus {
-    outline-color: #009f5c;
+    outline-color: #c7c7b2;
+  }
+`;
+
+const StyledTextArea = styled.textarea`
+  resize: none;
+  margin: 16px;
+  padding: 8px;
+  width: calc(100vw - 48px);
+  height: calc(100vh - 322px);
+  border: none;
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "Roboto", Helvetica, sans-serif;
+
+  :focus {
+    outline-color: #c7c7b2;
   }
 `;
 
@@ -81,9 +95,11 @@ export default class AddNewContainer extends React.Component {
   };
 
   handleSubmit = event => {
+    const { newMarkSchemeElement } = this.state;
     event.preventDefault();
     event.target["new-mark-scheme-element"].value = "";
-    this.props.newMarkSchemeElement(this.state.newMarkSchemeElement);
+    if (newMarkSchemeElement)
+      this.props.newMarkSchemeElement(newMarkSchemeElement);
   };
 
   render() {
@@ -118,7 +134,7 @@ export default class AddNewContainer extends React.Component {
             {this.props.caseDetailsDisplayed ? (
               <div id="add-new-text" data-testid="new-case-details">
                 <InstructionText text={"Case details"} />
-                <textarea
+                <StyledTextArea
                   onChange={this.props.caseDetailsChange}
                   placeholder="Add patient details"
                   max-length="5000"
@@ -130,10 +146,12 @@ export default class AddNewContainer extends React.Component {
                   <StyledInput
                     type="text"
                     name="new-mark-scheme-element"
-                    placeholder="add new..."
+                    placeholder="Add new..."
                     onChange={this.handleChange}
                   />
-                  <StyledButton type="submit" value="&#43;" />
+                  {this.state.newMarkSchemeElement && (
+                    <StyledButton type="submit" value="&#43;" />
+                  )}
                 </StyledForm>
                 <MarkSchemeList
                   id="add-new-list"
