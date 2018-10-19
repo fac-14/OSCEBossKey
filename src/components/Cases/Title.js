@@ -3,11 +3,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class CasesPageTitle extends React.Component {
-  render() {
-    return <h1 id="title">{this.props.stationName}</h1>;
-  }
-}
+const CasesPageTitle = props => <h1 id="title">{props.stationName}</h1>;
+
+export default CasesPageTitle;
 
 CasesPageTitle.propTypes = {
   stationName: PropTypes.string
