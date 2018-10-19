@@ -91,6 +91,8 @@ export default class NewCase extends React.Component {
         added: true
       });
       return {
+        tickDisplayed: !!newMarkSchemeElements.filter(element => element.added)
+          .length,
         markSchemeElements: newMarkSchemeElements
       };
     });
