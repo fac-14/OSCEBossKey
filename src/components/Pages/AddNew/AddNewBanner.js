@@ -17,18 +17,16 @@ const StyledCase = styled.div`
   border: none;
 `;
 
-export default class AddNewBanner extends React.Component {
-  render() {
-    return (
-      <Link to={`/${this.props.exam}/${this.props.station}/add-case`}>
-        <StyledCase onClick={this.props.submitStation}> Add New</StyledCase>
-      </Link>
-    );
-  }
-}
+const AddNewBanner = props => (
+  <Link to={`/${props.exam}/${props.station}/add-case`}>
+    <StyledCase onClick={props.submitStation}> Add New</StyledCase>
+  </Link>
+);
 
 AddNewBanner.propTypes = {
   exam: PropTypes.string,
   station: PropTypes.string,
   submitStation: PropTypes.func
 };
+
+export default AddNewBanner;

@@ -19,15 +19,13 @@ const ComingSoonImg = styled.img`
   max-height: 100%;
 `;
 
-export default class ComingSoon extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <ComingSoonDiv>
-          <ComingSoonImg id="coming-soon-icon" src={comingSoonIcon} />
-        </ComingSoonDiv>
-        <NavBar />
-      </React.Fragment>
-    );
-  }
-}
+const ComingSoon = () => (
+  <React.Fragment>
+    <ComingSoonDiv>
+      <ComingSoonImg id="coming-soon-icon" src={comingSoonIcon} />
+    </ComingSoonDiv>
+    <NavBar />
+  </React.Fragment>
+);
+
+export default ComingSoon;

@@ -75,21 +75,15 @@ export default class RevisionPage extends React.Component {
         id="revision"
         markComplete={this.markComplete}
         swipe={this.swipe}
-        caseTitle={this.state.caseTitle}
-        caseDetails={this.state.caseDetails}
-        caseDetailsDisplayed={this.state.caseDetailsDisplayed}
-        markSchemeElements={this.state.markSchemeElements}
-        markSchemeCompleted={this.state.markSchemeCompleted}
+        {...this.state}
       />
     );
 
     const resultsContainer = (
       <ResultsContainer
         markSchemeTotal={this.state.markSchemeElements.length}
-        markSchemeCompleted={this.state.markSchemeCompleted}
-        markSchemeElements={this.state.markSchemeElements}
-        caseTitle={this.state.caseTitle}
         timeElapsed={this.state.time}
+        {...this.state}
       />
     );
     const { exam, station } = this.props.match.params;
@@ -98,11 +92,9 @@ export default class RevisionPage extends React.Component {
         <TopBar
           id="topbar"
           backLink={`${exam}/${station}`}
-          stationName={this.state.stationName}
           submitCase={this.submitCase}
-          tickDisplayed={this.state.tickDisplayed}
           timer
-          time={this.state.time}
+          {...this.state}
         />
         {this.state.resultsDisplayed ? resultsContainer : revisionContainer}
       </React.Fragment>

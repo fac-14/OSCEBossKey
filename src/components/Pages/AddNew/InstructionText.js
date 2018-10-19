@@ -8,16 +8,12 @@ const StyledInstructionH2 = styled.h2`
   margin: 0 16px 16px 16px;
 `;
 
-export default class InstructionText extends React.Component {
-  render() {
-    return (
-      <StyledInstructionH2 id="revision-title">
-        {this.props.text}
-      </StyledInstructionH2>
-    );
-  }
-}
+const InstructionText = props => (
+  <StyledInstructionH2 id="revision-title">{props.text}</StyledInstructionH2>
+);
 
 InstructionText.propTypes = {
   text: PropTypes.string
 };
+
+export default InstructionText;
