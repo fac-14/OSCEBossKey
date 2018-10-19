@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const { database, queries } = require("./database");
+const queries = require("./database");
 const functions = require("./utils/airtableReturns");
 
 const app = express();
@@ -36,25 +36,8 @@ app.post("/api/add-mark-scheme-element", req => {
   if (req.body.element) return queries.addMarkSchemeElement(req.body.element);
 });
 
-// the airTable query doesn't actually use req.params.station for error checking or validation
-// this will cause an extra API call but it might be a nice addition when the amount of data starts to grow
 app.get("/api/history/:station/case/:id", (req, res) => {
-  database("History_Cases")
-    .select({
-      fields: ["case_title", "case_details", "mark_scheme"],
-      filterByFormula: `({primary_key} = '${req.params.id}')`
-    })
-    .firstPage((err, record) => {
-      if (err || record.length === 0)
-        functions.returnEmptyPayload(res, err, {});
-      else {
-        functions.returnPopulatedPayload(res, {
-          title: record[0].get("case_title"),
-          details: record[0].get("case_details"),
-          mark_scheme: [...record[0].get("mark_scheme").split(", ")]
-        });
-      }
-    });
+  if (req.params.id) return queries.getSingleCase(res, req.params.id);
 });
 
 app.get("/api/:section/", (req, res) => {
@@ -64,21 +47,9 @@ app.get("/api/:section/", (req, res) => {
     section === "Examinations" ||
     section === "Extras"
   ) {
-    database(`${section}_Stations`)
-      .select()
-      .firstPage((err, records) => {
-        if (err) functions.returnEmptyPayload(res, err);
-        else {
-          const stations = [];
-          records.forEach(record => {
-            stations.push(record.get("station_name"));
-          });
-          functions.returnPopulatedPayload(res, stations);
-        }
-      });
-  } else {
-    functions.returnEmptyPayload(res, `Incorrect Route: ${section} `);
+    return queries.getSectionStations(res, section);
   }
+  return functions.returnEmptyPayload(res, `Incorrect Route: ${section} `);
 });
 
 app.get("*", (req, res) => {

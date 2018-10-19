@@ -12,6 +12,20 @@ Airtable.configure({
 const database = Airtable.base("appPuOj2tvImyi2vJ");
 
 const queries = {
+  getSectionStations: (res, section) => {
+    database(`${section}_Stations`)
+      .select()
+      .firstPage((err, records) => {
+        if (err) functions.returnEmptyPayload(res, err);
+        else {
+          const stations = [];
+          records.forEach(record => {
+            stations.push(record.get("station_name"));
+          });
+          functions.returnPopulatedPayload(res, stations);
+        }
+      });
+  },
   getStation: (res, station) => {
     database("History_Stations")
       .select({
@@ -56,6 +70,24 @@ const queries = {
                 functions.returnPopulatedPayload(res, caseTitles);
               }
             );
+        }
+      });
+  },
+  getSingleCase: (res, caseId) => {
+    database("History_Cases")
+      .select({
+        fields: ["case_title", "case_details", "mark_scheme"],
+        filterByFormula: `({primary_key} = '${caseId}')`
+      })
+      .firstPage((err, record) => {
+        if (err || record.length === 0)
+          functions.returnEmptyPayload(res, err, {});
+        else {
+          functions.returnPopulatedPayload(res, {
+            title: record[0].get("case_title"),
+            details: record[0].get("case_details"),
+            mark_scheme: [...record[0].get("mark_scheme").split(", ")]
+          });
         }
       });
   },
@@ -123,4 +155,4 @@ const queries = {
   }
 };
 
-module.exports = { database, queries };
+module.exports = queries;
