@@ -12,9 +12,9 @@ import TopBar from "../../TopBar/TopBar";
 import airtableQuery from "../../../utils/fetch";
 import removeWhitespace from "../../../utils/removeWhitespace";
 
-// const StyledInstructionContainer = styled.div`
-//   margin-top: 100px;
-// `;
+const StyledInstructionContainer = styled.div`
+  margin-top: 0px;
+`;
 
 const StyledAddNewBannerContainer = styled.div`
   margin-bottom: 16px;

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const database = require("./database");
+const { database, queries } = require("./database");
 const functions = require("./utils/airtableReturns");
 
 const app = express();
@@ -27,38 +27,12 @@ app.get("/api/add-station/:station", (req, res) => {
 });
 
 app.get("/api/get-station/:station", (req, res) => {
-  database("History_Stations")
-    .select({
-      fields: ["primary_key"],
-      filterByFormula: `({station_name} = '${req.params.station}')`
-    })
-    .firstPage((err, record) => {
-      if (err || record.length === 0) {
-        return functions.returnEmptyPayload(res, err);
-      }
-      return functions.returnPopulatedPayload(res, record[0].id);
-    });
+  if (req.params.station) return queries.getStation(res, req.params.station);
 });
 
-app.get("/api/get-mark-scheme-elements", (req, res) => {
-  const markSchemeArray = [];
-  database("History_Mark_Scheme_Elements")
-    .select({
-      fields: ["mark_scheme_elements"]
-    })
-    .eachPage(
-      (records, fetchNextPage) => {
-        records.forEach(record =>
-          markSchemeArray.push(record.get("mark_scheme_elements"))
-        );
-        fetchNextPage();
-      },
-      err => {
-        if (err) return console.error(err);
-        return functions.returnPopulatedPayload(res, markSchemeArray);
-      }
-    );
-});
+app.get("/api/get-mark-scheme-elements", (req, res) =>
+  queries.getMarkScheme(res)
+);
 
 app.post("/api/add-case/:station", (req, res) => {
   database("History_Cases").create(
