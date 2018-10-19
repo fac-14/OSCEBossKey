@@ -10,20 +10,18 @@ const StyledNewTileInputContainer = styled.div`
   margin-top: 100px;
 `;
 
-export default class NewTileInput extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <StyledNewTileInputContainer>
-          <InstructionText text={this.props.instructionText} />
-          <NewTileTextInput userTypes={this.props.userTypes} />
-        </StyledNewTileInputContainer>
-      </React.Fragment>
-    );
-  }
-}
+const NewTileInput = props => (
+  <React.Fragment>
+    <StyledNewTileInputContainer>
+      <InstructionText text={props.instructionText} />
+      <NewTileTextInput userTypes={props.userTypes} />
+    </StyledNewTileInputContainer>
+  </React.Fragment>
+);
 
 NewTileInput.propTypes = {
   instructionText: PropTypes.string,
   userTypes: PropTypes.func
 };
+
+export default NewTileInput;

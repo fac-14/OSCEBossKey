@@ -17,17 +17,13 @@ const StyledImg = styled.img`
   height: 20px;
 `;
 
-export default class BackButton extends React.Component {
-  render() {
-    return (
-      <Link to={`/${this.props.link}`}>
-        <StyledButton>
-          <StyledImg src={xIcon} />
-        </StyledButton>
-      </Link>
-    );
-  }
-}
+const BackButton = ({ link }) => (
+  <Link to={`/${link}`}>
+    <StyledButton>
+      <StyledImg src={xIcon} />
+    </StyledButton>
+  </Link>
+);
 
 BackButton.propTypes = {
   link: PropTypes.string
@@ -36,3 +32,5 @@ BackButton.propTypes = {
 BackButton.contextTypes = {
   router: PropTypes.object
 };
+
+export default BackButton;
