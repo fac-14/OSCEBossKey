@@ -1,3 +1,5 @@
+// TODO: handle errors better
+
 require("dotenv").config();
 const Airtable = require("airtable");
 const functions = require("./utils/airtableReturns");
@@ -84,7 +86,6 @@ const queries = {
       },
       err => {
         if (err) {
-          // TODO: handle error better
           console.error(err);
           return;
         }
@@ -101,7 +102,19 @@ const queries = {
       },
       err => {
         if (err) {
-          // TODO: handle error better
+          console.error(err);
+          return;
+        }
+      }
+    );
+  },
+  addMarkSchemeElement: element => {
+    database("History_Mark_Scheme_Elements").create(
+      {
+        mark_scheme_elements: element
+      },
+      err => {
+        if (err) {
           console.error(err);
           return;
         }

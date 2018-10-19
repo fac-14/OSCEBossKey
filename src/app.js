@@ -32,19 +32,8 @@ app.get("/api/history/:station", (req, res) => {
   if (req.params.station) return queries.getCases(res, req.params.station);
 });
 
-app.post("/api/add-mark-scheme-element", (req, res) => {
-  database("History_Mark_Scheme_Elements").create(
-    {
-      mark_scheme_elements: req.body.element
-    },
-    (err, record) => {
-      if (err) {
-        // TODO: handle error better
-        console.error(err);
-        return;
-      }
-    }
-  );
+app.post("/api/add-mark-scheme-element", req => {
+  if (req.body.element) return queries.addMarkSchemeElement(req.body.element);
 });
 
 // the airTable query doesn't actually use req.params.station for error checking or validation
