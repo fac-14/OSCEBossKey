@@ -22,6 +22,41 @@ const queries = {
         return functions.returnPopulatedPayload(res, record[0].id);
       });
   },
+  getCases: (res, station) => {
+    const caseTitles = [];
+    database("History_Stations")
+      .select({
+        fields: ["primary_key"],
+        filterByFormula: `({station_name} = '${station}')`
+      })
+      .firstPage((err, record) => {
+        if (err || record.length === 0) functions.returnEmptyPayload(res, err);
+        else {
+          database("History_Cases")
+            .select({
+              fields: ["case_title", "primary_key"],
+              filterByFormula: `({station_id} = ${record[0].get(
+                "primary_key"
+              )})`
+            })
+            .eachPage(
+              (records, fetchNextPage) => {
+                records.forEach(record => {
+                  caseTitles.push({
+                    title: record.get("case_title"),
+                    id: record.get("primary_key")
+                  });
+                });
+                fetchNextPage();
+              },
+              err => {
+                if (err) functions.returnEmptyPayload(res, err);
+                functions.returnPopulatedPayload(res, caseTitles);
+              }
+            );
+        }
+      });
+  },
   getMarkScheme: res => {
     const markSchemeArray = [];
     database("History_Mark_Scheme_Elements")
@@ -41,6 +76,37 @@ const queries = {
           return functions.returnPopulatedPayload(res, markSchemeArray);
         }
       );
+  },
+  addStation: station => {
+    database("History_Stations").create(
+      {
+        station_name: station
+      },
+      err => {
+        if (err) {
+          // TODO: handle error better
+          console.error(err);
+          return;
+        }
+      }
+    );
+  },
+  addCase: (station, title, details, markScheme) => {
+    database("History_Cases").create(
+      {
+        station_id: [station],
+        case_title: title,
+        case_details: details,
+        mark_scheme: markScheme
+      },
+      err => {
+        if (err) {
+          // TODO: handle error better
+          console.error(err);
+          return;
+        }
+      }
+    );
   }
 };
 
