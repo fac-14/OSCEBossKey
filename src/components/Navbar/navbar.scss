@@ -1,56 +1,56 @@
-#navbar {
-  display: flex;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  background: $grey;
-}
-
-#navbar li {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-#navbar a {
-  padding: 4px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-#navbar img {
-  width: 24px;
-  height: 24px;
-  margin: 4px;
-}
-
-#navbar .text {
-  font-family: $text-font;
-  font-size: 8px;
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-#navbar #history-icon:hover,
-.history-li:hover {
-  background-color: $peter-green;
-}
-
-#navbar #examinations-icon:hover,
-.examinations-li:hover {
-  background-color: $peter-red;
-}
-
-#navbar #extras-icon:hover,
-.extras-li:hover {
-  background-color: $yellow;
-}
-
-#navbar #statistics-icon:hover,
-.stats-li:hover {
-  background-color: $peter-blue;
-}
+// #navbar {
+//   display: flex;
+//   width: 100vw;
+//   position: fixed;
+//   bottom: 0;
+//   background: $grey;
+// }
+//
+// #navbar li {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+// }
+//
+// #navbar a {
+//   padding: 4px 0;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+// }
+//
+// #navbar img {
+//   width: 24px;
+//   height: 24px;
+//   margin: 4px;
+// }
+//
+// #navbar .text {
+//   font-family: $text-font;
+//   font-size: 8px;
+//   color: black;
+//   text-transform: uppercase;
+//   font-weight: bold;
+// // }
+//
+// #navbar #history-icon:hover,
+// .history-li:hover {
+//   background-color: #009f5c;
+// }
+//
+// #navbar #examinations-icon:hover,
+// .examinations-li:hover {
+//   background-color: #b93848;
+// }
+//
+// #navbar #extras-icon:hover,
+// .extras-li:hover {
+//   background-color: #ffbe00;
+// }
+//
+// #navbar #statistics-icon:hover,
+// .stats-li:hover {
+//   background-color: #1c3b8b;
+// }
