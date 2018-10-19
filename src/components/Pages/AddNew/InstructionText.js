@@ -6,7 +6,6 @@ const StyledInstructionH2 = styled.h2`
   font-family: "Roboto", Helvetica, sans-serif;
   font-weight: 700;
   margin: 0 16px 16px 16px;
-  // border: solid black 2px;
 `;
 
 export default class InstructionText extends React.Component {

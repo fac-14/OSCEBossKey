@@ -23,7 +23,8 @@ const StyledAddNewBannerContainer = styled.div`
 export default class AddTile extends React.Component {
   state = {
     exam: this.props.match.params.exam,
-    station: ""
+    station: "",
+    tickDisplayed: false
   };
 
   submitTile = () => {
@@ -31,7 +32,9 @@ export default class AddTile extends React.Component {
   };
 
   userTypes = input => {
-    this.setState({ station: input });
+    input
+      ? this.setState({ station: input, tickDisplayed: true })
+      : this.setState({ station: "", tickDisplayed: false });
   };
 
   render() {
@@ -42,7 +45,7 @@ export default class AddTile extends React.Component {
           submitCase={this.submitTile}
           stationName={"add new"}
           station={this.state.station}
-          tickDisplayed={true}
+          tickDisplayed={this.state.tickDisplayed}
           addNewFlow={true}
         />
         <StyledInstructionContainer>
@@ -50,15 +53,17 @@ export default class AddTile extends React.Component {
             instructionText={"Add station"}
             userTypes={this.userTypes}
           />
-          <InstructionText text={"Add case"} />
         </StyledInstructionContainer>
-        <StyledAddNewBannerContainer>
-          <AddNewBanner
-            exam={this.state.exam}
-            station={this.state.station.replace(/\s/g, "-")}
-            submitStation={this.submitTile}
-          />
-        </StyledAddNewBannerContainer>
+        <InstructionText text={"Add case"} />
+        {this.state.station && (
+          <StyledAddNewBannerContainer>
+            <AddNewBanner
+              exam={this.state.exam}
+              station={this.state.station.replace(/\s/g, "-")}
+              submitStation={this.submitTile}
+            />
+          </StyledAddNewBannerContainer>
+        )}
       </React.Fragment>
     );
   }

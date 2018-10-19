@@ -1,26 +1,33 @@
 /* eslint-disable class-methods-use-this */
 
 import React from "react";
-import BackButton from "../TopBar/BackButton";
+import NavBar from "../Navbar/Navbar";
 import comingSoonIcon from "../../assets/icons/coming-soon-icon.svg";
-import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const ComingSoonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 100vw;
+  margin: 64px 0;
+`;
+
+const ComingSoonImg = styled.img`
+  width: 80%;
+  max-height: 100%;
+`;
 
 export default class ComingSoon extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="topbar-container">
-          <BackButton link={this.props.link} />
-          <h3 id="topbar-title">Coming soon...</h3>
-        </div>
-        <div id="icon-wrapper">
-          <img id="coming-soon-icon" src={comingSoonIcon} />
-        </div>
+        <ComingSoonDiv>
+          <ComingSoonImg id="coming-soon-icon" src={comingSoonIcon} />
+        </ComingSoonDiv>
+        <NavBar />
       </React.Fragment>
     );
   }
 }
-
-ComingSoon.propTypes = {
-  link: PropTypes.string
-};

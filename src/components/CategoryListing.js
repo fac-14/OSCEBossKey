@@ -11,7 +11,8 @@ import airtableQuery from "../utils/fetch";
 import removeHyphens from "../utils/removeHyphens";
 
 const Name = styled.p`
-  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
   overflow: hidden;
 `;
 

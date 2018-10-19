@@ -2,18 +2,28 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-// using <Link> tags allows us to make a component or HTML element into a React link -- see usage below
 import { Link } from "react-router-dom";
 import xIcon from "../../assets/icons/back.svg";
+
+const StyledButton = styled.button`
+  padding: 0 16px;
+  border: none;
+  background-color: transparent;
+`;
+
+const StyledImg = styled.img`
+  height: 20px;
+`;
 
 export default class BackButton extends React.Component {
   render() {
     return (
       <Link to={`/${this.props.link}`}>
-        <button id="back">
-          <img src={xIcon} />
-        </button>
+        <StyledButton>
+          <StyledImg src={xIcon} />
+        </StyledButton>
       </Link>
     );
   }
