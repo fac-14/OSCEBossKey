@@ -95,9 +95,11 @@ export default class AddNewContainer extends React.Component {
   };
 
   handleSubmit = event => {
+    const { newMarkSchemeElement } = this.state;
     event.preventDefault();
     event.target["new-mark-scheme-element"].value = "";
-    this.props.newMarkSchemeElement(this.state.newMarkSchemeElement);
+    if (newMarkSchemeElement)
+      this.props.newMarkSchemeElement(newMarkSchemeElement);
   };
 
   render() {
@@ -147,7 +149,9 @@ export default class AddNewContainer extends React.Component {
                     placeholder="Add new..."
                     onChange={this.handleChange}
                   />
-                  <StyledButton type="submit" value="&#43;" />
+                  {this.state.newMarkSchemeElement && (
+                    <StyledButton type="submit" value="&#43;" />
+                  )}
                 </StyledForm>
                 <MarkSchemeList
                   id="add-new-list"
