@@ -51,11 +51,9 @@ export default class TopBar extends React.Component {
           )}
           {this.props.tickDisplayed && (
             <CompleteButton
-              addNewFlow={this.props.addNewFlow}
               exam={this.props.backLink}
-              station={this.props.station}
               onClick={this.props.submitCase}
-              tickDisplayed={this.props.tickDisplayed}
+              {...this.props}
             />
           )}
         </TopBarContainer>
