@@ -18,6 +18,17 @@ const StyledLI = styled.li`
   display: flex;
   justify-content: center;
   width: 100%;
+
+  :hover {
+    background-color: ${({ section }) =>
+      section === "history"
+        ? "#009f5c"
+        : section === "examinations"
+          ? "#b93848"
+          : section === "extras"
+            ? "#ffbe00"
+            : "#1c3b8b"};
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -46,25 +57,25 @@ const StyledText = styled.h3`
 const Navbar = () => (
   <div>
     <StyledUL>
-      <StyledLI>
+      <StyledLI section={"history"}>
         <StyledLink to="/history">
           <StyledImg src={historyIcon} />
           <StyledText>History</StyledText>
         </StyledLink>
       </StyledLI>
-      <StyledLI>
+      <StyledLI section={"examinations"}>
         <StyledLink to="/examinations">
           <StyledImg src={examinationIcon} />
           <StyledText>Examinations</StyledText>
         </StyledLink>
       </StyledLI>
-      <StyledLI>
+      <StyledLI section={"extras"}>
         <StyledLink to="/extras">
           <StyledImg src={extrasIcon} />
           <StyledText>Extras</StyledText>
         </StyledLink>
       </StyledLI>
-      <StyledLI>
+      <StyledLI section={"stats"}>
         <StyledLink to="/stats">
           <StyledImg src={statisticsIcon} />
           <StyledText>Statistics</StyledText>
